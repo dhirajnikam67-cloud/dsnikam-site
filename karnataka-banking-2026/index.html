@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karnataka Storage Decision Brief — D. S. Nikam</title>
+<meta name="description" content="Independent analysis of KERC's draft Connectivity and General Network Access Regulations, 2026, the slot restriction on renewable energy banking, and when the storage decision actually arrives for open access and captive solar projects in Karnataka.">
+<link rel="canonical" href="https://dsnikam.in/karnataka-banking-2026">
+<meta property="og:title" content="Karnataka Storage Decision Brief — Report No. 1">
+<meta property="og:description" content="Banking, GNA and BESS economics under KERC's June 2026 draft Regulations. Free, no registration.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://dsnikam.in/karnataka-banking-2026">
+<style>
+:root{
+  --ink:#16181d; --mid:#4a4f5a; --soft:#7a808c;
+  --line:#e2e5ea; --bg:#fbfbfa; --card:#ffffff;
+  --accent:#1a4d3a; --flag:#8a5a00; --flagbg:#fdf6e6;
+  --max:720px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:17px/1.65 Georgia,'Iowan Old Style','Times New Roman',serif;
+  padding:0 20px;
+}
+.wrap{max-width:var(--max); margin:0 auto; padding:56px 0 72px}
+.sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+
+h1{font-size:34px; line-height:1.2; margin:0 0 10px; letter-spacing:-.015em}
+.sub{font-size:19px; color:var(--mid); margin:0 0 30px; line-height:1.45}
+.byline{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:14px; color:var(--soft); border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line); padding:16px 0; margin:0 0 34px;
+}
+.byline strong{color:var(--ink); font-weight:600}
+.byline .meta{display:block; margin-top:6px}
+
+h2{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:13px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--soft); font-weight:600; margin:44px 0 16px;
+}
+p{margin:0 0 18px}
+.lead{font-size:19px}
+
+.find{border-left:3px solid var(--accent); padding:2px 0 2px 20px; margin:0 0 26px}
+.find h3{font-size:18px; margin:0 0 7px; line-height:1.35}
+.find p{margin:0; color:var(--mid); font-size:16.5px}
+.num{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:12px; font-weight:700; color:var(--accent);
+  letter-spacing:.08em; display:block; margin-bottom:5px;
+}
+
+.figs{
+  background:var(--card); border:1px solid var(--line); border-radius:8px;
+  padding:20px 22px; margin:0 0 26px;
+}
+.figs table{width:100%; border-collapse:collapse; font-size:16px}
+.figs td{padding:9px 0; border-bottom:1px solid var(--line)}
+.figs tr:last-child td{border-bottom:none}
+.figs td:last-child{text-align:right; font-weight:700; white-space:nowrap; padding-left:14px}
+.figs .cap{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:12.5px; color:var(--soft); margin:12px 0 0; line-height:1.5;
+}
+
+.btns{display:flex; flex-wrap:wrap; gap:12px; margin:32px 0 10px}
+.btn{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  display:inline-block; padding:14px 22px; border-radius:6px;
+  font-size:15px; font-weight:600; text-decoration:none; border:1px solid var(--accent);
+}
+.btn-a{background:var(--accent); color:#fff}
+.btn-b{background:transparent; color:var(--accent)}
+.btn:hover{opacity:.88}
+.note{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:13.5px; color:var(--soft); margin:0 0 8px;
+}
+
+.flag{
+  background:var(--flagbg); border:1px solid #f0e2bd; border-radius:8px;
+  padding:16px 20px; margin:30px 0; font-size:16px; color:#5c4400;
+}
+.flag strong{color:#3d2d00}
+
+.ask{border-top:1px solid var(--line); margin-top:46px; padding-top:26px}
+.ask ol{margin:0 0 18px; padding-left:22px; color:var(--mid)}
+.ask li{margin-bottom:8px}
+
+a{color:var(--accent)}
+.mail{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px; font-weight:600;
+}
+footer{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  border-top:1px solid var(--line); margin-top:46px; padding-top:22px;
+  font-size:13px; color:var(--soft); line-height:1.7;
+}
+
+@media (max-width:560px){
+  body{padding:0 18px; font-size:16.5px}
+  .wrap{padding:36px 0 56px}
+  h1{font-size:27px}
+  .sub{font-size:17.5px}
+  .btn{width:100%; text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Karnataka Storage Decision Brief</h1>
+<p class="sub">Banking, General Network Access and BESS economics under KERC's draft Regulations of June 2026</p>
+
+<div class="byline">
+  <strong>D. S. Nikam</strong> — Independent research, energy storage and power markets
+  <span class="meta">Report No. 1 &middot; Version 1.0 &middot; Published 31 August 2026</span>
+</div>
+
+<p class="lead">On 4 June 2026 the Karnataka Electricity Regulatory Commission notified the draft <em>(Connectivity and General Network Access)</em> Regulations, 2026, published in the Gazette on 11 June and proposed to commence on 1 October 2026. This brief examines what they do to open access and captive solar projects — and, on the numbers, when a battery is actually worth buying.</p>
+
+<h2>Three findings</h2>
+
+<div class="find">
+  <span class="num">01</span>
+  <h3>Karnataka runs two banking regimes, not one</h3>
+  <p>Non-REC projects that applied between April 2018 and the GEOA Regulations, 2022 still hold <strong>annual banking at 2 per cent</strong>. Everyone after them is on <strong>monthly banking at 8 per cent</strong>, with the balance lapsing at month end. The cohort has to be established before any BESS economics are modelled — and the draft does not mention the older cohort at all.</p>
+</div>
+
+<div class="find">
+  <span class="num">02</span>
+  <h3>Banking is finished for the evening — but not for the night</h3>
+  <p>Energy banked in the solar slot cannot be drawn during the evening peak, at any price. That restriction is already in force. But for a consumer with night-time load, banking is still worth more than storage — and the conclusion holds on the most storage-favourable cost traced for 2025.</p>
+</div>
+
+<div class="find">
+  <span class="num">03</span>
+  <h3>The draft's treatment of the legacy cohort needs to be stated</h3>
+  <p>Whether the 8 per cent charge, the month-end lapse and the 31 March 2030 sunset reach the legacy annual-2 per cent cohort — and under what saving or transition provision — is not set out. The brief puts six such questions to the Commission for the final notification.</p>
+</div>
+
+<h2>The central numbers</h2>
+
+<div class="figs">
+  <table>
+    <tr><td>Banking at 8 per cent, with night-time offtake</td><td>&#8377;5.54</td></tr>
+    <tr><td>Physical storage, discharged into the evening peak</td><td>&#8377;3.93</td></tr>
+    <tr><td>Banking, where there is no offtake in either slot</td><td>&#8377;0.00</td></tr>
+  </table>
+  <p class="cap">Rupees per kWh of incremental solar. HT-2(a) industrial consumer, FY 2026-27, behind the meter. Assumptions, break-evens and eleven recorded limitations are set out in the Annexure.</p>
+</div>
+
+<div class="flag">
+  <strong>These are draft Regulations.</strong> The final notification is awaited, and nothing described here is an operative entitlement today. Where verification is outstanding, the brief says so.
+</div>
+
+<h2>Read the brief</h2>
+
+<p class="note">Free. No registration, no email address required.</p>
+
+<div class="btns">
+  <a class="btn btn-a" href="Karnataka-Storage-Decision-Brief-v1.0.pdf">Download the full report (PDF)</a>
+  <a class="btn btn-b" href="Karnataka-Storage-Decision-Brief-Summary-v1.0.pdf">One-page summary</a>
+</div>
+
+<div class="ask">
+  <h2>Your project's number</h2>
+  <p>Every figure here rests on an example project. Yours will differ, and the difference can be large — because the answer turns on three things, and all three are held only by you:</p>
+  <ol>
+    <li>The application date of your Wheeling and Banking Agreement, and the cohort it places you in</li>
+    <li>How much energy is actually consumed in the solar and night slots</li>
+    <li>Contract demand, and twelve months of 15-minute data</li>
+  </ol>
+  <p>If you would like this calculation done for your own project, or if any figure here looks wrong to you, write — <span class="mail"><a href="mailto:research@dsnikam.in">research@dsnikam.in</a></span></p>
+  <p style="color:var(--soft); font-size:16px">Corrections are recorded, with attribution, in the next version.</p>
+</div>
+
+<footer>
+  Karnataka Storage Decision Brief &middot; Version 1.0 &middot; D. S. Nikam &middot; dsnikam.in<br>
+  &copy; 2026 D. S. Nikam. Free to share with attribution. Please do not alter, excerpt selectively, or republish as your own work.<br><br>
+  This is independent research. It is not legal advice, not investment advice, and not a recommendation to procure any battery, equipment or service. Regulatory treatment and project economics must be checked against the final notification and against project-specific documents.
+</footer>
+
+</div>
+</body>
+</html>
