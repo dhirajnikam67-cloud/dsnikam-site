@@ -7,7 +7,7 @@
 <meta property="og:description" content="Every rule change that moves the value of banked energy or a co-located battery, with its effect in rupees per kWh. Early list open.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dsnikam.in/tracker">
-<style>:root{--ink:#16181d;--mid:#4a4f5a;--soft:#7a808c;--line:#e2e5ea;--bg:#fbfbfa;--card:#fff;--accent:#1a4d3a;--flag:#8a5a00;--flagbg:#fdf6e6;--max:720px}
+<style>:root{--ink:#0b1f2e;--mid:#4a4f5a;--soft:#7a808c;--line:#e2e5ea;--bg:#fbfbfa;--card:#fff;--accent:#0f7a43;--flag:#8a5a00;--flagbg:#fdf6e6;--max:720px}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Georgia,"Iowan Old Style","Times New Roman",serif;padding:0 20px}
 .wrap{max-width:var(--max);margin:0 auto;padding:56px 0 72px}
@@ -30,18 +30,30 @@ hr{border:0;border-top:1px solid var(--line);margin:44px 0}
 a{color:var(--accent)}
 .foot{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:var(--soft);border-top:1px solid var(--line);padding-top:20px;margin-top:50px;line-height:1.6}
 .entries{margin:0 0 26px}
+.entry:target{border-color:var(--accent);box-shadow:0 0 0 3px rgba(26,77,58,.12)}
 .entry{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:0 0 14px}
 .etop{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;align-items:baseline;margin:0 0 6px}
 .where{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);font-weight:600}
 .st{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:12.5px;font-weight:600;padding:2px 10px;border-radius:999px;white-space:nowrap}
-.st-force{background:#e6f0eb;color:#1a4d3a}.st-gap{background:#f7e9e6;color:#8a2a1a}.st-draft{background:var(--flagbg);color:#7a5000}
+.st-force{background:#e6f0eb;color:#0f7a43}.st-gap{background:#f7e9e6;color:#8a2a1a}.st-draft{background:var(--flagbg);color:#7a5000}
 .entry h4{font-size:18px;line-height:1.35;margin:0 0 8px}
 .entry p{margin:0 0 10px;font-size:16.5px}
 .entry dl{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 12px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:13.5px;line-height:1.5}
 .entry dt{color:var(--soft)}.entry dd{margin:0;color:var(--mid)}
 .entry dt.why{color:var(--accent);font-weight:600}.entry dd.why{color:var(--ink)}
 @media(max-width:600px){h1{font-size:27px}body{font-size:16px}table{font-size:14px}th,td{padding:7px 6px}.entry{padding:16px}.entry dl{grid-template-columns:1fr;gap:2px}.entry dd{margin-bottom:6px}}</style>
-</head><body><div class="wrap">
+<style>
+.dsn-top{margin:0 -20px;background:#fff;border-bottom:1px solid #e2e5ea}
+.dsn-in{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dsn-brand{font:700 19px/1 Georgia,"Iowan Old Style","Times New Roman",serif;color:#0b1f2e;text-decoration:none;letter-spacing:-.01em}
+.dsn-brand span{color:#16a34a}
+.dsn-pill{font:600 14px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#0f8a4a;color:#fff!important;text-decoration:none;padding:10px 14px;border-radius:6px;white-space:nowrap}
+.dsn-pill:hover{background:#0b7340}
+@media print{.dsn-top{display:none}}
+</style>
+</head><body>
+<nav class="dsn-top"><div class="dsn-in"><a class="dsn-brand" href="/">D. S. Nikam<span>.</span></a><a class="dsn-pill" href="/#reports">Reports</a></div></nav>
+<div class="wrap">
 
 <h1>The Banking and Storage Rules Tracker</h1>
 <p class="sub">In India the value of banked energy and of a co-located battery is set by rules, not prices.</p>
@@ -56,7 +68,7 @@ a{color:var(--accent)}
 <p>Three positions that are easy to miss when only the headline rule is read. Each entry states where the rule stands today, whether it is in force or only in draft, the clause it rests on, and the date it was last checked against the primary text.</p>
 <div class="entries">
 
-<div class="entry">
+<div class="entry" id="tn-battery">
 <div class="etop"><span class="where">Tamil Nadu · Storage</span><span class="st st-gap">Not provided for</span></div>
 <h4>A co-located battery has no deviation category</h4>
 <p>For deviation settlement, Regulation 13(2) sends solar, wind and wind-solar hybrid generators to the 2024 forecasting regulations, other green generators to the 2019 deviation regulations, and hydro, including pumped storage, outside deviation settlement. A co-located battery is named in none of the three. The same Regulations make storage "Green Energy" when it uses renewable energy, but define "Banking" only for energy from wind, solar and wind-solar hybrid stations.</p>
@@ -66,7 +78,7 @@ a{color:var(--accent)}
 <dt>Checked</dt><dd>15.10.2026</dd></dl>
 </div>
 
-<div class="entry">
+<div class="entry" id="ka-gna">
 <div class="etop"><span class="where">Karnataka · Connectivity and GNA</span><span class="st st-draft">Draft · date passed</span></div>
 <h4>The commencement date has passed. The rules have not.</h4>
 <p>The draft Connectivity and General Network Access Regulations proposed to come into force on 1 October 2026, repealing the Open Access Regulations, 2025 from the date of notification. No final notification had been located as at 15 October 2026. Until one issues, the draft has no force and the 2025 Regulations continue to apply.</p>
@@ -76,7 +88,7 @@ a{color:var(--accent)}
 <dt>Checked</dt><dd>15.10.2026</dd></dl>
 </div>
 
-<div class="entry">
+<div class="entry" id="cea-storage">
 <div class="etop"><span class="where">India · CEA · Storage</span><span class="st st-draft">Draft</span></div>
 <h4>Two hours of storage, with no end date</h4>
 <p>Ground-mounted solar and onshore wind plants commissioned after 1 July 2027 are to carry storage of at least 10% of installed capacity for two hours; for plants commissioned after 1 July 2029 and up to 30 June 2031, four hours. The two-hour proviso carries no end date. Read as drafted, the two overlap from 1 July 2029, and after 30 June 2031 only the two-hour proviso is left.</p>

@@ -6,87 +6,239 @@
 <title>D. S. Nikam — Independent research, energy storage and power markets</title>
 <meta name="description" content="Independent research on Indian energy storage and power markets — regulatory entitlements, banking regimes and battery economics, state by state.">
 <link rel="canonical" href="https://dsnikam.in/">
+<meta property="og:title" content="D. S. Nikam — Independent research, energy storage and power markets">
+<meta property="og:description" content="In India, the value of a battery is not set by price. It is set by rule. Reports, the Banking and Storage Rules Tracker, and filings.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dsnikam.in/">
+<meta name="theme-color" content="#ffffff">
 <style>
-:root{--ink:#16181d;--mid:#4a4f5a;--soft:#7a808c;--line:#e2e5ea;--bg:#fbfbfa;--accent:#1a4d3a}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Georgia,'Iowan Old Style','Times New Roman',serif;padding:0 20px}
-.wrap{max-width:640px;margin:0 auto;padding:70px 0 70px}
-h1{font-size:30px;line-height:1.2;margin:0 0 8px;letter-spacing:-.015em}
-.sub{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;color:var(--soft);margin:0 0 34px}
-p{margin:0 0 18px;color:var(--mid)}
-h2{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);font-weight:600;margin:44px 0 16px;border-top:1px solid var(--line);padding-top:22px}
-.item{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);background:#fff;border-radius:8px;padding:20px 22px;margin:0 0 14px}
-.item:hover{border-color:var(--accent)}
-.item h3{font-size:19px;margin:0 0 6px;line-height:1.3;color:var(--accent)}
-.item p{font-size:16px;margin:0 0 10px}
-.item .meta{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12.5px;color:var(--soft)}
-.corr{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;color:var(--soft);margin:-6px 0 14px;padding:0 22px}
-a{color:var(--accent)}
-.mail{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-weight:600}
-footer{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;border-top:1px solid var(--line);margin-top:46px;padding-top:20px;font-size:13px;color:var(--soft);line-height:1.7}
-@media(max-width:560px){body{padding:0 18px}.wrap{padding:44px 0 56px}h1{font-size:25px}}
+:root{--ink:#0b1f2e;--mid:#3d4b57;--soft:#6b7883;--line:#e2e5ea;--bg:#ffffff;--card:#fff;--accent:#0f7a43;--max:1080px;
+--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;--serif:Georgia,'Iowan Old Style','Times New Roman',serif;
+--nav-bg:rgba(255,255,255,.94);--nav-line:#e2e5ea;--nav-ink:#0b1f2e;--nav-link:#3d4b57;--nav-hover:rgba(11,31,46,.05);--brand-dot:#16a34a;
+--hero-bg:linear-gradient(180deg,#e9f6ee 0%,#f7fbf8 100%);--hero-ink:#0b1f2e;--hero-sub:#3d4b57;--hero-faint:#6b7883;--hero-grid:rgba(11,31,46,.05);--kicker:#0f7a43;--em:#0f8a4a;
+--cta-bg:#0f8a4a;--cta-ink:#ffffff;--cta-hover:#0b7340;--ghost-line:rgba(11,31,46,.25);--ghost-hover:rgba(11,31,46,.05);
+--num:#0b1f2e;--feature:#eef7f1;--contact-bg:#0b1f2e;--contact-sub:rgba(255,255,255,.75);--live-dot:#16a34a;--shadow:rgba(11,31,46,.08)}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--serif)}
+a{color:inherit}
+.in{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:var(--nav-bg);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--nav-line)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font-family:var(--serif);font-weight:700;font-size:20px;color:var(--nav-ink);text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
+.brand span{color:var(--brand-dot)}
+.links{display:flex;gap:4px;font-family:var(--sans);font-size:14px}
+.links a{color:var(--nav-link);text-decoration:none;padding:8px 12px;border-radius:6px;white-space:nowrap}
+.links a:hover{background:var(--nav-hover);color:var(--nav-ink)}
+.links a.pill{background:var(--cta-bg);color:var(--cta-ink);font-weight:600}
+.links a.pill:hover{background:var(--cta-hover);color:var(--cta-ink)}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000 30%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 100%)}
+.hero .in{position:relative;padding-top:72px;padding-bottom:118px}
+.kicker{font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--kicker);font-weight:600;margin:0 0 18px}
+.hero h1{font-size:54px;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:820px;font-weight:700}
+.hero h1 em{font-style:normal;color:var(--em)}
+.hero .lead{font-size:19px;line-height:1.6;color:var(--hero-sub);max-width:680px;margin:0 0 30px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:15.5px;font-weight:600;text-decoration:none;padding:13px 22px;border-radius:8px;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-gold{background:var(--cta-bg);color:var(--cta-ink)}
+.btn-gold:hover{background:var(--cta-hover)}
+.btn-ghost{color:var(--hero-ink);border:1px solid var(--ghost-line)}
+.btn-ghost:hover{background:var(--ghost-hover)}
+.by{font-family:var(--sans);font-size:13.5px;color:var(--hero-faint);margin:30px 0 0}
+
+/* live strip */
+.live{margin-top:-78px;position:relative;z-index:2}
+.livehead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 12px;font-family:var(--sans)}
+.livehead .t{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--hero-ink);opacity:.9;font-weight:600;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--live-dot);box-shadow:0 0 0 4px rgba(95,211,154,.18)}
+.livehead a{font-size:13.5px;color:var(--em);text-decoration:none;font-weight:600;white-space:nowrap}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lcard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 20px 18px;text-decoration:none;color:var(--ink);box-shadow:0 10px 30px var(--shadow);transition:transform .15s,box-shadow .15s,border-color .15s}
+.lcard:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(15,46,35,.16);border-color:var(--accent)}
+.ltop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 12px}
+.where{font-family:var(--sans);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);font-weight:600}
+.st{font-family:var(--sans);font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.st-gap{background:#f7e9e6;color:#8a2a1a}.st-draft{background:#fdf6e6;color:#7a5000}
+.lcard h3{font-size:18.5px;line-height:1.3;margin:0 0 8px}
+.lcard p{font-size:15px;line-height:1.55;color:var(--mid);margin:0 0 14px;flex:1}
+.go{font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--accent)}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:44px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:22px 18px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{display:block;font-size:30px;line-height:1.1;color:var(--num);margin:0 0 6px;letter-spacing:-.01em}
+.fact span{font-family:var(--sans);font-size:13.5px;color:var(--soft);line-height:1.45;display:block}
+
+/* sections */
+section{padding:56px 0 0}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 20px}
+.sh h2{font-size:28px;line-height:1.2;margin:0;letter-spacing:-.015em}
+.sh p{font-family:var(--sans);font-size:14px;color:var(--soft);margin:0}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(15,46,35,.10);border-color:var(--accent)}
+.num{font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 12px}
+.card h3{font-size:20px;line-height:1.3;margin:0 0 10px}
+.card p{font-size:15.5px;line-height:1.6;color:var(--mid);margin:0 0 16px;flex:1}
+.meta{font-family:var(--sans);font-size:12.5px;color:var(--soft);display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid var(--line);padding-top:12px}
+.meta .go{white-space:nowrap}
+.feature{background:linear-gradient(135deg,#fff 0%,var(--feature) 100%)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+
+/* contact */
+.contact{margin:64px 0 0;background:var(--contact-bg);color:#fff;border-radius:16px;padding:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.contact h2{font-size:26px;margin:0 0 8px;letter-spacing:-.01em}
+.contact p{margin:0;color:var(--contact-sub);font-size:16.5px;max-width:560px}
+
+footer{font-family:var(--sans);font-size:13px;color:var(--soft);line-height:1.7;padding:36px 0 48px;margin-top:48px;border-top:1px solid var(--line)}
+
+@media(max-width:900px){
+ .grid3{grid-template-columns:1fr}
+ .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .fact:nth-child(3){border-left:0;padding-left:0}
+ .fact:nth-child(n+3){border-top:1px solid var(--line)}
+ .grid2{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ body{font-size:16px}
+ .in{padding:0 16px}
+ .nav .in{height:54px}
+ .brand{font-size:18px}
+ .links a:not(.pill){display:none}
+ .links a.pill{padding:7px 12px;font-size:13.5px}
+ .hero .in{padding-top:40px;padding-bottom:96px}
+ .hero h1{font-size:34px}
+ .hero .lead{font-size:16.5px;margin-bottom:24px}
+ .btn{flex:1 1 auto;justify-content:center;padding:13px 16px}
+ .by{margin-top:22px}
+ .live{margin-top:-66px}
+ .lcard{padding:18px}
+ .fact{padding:18px 12px}
+ .fact b{font-size:24px}
+ .sh{flex-direction:column;gap:4px}
+ .sh h2{font-size:24px}
+ .card{padding:20px}
+ .contact{padding:28px 22px;border-radius:12px}
+ .contact .btn{width:100%}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<h1>D. S. Nikam</h1>
-<p class="sub">Independent research — energy storage and power markets</p>
+<nav class="nav"><div class="in">
+  <a class="brand" href="/">D. S. Nikam<span>.</span></a>
+  <div class="links">
+    <a href="#reports">Reports</a>
+    <a href="#contribute">Contribute</a>
+    <a href="#contact">Contact</a>
+    <a class="pill" href="/tracker">Rules Tracker</a>
+  </div>
+</div></nav>
 
-<p>In India, the value of a battery is not set by price. It is set by rule — by what a project is entitled to inject, when it may take banked energy back, and on what date that entitlement ends. Those rules differ in every State, and they are changing quickly.</p>
+<header class="hero"><div class="in">
+  <p class="kicker">Independent research — energy storage and power markets</p>
+  <h1>In India, the value of a battery is not set by price. <em>It is set by rule.</em></h1>
+  <p class="lead">By what a project is entitled to inject, when it may take banked energy back, and on what date that entitlement ends. Those rules differ in every State, and they are changing quickly.</p>
+  <div class="ctas">
+    <a class="btn btn-gold" href="/tracker">Open the Rules Tracker &rarr;</a>
+    <a class="btn btn-ghost" href="#reports">Read the reports</a>
+  </div>
+  <p class="by">This is where that work is published. Free, and open to correction.</p>
+</div></header>
 
-<p>This is where that work is published. Free, and open to correction.</p>
+<main class="in">
 
-<h2>Reports</h2>
+<div class="live">
+  <div class="livehead"><span class="t"><span class="dot"></span>From the Rules Tracker</span><a href="/tracker">All entries &rarr;</a></div>
+  <div class="grid3">
+    <a class="lcard" href="/tracker#tn-battery">
+      <div class="ltop"><span class="where">Tamil Nadu</span><span class="st st-gap">Not provided for</span></div>
+      <h3>A co-located battery has no deviation category</h3>
+      <p>Named in none of the three categories the deviation rules set out.</p>
+      <span class="go">Read the entry &rarr;</span>
+    </a>
+    <a class="lcard" href="/tracker#ka-gna">
+      <div class="ltop"><span class="where">Karnataka</span><span class="st st-draft">Draft · date passed</span></div>
+      <h3>The commencement date has passed. The rules have not.</h3>
+      <p>Proposed to start on 1 October 2026. Still a draft.</p>
+      <span class="go">Read the entry &rarr;</span>
+    </a>
+    <a class="lcard" href="/tracker#cea-storage">
+      <div class="ltop"><span class="where">India · CEA</span><span class="st st-draft">Draft</span></div>
+      <h3>Two hours of storage, with no end date</h3>
+      <p>Four hours runs to 30 June 2031. Two hours carries no end date.</p>
+      <span class="go">Read the entry &rarr;</span>
+    </a>
+  </div>
+</div>
 
-<a class="item" href="/india-renewable-banking-index-3">
-  <h3>Tamil Nadu: the most valuable banked unit in the index, and a battery with no home</h3>
-  <p>What a banked renewable unit is worth in Tamil Nadu for FY 2026-27, checked against real bills — and why the State has not yet decided which rules a co-located battery falls under.</p>
-  <span class="meta">Report No. 3 &middot; 24 September 2026 &middot; Free</span>
-</a>
+<div class="facts">
+  <div class="fact"><b>4 States</b><span>Karnataka, Tamil Nadu, Gujarat and Andhra Pradesh</span></div>
+  <div class="fact"><b>3 Reports</b><span>Published free, with their index tables</span></div>
+  <div class="fact"><b>Clause + date</b><span>Every entry rests on a named clause and a checked date</span></div>
+  <div class="fact"><b>Draft or final</b><span>What is in force is kept apart from what is only proposed</span></div>
+</div>
 
-<a class="item" href="/india-renewable-banking-index-2">
-  <h3>India Renewable Banking Index</h3>
-  <p>What a banked renewable unit is actually worth in Karnataka, Gujarat and Andhra Pradesh — the charge, the slot it may be drawn in, the cap, the date the entitlement ends, and the tariff route that decides the value. Six reference consumers, each figure taken from the primary instrument.</p>
-  <span class="meta">Report No. 2 &middot; 13 September 2026 &middot; Free</span>
-</a>
+<section id="reports">
+  <div class="sh"><h2>Reports</h2><p>Free · open to correction</p></div>
+  <a class="card feature" href="/india-renewable-banking-index-3" style="margin-bottom:16px">
+    <div class="num">Report No. 3 · Latest</div>
+    <h3>Tamil Nadu: the most valuable banked unit in the index, and a battery with no home</h3>
+    <p>What a banked renewable unit is worth in Tamil Nadu for FY 2026-27, checked against real bills — and why the State has not yet decided which rules a co-located battery falls under.</p>
+    <div class="meta"><span>24 September 2026 · Free</span><span class="go">Read &rarr;</span></div>
+  </a>
+  <div class="grid2">
+    <a class="card" href="/india-renewable-banking-index-2">
+      <div class="num">Report No. 2</div>
+      <h3>India Renewable Banking Index</h3>
+      <p>What a banked renewable unit is actually worth in Karnataka, Gujarat and Andhra Pradesh — the charge, the slot it may be drawn in, the cap, the date the entitlement ends, and the tariff route that decides the value. Six reference consumers, each figure taken from the primary instrument.</p>
+      <div class="meta"><span>13 September 2026 · Free</span><span class="go">Read &rarr;</span></div>
+    </a>
+    <a class="card" href="/karnataka-banking-2026">
+      <div class="num">Report No. 1</div>
+      <h3>Karnataka Storage Decision Brief</h3>
+      <p>Banking, General Network Access and BESS economics under KERC's draft Regulations of June 2026 — the ninety-day window, the slot restriction on banking, and when a battery is actually worth buying.</p>
+      <div class="meta"><span>Version 1.5, revised 5 October 2026 · Free</span><span class="go">Read &rarr;</span></div>
+    </a>
+  </div>
+</section>
 
-<a class="item" href="/karnataka-banking-2026">
-  <h3>Karnataka Storage Decision Brief</h3>
-  <p>Banking, General Network Access and BESS economics under KERC's draft Regulations of June 2026 — the ninety-day window, the slot restriction on banking, and when a battery is actually worth buying.</p>
-  <span class="meta">Report No. 1 &middot; Version 1.5, revised 5 October 2026 &middot; Free</span>
-</a>
+<section id="contribute">
+  <div class="sh"><h2>Work and contributions</h2><p>Filings and records</p></div>
+  <div class="grid2">
+    <a class="card" href="/cea-comments-2026">
+      <div class="num">Filing</div>
+      <h3>Comments filed with the Central Electricity Authority</h3>
+      <p>On the draft requirement that new solar and wind plants carry co-located storage — and the State rules that same asset will be commissioned into, where it can be given a deviation band of Nil while wind gets ten per cent and solar five.</p>
+      <div class="meta"><span>Filed 16 September 2026 · Supplementary filed 22 September 2026</span><span class="go">Read &rarr;</span></div>
+    </a>
+    <a class="card" href="/submit">
+      <div class="num">Contribute</div>
+      <h3>Send a billing record</h3>
+      <p>A tariff order says what a charge is. It rarely says what the charge is levied on. One redacted bill with non-zero open-access units settles a question no order answers — and nothing identifying is ever published.</p>
+      <div class="meta"><span>Attribution optional</span><span class="go">Send &rarr;</span></div>
+    </a>
+  </div>
+</section>
 
-
-<h2>Work and contributions</h2>
-
-<a class="item" href="/tracker">
-  <h3>The Banking and Storage Rules Tracker</h3>
-  <p>Every rule change that moves the value of banked energy or a co-located battery in Karnataka, Tamil Nadu, Gujarat and Andhra Pradesh, with its effect in rupees per kWh.</p>
-  <span class="meta">Early list open</span>
-</a>
-
-<a class="item" href="/cea-comments-2026">
-  <h3>Comments filed with the Central Electricity Authority</h3>
-  <p>On the draft requirement that new solar and wind plants carry co-located storage — and the State rules that same asset will be commissioned into, where it can be given a deviation band of Nil while wind gets ten per cent and solar five.</p>
-  <span class="meta">Filed 16 September 2026 &middot; Supplementary filed 22 September 2026 &middot; Comments close 4 October 2026</span>
-</a>
-
-<a class="item" href="/submit">
-  <h3>Send a billing record</h3>
-  <p>A tariff order says what a charge is. It rarely says what the charge is levied on. One redacted bill with non-zero open-access units settles a question no order answers — and nothing identifying is ever published.</p>
-  <span class="meta">Attribution optional</span>
-</a>
-
-<h2>Contact</h2>
-
-<p>Corrections, questions, and requests for a project-specific calculation — <span class="mail"><a href="mailto:research@dsnikam.in">research@dsnikam.in</a></span></p>
+<div class="contact" id="contact">
+  <div>
+    <h2>Contact</h2>
+    <p>Corrections, questions, and requests for a project-specific calculation.</p>
+  </div>
+  <a class="btn btn-gold" href="mailto:research@dsnikam.in">research@dsnikam.in</a>
+</div>
 
 <footer>
   &copy; 2026 D. S. Nikam &middot; dsnikam.in<br>
   Independent research. Not legal advice, not investment advice, and not a recommendation to procure any equipment or service.
 </footer>
 
-</div>
+</main>
 </body>
 </html>
