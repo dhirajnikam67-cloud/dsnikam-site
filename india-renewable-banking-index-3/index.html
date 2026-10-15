@@ -37,7 +37,16 @@ a{color:var(--accent)}
 .dsn-brand span{color:#16a34a}
 .dsn-pill{font:600 14px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#0f8a4a;color:#fff!important;text-decoration:none;padding:10px 14px;border-radius:6px;white-space:nowrap}
 .dsn-pill:hover{background:#0b7340}
-@media print{.dsn-top{display:none}}
+@media print{.dsn-top,.dsn-next{display:none}}
+.dsn-next{margin:40px 0 0;padding:22px 0 0;border-top:1px solid #e2e5ea}
+.dsn-next h2{font:600 12.5px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#6b7883;margin:0 0 12px;border:0;padding:0}
+.dsn-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dsn-tile{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#fff;border:1px solid #e2e5ea;border-radius:10px;padding:14px 16px;font:600 15px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#0b1f2e!important;text-decoration:none!important}
+.dsn-tile:hover{border-color:#0f8a4a}
+.dsn-tile span{color:#0f8a4a}
+.dsn-tile.main{background:#0f8a4a;border-color:#0f8a4a;color:#fff!important}.dsn-tile.main span{color:#fff}
+@media(max-width:600px){.dsn-tiles{grid-template-columns:1fr}}
+.flag{background:#eef7f1!important;border-color:#0f8a4a!important;color:#0b1f2e!important}.flag a{color:#0f7a43}
 </style>
 </head><body>
 <nav class="dsn-top"><div class="dsn-in"><a class="dsn-brand" href="/">D. S. Nikam<span>.</span></a><a class="dsn-pill" href="/tracker">Rules Tracker</a></div></nav>
@@ -142,5 +151,6 @@ a{color:var(--accent)}
 <h3>How this was built</h3>
 <p>Every figure comes from a regulation, a tariff order, a commission order or a bill, read directly. Where the record is not settled the row says so. Corrections are welcome, and preferred with the document reference attached.</p>
 <div class="flag"><p><strong>What changes next.</strong> What moves in these four states — and what it does to the numbers above — goes first to readers of the <a href="https://dsnikam.in/tracker">Banking and Storage Rules Tracker</a>. The reports stay free.</p></div>
+<nav class="dsn-next"><h2>Keep reading</h2><div class="dsn-tiles"><a class="dsn-tile main" href="/tracker">Rules Tracker<span>&rarr;</span></a><a class="dsn-tile" href="/#reports">All reports<span>&rarr;</span></a><a class="dsn-tile" href="mailto:research@dsnikam.in">Contact<span>&rarr;</span></a></div></nav>
 <div class="foot">India Renewable Banking Index · D. S. Nikam · <a href="https://dsnikam.in">dsnikam.in</a><br>© 2026 D. S. Nikam. Free to share with attribution. Please do not alter, excerpt selectively, or republish as your own work.<br>This is independent research. It is not legal advice, not investment advice, and not a recommendation to procure any battery, equipment or service. Regulatory treatment and project economics must be checked against the notified instruments and against project-specific documents.<br>Corrections are recorded, with attribution, in the next version. Write to <a href="mailto:research@dsnikam.in">research@dsnikam.in</a>.</div>
 </div></body></html>
