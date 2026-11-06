@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>D. S. Nikam — Independent research, energy storage and power markets</title>
-<meta name="description" content="Independent research on Indian energy storage and power markets — regulatory entitlements, banking regimes and battery economics, state by state.">
+<title>DSN Assure — Independent power rules assurance for India | D. S. Nikam</title>
+<meta name="description" content="DSN Assure tracks central and state electricity rules, orders and drafts and turns them into results for your own projects: what applies, from which date, how settled it is, and what it costs. Built on independent research by D. S. Nikam.">
 <link rel="canonical" href="https://dsnikam.in/">
-<meta property="og:title" content="D. S. Nikam — Independent research, energy storage and power markets">
-<meta property="og:description" content="In India, the value of a battery is not set by price. It is set by rule. Reports, the Banking and Storage Rules Tracker, and filings.">
+<meta property="og:title" content="DSN Assure — Every power rule. Every site. Every date.">
+<meta property="og:description" content="Independent power rules assurance for renewable energy, storage, open access and data centre portfolios in India. Plus free research, the Rules Tracker and regulatory filings.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://dsnikam.in/">
 <meta name="theme-color" content="#ffffff">
@@ -95,6 +95,19 @@ section{padding:56px 0 0}
 .contact h2{font-size:26px;margin:0 0 8px;letter-spacing:-.01em}
 .contact p{margin:0;color:var(--contact-sub);font-size:16.5px;max-width:560px}
 
+.static{cursor:default}
+.static:hover{transform:none;box-shadow:none;border-color:var(--line)}
+.strength h3{font-size:18.5px}
+.capgroup{margin:0 0 26px}
+.capgroup h3{font-family:var(--sans);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 12px}
+.caplist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid var(--line)}
+.capitem{padding:14px 0;border-bottom:1px solid var(--line)}
+.capitem b{display:block;font-size:17px;margin:0 0 3px}
+.capitem span{font-family:var(--sans);font-size:14px;color:var(--mid)}
+.who{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.who span{font-family:var(--sans);font-size:13.5px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--mid);background:#fff}
+.steps{counter-reset:st}
+.steps .card h3:before{counter-increment:st;content:counter(st,decimal-leading-zero);display:block;font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--accent);font-weight:700;margin:0 0 8px}
 footer{font-family:var(--sans);font-size:13px;color:var(--soft);line-height:1.7;padding:36px 0 48px;margin-top:48px;border-top:1px solid var(--line)}
 
 @media(max-width:900px){
@@ -103,6 +116,7 @@ footer{font-family:var(--sans);font-size:13px;color:var(--soft);line-height:1.7;
  .fact:nth-child(3){border-left:0;padding-left:0}
  .fact:nth-child(n+3){border-top:1px solid var(--line)}
  .grid2{grid-template-columns:1fr}
+ .caplist{grid-template-columns:1fr}
 }
 @media(max-width:600px){
  body{font-size:16px}
@@ -131,24 +145,25 @@ footer{font-family:var(--sans);font-size:13px;color:var(--soft);line-height:1.7;
 <body>
 
 <nav class="nav"><div class="in">
-  <a class="brand" href="/">D. S. Nikam<span>.</span></a>
+  <a class="brand" href="/">DSN Assure<span>.</span></a>
   <div class="links">
-    <a href="#reports">Reports</a>
-    <a href="#contribute">Contribute</a>
+    <a href="#assure">Why DSN Assure</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#reports">Research</a>
     <a href="#contact">Contact</a>
     <a class="pill" href="/tracker">Rules Tracker</a>
   </div>
 </div></nav>
 
 <header class="hero"><div class="in">
-  <p class="kicker">Independent research — energy storage and power markets</p>
-  <h1>In India, the value of a battery is not set by price. <em>It is set by rule.</em></h1>
-  <p class="lead">By what a project is entitled to inject, when it may take banked energy back, and on what date that entitlement ends. Those rules differ in every State, and they are changing quickly.</p>
+  <p class="kicker">DSN Assure — independent power rules assurance for India</p>
+  <h1>Know what every power rule does to your sites, <em>before the money moves.</em></h1>
+  <p class="lead">DSN Assure tracks central and state electricity rules, orders and drafts as they are issued, and turns them into results for your own projects: what applies, from which date, how settled it is, and what it costs. For renewable energy, storage, open access and data centre portfolios.</p>
   <div class="ctas">
-    <a class="btn btn-gold" href="/tracker">Open the Rules Tracker &rarr;</a>
-    <a class="btn btn-ghost" href="#reports">Read the reports</a>
+    <a class="btn btn-gold" href="#contact">Run it on your portfolio &rarr;</a>
+    <a class="btn btn-ghost" href="#capabilities">See the capabilities</a>
   </div>
-  <p class="by">This is where that work is published. Free, and open to correction.</p>
+  <p class="by">Built on independent research by D. S. Nikam. In India, the value of a battery is not set by price. It is set by rule.</p>
 </div></header>
 
 <main class="in">
@@ -178,14 +193,60 @@ footer{font-family:var(--sans);font-size:13px;color:var(--soft);line-height:1.7;
 </div>
 
 <div class="facts">
-  <div class="fact"><b>4 States</b><span>Karnataka, Tamil Nadu, Gujarat and Andhra Pradesh</span></div>
+  <div class="fact"><b>90+</b><span>Instruments in the rules registry, each with its status and date</span></div>
+  <div class="fact"><b>11</b><span>Jurisdictions covered, central and state</span></div>
   <div class="fact"><b>3 Reports</b><span>Published free, with their index tables</span></div>
-  <div class="fact"><b>Clause + date</b><span>Every entry rests on a named clause and a checked date</span></div>
-  <div class="fact"><b>Draft or final</b><span>What is in force is kept apart from what is only proposed</span></div>
+  <div class="fact"><b>3 Regulators</b><span>Comments filed with CEA, CERC and MERC</span></div>
 </div>
 
+<section id="assure">
+  <div class="sh"><h2>Why clients rely on it</h2><p>Results, not reading lists</p></div>
+  <div class="grid3">
+    <div class="card static strength"><h3>Independent</h3><p>No equipment, power or financing to sell, and no referral fees. The result is the product.</p></div>
+    <div class="card static strength"><h3>Primary documents only</h3><p>Every result rests on the issuing document, read in full, with its status and the date it was checked.</p></div>
+    <div class="card static strength"><h3>Date-aware</h3><p>What applied on any date, draft or final, so each project is judged under the rules that actually bind it.</p></div>
+    <div class="card static strength"><h3>In rupees, on your sites</h3><p>Results land on your own projects and bills, not in a newsletter.</p></div>
+    <div class="card static strength"><h3>A watch, not a report</h3><p>Every change is checked against your portfolio and alerted on the day.</p></div>
+    <div class="card static strength"><h3>Across the whole system</h3><p>Developers, C&amp;I buyers, storage owners, data centres and lenders on one rules base.</p></div>
+  </div>
+  <div class="who"><span>Utility-scale developers and IPPs</span><span>C&amp;I open access and group captive developers</span><span>C&amp;I consumers</span><span>Battery owners and integrators</span><span>Data centres</span><span>Lenders and investors</span><span>Consultants and law firms</span></div>
+</section>
+
+<section id="capabilities">
+  <div class="sh"><h2>Capabilities</h2><p>Each one available for your own portfolio</p></div>
+  <div class="capgroup"><h3>Know and protect</h3><div class="caplist">
+    <div class="capitem"><b>Rules watch</b><span>Every rule, order and draft that touches your sites, alerted on the day with its rupee effect.</span></div>
+    <div class="capitem"><b>Clawback register</b><span>Benefits taken today that can be reversed later, when they are tested, and the rupees at risk.</span></div>
+    <div class="capitem"><b>Battery waiver assurance</b><span>Whether a battery's charging plan keeps its transmission waiver, month by month.</span></div>
+    <div class="capitem"><b>Storage requirement check</b><span>Whether storage applies to a project, how much, and from which date.</span></div>
+  </div></div>
+  <div class="capgroup"><h3>Price and comply</h3><div class="caplist">
+    <div class="capitem"><b>Captive status assurance</b><span>Ownership and consumption tests tracked monthly across every user, with a warning before year-end.</span></div>
+    <div class="capitem"><b>Landed cost check</b><span>Every charge by state and period, on your own consumption.</span></div>
+    <div class="capitem"><b>Bill and settlement check</b><span>DISCOM bills and energy accounts checked line by line, with recoverable amounts listed.</span></div>
+    <div class="capitem"><b>Battery compliance file</b><span>Everything a battery must carry, by date, in one file ready for inspection.</span></div>
+  </div></div>
+  <div class="capgroup"><h3>Decide and act</h3><div class="caplist">
+    <div class="capitem"><b>Data centre power pack</b><span>Supply route, redundancy, landed cost and duties for a campus, in one plan.</span></div>
+    <div class="capitem"><b>Lender readiness note</b><span>How much of a project's position rests on final rules, with the open items listed.</span></div>
+    <div class="capitem"><b>Rule interaction check</b><span>Where meeting one rule triggers another, flagged before design freeze.</span></div>
+    <div class="capitem"><b>Tender and contract reader</b><span>Tender and contract terms read against the rules, with gaps and pricing points.</span></div>
+    <div class="capitem"><b>Filing support</b><span>Comment and petition calendars, with drafts filed on time.</span></div>
+    <div class="capitem"><b>Demand signals</b><span>Where new rules create demand for storage and renewable energy.</span></div>
+  </div></div>
+</section>
+
+<section id="how">
+  <div class="sh"><h2>How an engagement runs</h2><p>Your data stays yours</p></div>
+  <div class="grid3 steps">
+    <div class="card static"><h3>Share the portfolio</h3><p>Sites, consumers, contracts and bills, under NDA.</p></div>
+    <div class="card static"><h3>Receive results per site</h3><p>What applies, what is at risk and what to do next, with status and date on every line.</p></div>
+    <div class="card static"><h3>Stay on watch</h3><p>Each new rule, order or draft is checked against your sites and alerted with its rupee effect.</p></div>
+  </div>
+</section>
+
 <section id="reports">
-  <div class="sh"><h2>Reports</h2><p>Free · open to correction</p></div>
+  <div class="sh"><h2>Research</h2><p>Free · open to correction</p></div>
   <a class="card feature" href="/india-renewable-banking-index-3" style="margin-bottom:16px">
     <div class="num">Report No. 3 · Latest</div>
     <h3>Tamil Nadu: the most valuable banked unit in the index, and a battery with no home</h3>
@@ -228,14 +289,14 @@ footer{font-family:var(--sans);font-size:13px;color:var(--soft);line-height:1.7;
 
 <div class="contact" id="contact">
   <div>
-    <h2>Contact</h2>
-    <p>Corrections, questions, and requests for a project-specific calculation.</p>
+    <h2>Run DSN Assure on your portfolio</h2>
+    <p>Write with the states and asset types you hold. Corrections and questions on the research are welcome at the same address.</p>
   </div>
   <a class="btn btn-gold" href="mailto:research@dsnikam.in">research@dsnikam.in</a>
 </div>
 
 <footer>
-  &copy; 2026 D. S. Nikam &middot; dsnikam.in<br>
+  &copy; 2026 D. S. Nikam &middot; dsnikam.in &middot; DSN Assure is a product of D. S. Nikam<br>
   Independent research. Not legal advice, not investment advice, and not a recommendation to procure any equipment or service.
 </footer>
 
