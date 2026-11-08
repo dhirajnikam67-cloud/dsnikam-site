@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>DSN Assure · Client workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#0d2730;--brand-ink:#e9f2f1;--ink:#15232a;--paper:#eef1ee;--panel:#fff;--line:#d6ddd8;--muted:#5b6a6f;--accent:#0e6a74;--accent-soft:#e0eeef;
+--act:#b0382b;--act-bg:#f7e4e1;--watch:#9a6700;--watch-bg:#faefd5;--clear:#2c7543;--clear-bg:#e2f1e6;
+--display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:15px/1.5 var(--body)}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.bar{background:var(--brand);color:var(--brand-ink)}
+.top{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1400px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.mark{width:34px;height:34px;border-radius:7px;background:var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff;font-size:14px}
+.brand h1{font-size:20px}.brand span{display:block;font-size:12px;opacity:.75}
+.who{display:flex;gap:10px;align-items:center;font-size:13.5px}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:7px;padding:9px 14px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid currentColor;color:inherit}
+.btn.small{padding:5px 10px;font-size:13px}
+.btn:disabled{opacity:.6;cursor:default}
+main{max-width:1400px;margin:0 auto;padding:22px 24px 48px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.hidden{display:none!important}
+.msg{padding:10px 12px;border-radius:7px;font-size:14px;margin:10px 0 0}
+.msg.err{background:var(--act-bg);color:var(--act)}.msg.ok{background:var(--clear-bg);color:var(--clear)}
+/* auth */
+.auth{max-width:420px;margin:48px auto;padding:26px}
+.auth h2{font-size:22px;margin-bottom:6px}
+.auth p{color:var(--muted);margin:0 0 16px}
+.fld{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;min-width:0}
+.fld label{font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.fld input,.fld select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.link{background:none;border:0;color:var(--accent);cursor:pointer;padding:0;font-weight:600}
+/* workspace */
+.ws{display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:900px){.ws{grid-template-columns:1fr}}
+.side{padding:14px}
+.side h3{font-size:15px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.plist{list-style:none;margin:0;padding:0}
+.plist li button{width:100%;text-align:left;background:none;border:0;border-left:3px solid transparent;padding:9px 10px;cursor:pointer;border-radius:4px}
+.plist li button:hover{background:var(--paper)}
+.plist li button[aria-current="true"]{border-left-color:var(--accent);background:var(--accent-soft);font-weight:600}
+.plist small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:baseline;margin-bottom:12px}
+.head h2{font-size:22px}
+.asof{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+.tile{padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel);border-left-width:5px}
+.tile b{display:block;font-family:var(--display);font-size:28px;line-height:1.1}.tile span{font-size:13px;color:var(--muted)}
+.tile.act{border-left-color:var(--act)}.tile.act b{color:var(--act)}
+.tile.watch{border-left-color:var(--watch)}.tile.watch b{color:var(--watch)}
+.tile.clear{border-left-color:var(--clear)}.tile.clear b{color:var(--clear)}
+.tile.lend{border-left-color:var(--accent)}
+.meter{height:6px;background:var(--line);border-radius:3px;margin-top:6px;overflow:hidden}.meter i{display:block;height:100%;background:var(--accent)}
+.lenses{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.lens header{padding:12px 14px 10px;border-bottom:1px solid var(--line)}
+.lens header h3{font-size:16px}.lens header p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.items{list-style:none;margin:0;padding:0}
+.item{padding:10px 14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
+.item:first-child{border-top:0}
+.item .t{font-weight:600}.item .d{font-size:13.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font-size:11.5px;padding:2px 8px;border-radius:999px;font-weight:600;white-space:nowrap}
+.s-act{background:var(--act-bg);color:var(--act)}.s-watch{background:var(--watch-bg);color:var(--watch)}.s-clear{background:var(--clear-bg);color:var(--clear)}
+.doc{border:1px solid var(--line);color:var(--muted);font-weight:500}.doc.final{border-color:var(--ink);color:var(--ink)}.doc.draft{border-style:dashed}
+.lbl{background:var(--accent-soft);color:var(--accent);font-weight:500}
+.watchbtn{margin-left:auto;font-size:12px;border:1px solid var(--accent);background:transparent;color:var(--accent);padding:2px 9px;border-radius:5px;cursor:pointer}
+.watchbtn[aria-pressed="true"]{background:var(--accent);color:#fff}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;background:var(--paper)}
+td.n{font-family:var(--mono)}
+.tabs{display:flex;gap:4px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 12px;cursor:pointer;color:var(--muted);font-weight:500}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+dialog{border:0;border-radius:12px;padding:0;max-width:640px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(13,39,48,.45)}
+.dlg{padding:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+.chk{display:flex;gap:8px;align-items:center;font-size:14px;margin-bottom:6px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="bar"><div class="top">
+  <a class="brand" href="/"><div class="mark" aria-hidden="true">DSN</div><div><h1>DSN Assure</h1><span>Client workspace</span></div></a>
+  <div class="who hidden" id="who"><span id="who-email"></span><button class="btn ghost small" id="signout" type="button">Sign out</button></div>
+</div></div>
+
+<main>
+  <!-- AUTH -->
+  <section class="card auth hidden" id="v-auth">
+    <h2 id="auth-title">Sign in</h2>
+    <p id="auth-sub">Your organisation's projects, results and watch.</p>
+    <form id="auth-form" novalidate>
+      <div class="fld"><label for="a-email">Email</label><input id="a-email" type="email" autocomplete="email" required></div>
+      <div class="fld"><label for="a-pass">Password</label><input id="a-pass" type="password" autocomplete="current-password" minlength="8" required></div>
+      <button class="btn" type="submit" id="auth-btn" style="width:100%">Sign in</button>
+    </form>
+    <div id="auth-msg"></div>
+    <p style="margin:16px 0 0;font-size:14px"><span id="auth-switch-lead">New to DSN Assure?</span> <button class="link" type="button" id="auth-switch">Create an account</button></p>
+  </section>
+
+  <!-- PENDING -->
+  <section class="card auth hidden" id="v-pending">
+    <h2>Access is being set up</h2>
+    <p>Your account exists. Your organisation's workspace opens once DS Nikam links it to your account. Write to research@dsnikam.in if this takes more than a working day.</p>
+  </section>
+
+  <!-- WORKSPACE -->
+  <section class="hidden" id="v-ws">
+    <div class="head"><h2 id="org-name">Workspace</h2><span class="asof" id="asof"></span></div>
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="project" type="button">Project check</button>
+      <button role="tab" aria-selected="false" data-tab="portfolio" type="button">Portfolio</button>
+    </div>
+    <div id="t-project" class="ws">
+      <aside class="card side">
+        <h3>Projects <button class="btn small" type="button" id="add-btn">Add</button></h3>
+        <ul class="plist" id="plist"></ul>
+      </aside>
+      <div id="result"></div>
+    </div>
+    <div id="t-portfolio" class="hidden">
+      <div class="card tbl-wrap"><table>
+        <thead><tr><th>Project</th><th>State</th><th>Action</th><th>Watch</th><th>Clear</th><th>Lender readiness</th></tr></thead>
+        <tbody id="pbody"></tbody>
+      </table></div>
+    </div>
+  </section>
+</main>
+
+<dialog id="dlg"><form class="dlg" id="pform" method="dialog" novalidate>
+  <h3 style="font-size:18px;margin-bottom:12px" id="dlg-title">Add project</h3>
+  <div class="fld"><label for="f-name">Project name</label><input id="f-name" required></div>
+  <div class="grid2">
+    <div class="fld"><label for="f-state">State</label><select id="f-state">
+      <option value="MH">Maharashtra</option><option value="TN">Tamil Nadu</option><option value="GJ">Gujarat</option><option value="KA">Karnataka</option>
+      <option value="TG">Telangana</option><option value="AP">Andhra Pradesh</option><option value="RJ">Rajasthan</option><option value="UP">Uttar Pradesh</option>
+      <option value="MP">Madhya Pradesh</option><option value="HR">Haryana</option><option value="UK">Uttarakhand</option><option value="KL">Kerala</option>
+      <option value="CG">Chhattisgarh</option><option value="BR">Bihar</option></select></div>
+    <div class="fld"><label for="f-type">Type</label><select id="f-type">
+      <option value="solar">Solar (ground)</option><option value="solarbess">Solar + battery</option><option value="wind">Wind</option>
+      <option value="bess">Standalone battery</option><option value="rooftop">Rooftop / C&amp;I</option><option value="dc">Data centre</option></select></div>
+    <div class="fld"><label for="f-mw">RE capacity (MW)</label><input id="f-mw" type="number" min="0" step="0.1" value="0"></div>
+    <div class="fld"><label for="f-mwh">Battery (MWh)</label><input id="f-mwh" type="number" min="0" step="1" value="0"></div>
+    <div class="fld"><label for="f-conn">Connection</label><select id="f-conn"><option value="ists">ISTS</option><option value="insts" selected>State (InSTS)</option><option value="dist">Distribution</option></select></div>
+    <div class="fld"><label for="f-own">Ownership</label><select id="f-own"><option value="captive">Captive</option><option value="group">Group captive</option><option value="third">Third-party</option><option value="ppa">Utility PPA</option></select></div>
+    <div class="fld"><label for="f-app">Application date</label><input id="f-app" type="date"></div>
+    <div class="fld"><label for="f-inp">In-principle approval</label><input id="f-inp" type="date"></div>
+    <div class="fld"><label for="f-cg">Connectivity grant</label><input id="f-cg" type="date"></div>
+    <div class="fld"><label for="f-cod">Expected COD</label><input id="f-cod" type="date"></div>
+  </div>
+  <label class="chk"><input type="checkbox" id="f-ists"> Relies on ISTS charges waiver</label>
+  <label class="chk"><input type="checkbox" id="f-vgf"> Relies on VGF support</label>
+  <label class="chk"><input type="checkbox" id="f-cap"> Relies on captive relief (CSS / AS)</label>
+  <label class="chk"><input type="checkbox" id="f-bank"> Uses banking</label>
+  <div id="f-msg"></div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px">
+    <button class="btn ghost small" type="button" id="f-cancel" style="color:var(--ink)">Cancel</button>
+    <button class="btn" type="submit" id="f-save">Save project</button>
+  </div>
+</form></dialog>
+
+<footer>DSN Assure · results only; the basis for each result is shared with clients under NDA. Not legal or investment advice.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(function(){
+"use strict";
+var SUPABASE_URL="https://qmmtlyqxtiovkxezldtg.supabase.co";
+var SUPABASE_KEY="sb_publishable_cWjKONdeCpTiuFdtI0MNpQ_bBT7u5ls";
+var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function show(id){["v-auth","v-pending","v-ws"].forEach(function(v){$(v).classList.toggle("hidden",v!==id)})}
+function msg(el,text,kind){$(el).innerHTML=text?'<div class="msg '+(kind||"err")+'">'+esc(text)+'</div>':""}
+var state={mode:"signin",user:null,org:null,role:"viewer",projects:[],current:null,watches:{},results:{}};
+
+/* AUTH */
+function setMode(m){state.mode=m;var up=m==="signup";
+  $("auth-title").textContent=up?"Create an account":"Sign in";
+  $("auth-btn").textContent=up?"Create account":"Sign in";
+  $("a-pass").setAttribute("autocomplete",up?"new-password":"current-password");
+  $("auth-switch-lead").textContent=up?"Already have an account?":"New to DSN Assure?";
+  $("auth-switch").textContent=up?"Sign in":"Create an account";
+  msg("auth-msg","");}
+$("auth-switch").addEventListener("click",function(){setMode(state.mode==="signin"?"signup":"signin")});
+$("auth-form").addEventListener("submit",async function(e){
+  e.preventDefault();var email=$("a-email").value.trim(),pw=$("a-pass").value;
+  if(!email||pw.length<8){msg("auth-msg","Enter your email and a password of at least 8 characters.");return}
+  $("auth-btn").disabled=true;
+  try{
+    if(state.mode==="signup"){
+      var r=await sb.auth.signUp({email:email,password:pw});
+      if(r.error)throw r.error;
+      if(r.data.session){await boot()}else{setMode("signin");msg("auth-msg","Account created. Sign in once DS Nikam has opened your access.","ok")}
+    }else{
+      var s=await sb.auth.signInWithPassword({email:email,password:pw});
+      if(s.error)throw s.error;
+      await boot();
+    }
+  }catch(err){msg("auth-msg",/confirm/i.test(err.message)?"Your account is waiting for confirmation by DS Nikam.":err.message)}
+  finally{$("auth-btn").disabled=false}
+});
+$("signout").addEventListener("click",async function(){await sb.auth.signOut();state.user=null;$("who").classList.add("hidden");show("v-auth")});
+
+/* BOOT */
+async function boot(){
+  var u=await sb.auth.getUser();state.user=u.data&&u.data.user;
+  if(!state.user){$("who").classList.add("hidden");show("v-auth");return}
+  $("who-email").textContent=state.user.email;$("who").classList.remove("hidden");
+  var m=await sb.from("client_members").select("client_id,role,client_orgs(name)").limit(1);
+  if(m.error||!m.data||!m.data.length){show("v-pending");return}
+  state.org={id:m.data[0].client_id,name:m.data[0].client_orgs?m.data[0].client_orgs.name:"Workspace"};state.role=m.data[0].role;
+  $("org-name").textContent=state.org.name;$("add-btn").classList.toggle("hidden",state.role==="viewer");
+  show("v-ws");await loadProjects();
+}
+async function loadProjects(){
+  var r=await sb.from("client_projects").select("*").eq("client_id",state.org.id).order("created_at");
+  state.projects=r.data||[];
+  var w=await sb.from("client_watches").select("project_id,item_key");
+  state.watches={};(w.data||[]).forEach(function(x){state.watches[x.project_id+"|"+x.item_key]=true});
+  renderList();
+  if(state.projects.length){selectProject(state.current&&state.projects.some(function(p){return p.id===state.current})?state.current:state.projects[0].id)}
+  else{$("result").innerHTML='<div class="card empty">No projects yet. Add the first one.</div>'}
+}
+var TYPES={solar:"Solar",solarbess:"Solar + battery",wind:"Wind",bess:"Battery",rooftop:"Rooftop / C&I",dc:"Data centre"};
+function renderList(){
+  $("plist").innerHTML=state.projects.map(function(p){return'<li><button type="button" data-pid="'+p.id+'" aria-current="'+(p.id===state.current)+'">'+esc(p.name)+'<small>'+esc(p.state)+' · '+esc(TYPES[p.ptype])+'</small></button></li>'}).join("");
+}
+async function check(ids){
+  var r=await sb.functions.invoke("assure-check",{body:{project_ids:ids}});
+  if(r.error)throw r.error;
+  $("asof").textContent="results as of "+r.data.as_of.split("-").reverse().join(".");
+  r.data.results.forEach(function(x){state.results[x.project_id]=x});
+  return r.data.results;
+}
+async function selectProject(id){
+  state.current=id;renderList();
+  $("result").innerHTML='<div class="card empty">Checking…</div>';
+  try{await check([id]);renderResult(id)}catch(e){$("result").innerHTML='<div class="card empty">Could not load results. '+esc(e.message||"")+'</div>'}
+}
+function chip(s){var m={act:["s-act","Action"],watch:["s-watch","Watch"],clear:["s-clear","Clear"]}[s];return'<span class="chip '+m[0]+'">'+m[1]+'</span>'}
+function docChip(x){var m={final:"Final",draft:"Draft",policy:"Policy"};return'<span class="chip doc '+x+'">'+m[x]+'</span>'}
+function lblChip(x){var m={rule:"Rule",input:"Your input",example:"Example"};return'<span class="chip lbl">'+m[x]+'</span>'}
+function renderResult(id){
+  var r=state.results[id],p=state.projects.find(function(x){return x.id===id});if(!r)return;var s=r.summary;
+  var edit=state.role!=="viewer"?'<button class="btn small ghost" style="color:var(--accent)" type="button" id="edit-btn">Edit project</button>':"";
+  $("result").innerHTML='<div class="head"><h2 style="font-size:19px">'+esc(p.name)+'</h2>'+edit+'</div>'+
+   '<div class="summary"><div class="tile act"><b class="mono">'+s.act+'</b><span>need action</span></div><div class="tile watch"><b class="mono">'+s.watch+'</b><span>to watch</span></div><div class="tile clear"><b class="mono">'+s.clear+'</b><span>clear</span></div><div class="tile lend"><b class="mono">'+s.readiness+'%</b><span>lender readiness</span><div class="meter"><i style="width:'+s.readiness+'%"></i></div></div></div>'+
+   '<div class="lenses">'+r.lenses.map(function(l){return'<article class="card lens"><header><h3>'+esc(l.h)+'</h3><p>'+esc(l.p)+'</p></header><ul class="items">'+l.items.map(function(x){var on=!!state.watches[id+"|"+x.k];return'<li class="item"><div class="chips">'+chip(x.s)+docChip(x.doc)+lblChip(x.lbl)+'<button type="button" class="watchbtn" data-k="'+esc(x.k)+'" aria-pressed="'+on+'">'+(on?"Watching":"Watch")+'</button></div><div class="t">'+esc(x.t)+'</div><div class="d">'+esc(x.d)+'</div></li>'}).join("")+'</ul></article>'}).join("")+'</div>';
+  var eb=$("edit-btn");if(eb)eb.addEventListener("click",function(){openForm(p)});
+}
+document.addEventListener("click",async function(e){
+  var pb=e.target.closest("[data-pid]");if(pb){selectProject(pb.getAttribute("data-pid"));return}
+  var wb=e.target.closest(".watchbtn[data-k]");
+  if(wb){var k=wb.getAttribute("data-k"),key=state.current+"|"+k;
+    if(state.watches[key]){await sb.from("client_watches").delete().eq("project_id",state.current).eq("item_key",k);delete state.watches[key]}
+    else{var ins=await sb.from("client_watches").insert({project_id:state.current,item_key:k});if(!ins.error)state.watches[key]=true}
+    renderResult(state.current);return}
+  var tb=e.target.closest("[data-tab]");
+  if(tb){var t=tb.getAttribute("data-tab");document.querySelectorAll("[data-tab]").forEach(function(b){b.setAttribute("aria-selected",b===tb)});
+    $("t-project").classList.toggle("hidden",t!=="project");$("t-portfolio").classList.toggle("hidden",t!=="portfolio");
+    if(t==="portfolio")renderPortfolio()}
+});
+async function renderPortfolio(){
+  $("pbody").innerHTML='<tr><td colspan="6">Checking…</td></tr>';
+  try{var res=await check(state.projects.map(function(p){return p.id}));
+    res.sort(function(a,b){return b.summary.act-a.summary.act||b.summary.watch-a.summary.watch});
+    $("pbody").innerHTML=res.map(function(r){var p=state.projects.find(function(x){return x.id===r.project_id});var s=r.summary;
+      return'<tr><td>'+esc(p.name)+'</td><td>'+esc(p.state)+'</td><td class="n">'+(s.act?'<span class="chip s-act">'+s.act+'</span>':"0")+'</td><td class="n"><span class="chip s-watch">'+s.watch+'</span></td><td class="n">'+s.clear+'</td><td class="n">'+s.readiness+'%</td></tr>'}).join("")||'<tr><td colspan="6">No projects yet.</td></tr>';
+  }catch(e){$("pbody").innerHTML='<tr><td colspan="6">Could not load results.</td></tr>'}
+}
+
+/* PROJECT FORM */
+var editing=null;
+function openForm(p){editing=p||null;$("dlg-title").textContent=p?"Edit project":"Add project";msg("f-msg","");
+  var v=p||{name:"",state:"MH",ptype:"solar",re_mw:0,batt_mwh:0,conn:"insts",ownership:"captive"};
+  $("f-name").value=v.name;$("f-state").value=v.state;$("f-type").value=v.ptype;$("f-mw").value=v.re_mw;$("f-mwh").value=v.batt_mwh;
+  $("f-conn").value=v.conn;$("f-own").value=v.ownership;$("f-app").value=v.d_application||"";$("f-inp").value=v.d_inprinciple||"";
+  $("f-cg").value=v.d_connectivity||"";$("f-cod").value=v.d_cod||"";$("f-ists").checked=!!v.b_ists;$("f-vgf").checked=!!v.b_vgf;$("f-cap").checked=!!v.b_captive;$("f-bank").checked=!!v.b_banking;
+  $("dlg").showModal();}
+$("add-btn").addEventListener("click",function(){openForm(null)});
+$("f-cancel").addEventListener("click",function(){$("dlg").close()});
+$("pform").addEventListener("submit",async function(e){
+  e.preventDefault();var name=$("f-name").value.trim();if(!name){msg("f-msg","Give the project a name.");return}
+  var row={client_id:state.org.id,name:name,state:$("f-state").value,ptype:$("f-type").value,re_mw:Number($("f-mw").value)||0,batt_mwh:Number($("f-mwh").value)||0,
+    conn:$("f-conn").value,ownership:$("f-own").value,d_application:$("f-app").value||null,d_inprinciple:$("f-inp").value||null,d_connectivity:$("f-cg").value||null,d_cod:$("f-cod").value||null,
+    b_ists:$("f-ists").checked,b_vgf:$("f-vgf").checked,b_captive:$("f-cap").checked,b_banking:$("f-bank").checked};
+  $("f-save").disabled=true;
+  var r=editing?await sb.from("client_projects").update(Object.assign(row,{updated_at:new Date().toISOString()})).eq("id",editing.id).select().single()
+               :await sb.from("client_projects").insert(row).select().single();
+  $("f-save").disabled=false;
+  if(r.error){msg("f-msg","Could not save: "+r.error.message);return}
+  $("dlg").close();state.current=r.data.id;await loadProjects();
+});
+
+setMode("signin");
+sb.auth.onAuthStateChange(function(ev){if(ev==="SIGNED_OUT")show("v-auth")});
+boot();
+})();
+</script>
+</body>
+</html>
