@@ -170,6 +170,20 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
 .legal{background:#08172c;color:rgba(255,255,255,.7);font-size:12.5px}
 .legal .in{padding-top:12px;padding-bottom:14px}
 
+.kick{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin:0 0 14px}
+.hero .lead strong{color:#fff;font-weight:600}
+.does{background:var(--paper);border-bottom:1px solid var(--line)}
+.does .in{padding-top:26px;padding-bottom:20px}
+.dk{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:600;margin:0 0 14px}
+.dgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.dc{position:relative;display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-top:3px solid var(--gold);border-radius:10px;padding:18px 36px 16px 18px}
+.dc svg{width:34px;height:34px;flex:none;stroke:var(--navy);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dc b{display:block;font-family:var(--serif);font-size:19px;line-height:1.25;margin:0 0 4px}
+.dc span{font-size:14px;color:var(--mid)}
+.dc .dn{position:absolute;top:10px;right:14px;font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.08em}
+.trust{display:flex;flex-wrap:wrap;gap:6px 0;margin:14px 0 0;font-size:13.5px;color:var(--mid)}
+.trust span+span:before{content:"\00B7";margin:0 10px;color:var(--gold)}
+@media(max-width:900px){.dgrid{grid-template-columns:1fr}}
 @media(max-width:1440px){.tag{display:none}}
 @media(max-width:1180px){.mail{display:none}}
 @media(max-width:1180px){
@@ -251,12 +265,13 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
   <img class="scene" src="/img/hero-scene.svg" alt="" aria-hidden="true">
   <div class="in">
     <div>
+      <p class="kick">DSN Assure &middot; Independent power rules assurance</p>
       <h1>Power-market decisions, grounded in <em>the rules.</em></h1>
       <div class="rule"></div>
-      <p class="lead">Independent research and rules assurance on energy storage, renewable banking, open access and captive power across India.</p>
+      <p class="lead">DSN Assure checks every central and state power rule against your own projects, and tells you what applies, from which date, and what it costs, <strong>before the money moves.</strong></p>
       <div class="ctas">
-        <a class="btn btn-gold" href="/tracker">Explore the Rules Tracker <span aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-line" href="#research">Read the Research</a>
+        <a class="btn btn-gold" href="mailto:research@dsnikam.in?subject=DSN%20Assure">Run it on your portfolio <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-line" href="/tracker">Explore the Rules Tracker</a>
       </div>
     </div>
     <svg class="net" viewBox="0 0 300 330" aria-hidden="true">
@@ -285,13 +300,45 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
   </div>
 </section>
 
-<div class="proof"><div class="in">
-  <div class="pf"><svg viewBox="0 0 36 36"><path d="M5 31 H31 M8 31 V19 H13 V31 M16 31 V11 H21 V31 M24 31 V5 H29 V31"/></svg><div><b>90+ instruments · 11 jurisdictions</b><span>Central and state rules, orders and drafts</span></div></div>
-  <div class="pf"><svg viewBox="0 0 36 36"><path d="M18 9 C14 6 9 6 4 7 V29 C9 28 14 28 18 31 C22 28 27 28 32 29 V7 C27 6 22 6 18 9Z M18 9 V31"/></svg><div><b>Status and date on every entry</b><span>Read from the primary government and regulatory text</span></div></div>
-  <div class="pf"><svg viewBox="0 0 36 36"><path d="M18 5 L32 12 L18 19 L4 12Z M4 18 L18 25 L32 18 M4 24 L18 31 L32 24"/></svg><div><b>Draft and final kept apart</b><span>No mixing of proposals and notified rules</span></div></div>
+<div class="does"><div class="in">
+  <p class="dk">What DSN Assure does for you</p>
+  <div class="dgrid">
+    <div class="dc"><span class="dn">01</span><svg viewBox="0 0 36 36"><path d="M8 3h14l6 6v24H8z M22 3v6h6 M12 16l3 3 6-6 M12 25h12"/></svg><div><b>Every rule checked against your sites</b><span>Storage, banking, open access, captive and data centre rules, central and state.</span></div></div>
+    <div class="dc"><span class="dn">02</span><svg viewBox="0 0 36 36"><rect x="4" y="6" width="28" height="24" rx="3"/><path d="M4 13h28 M10 19h4 M10 24h4 M18 19h9 M18 24h9"/></svg><div><b>A clear result for each project</b><span>Action, Watch or Clear, with the rule&rsquo;s status and date on every line.</span></div></div>
+    <div class="dc"><span class="dn">03</span><svg viewBox="0 0 36 36"><path d="M18 4a9 9 0 0 1 9 9v6l3 5H6l3-5v-6a9 9 0 0 1 9-9z M14 28a4 4 0 0 0 8 0"/></svg><div><b>Alerted the day a rule changes</b><span>With its effect in rupees per kWh on your own projects.</span></div></div>
+  </div>
+  <p class="trust"><span>90+ instruments</span><span>11 jurisdictions</span><span>Status and date on every entry</span><span>Draft and final kept apart</span></p>
 </div></div>
 
 <main class="in">
+
+<div class="two" id="assure">
+  <div>
+    <div class="sh"><h2>From regulation to project economics</h2></div>
+    <p class="sub">DSN Assure turns rule changes into what they do to your project, in rupees per kWh.</p>
+    <div class="flow">
+      <div class="step"><svg viewBox="0 0 34 34"><path d="M8 3h13l6 6v22H8z M21 3v6h6 M12 15h11 M12 20h11 M12 25h7"/></svg><div><b>Rule</b><span>Banking, open access, captive, storage</span></div></div>
+      <div class="step"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="5"/><path d="M17 3v4M17 27v4M3 17h4M27 17h4M7.1 7.1l2.8 2.8M24.1 24.1l2.8 2.8M7.1 26.9l2.8-2.8M24.1 9.9l2.8-2.8"/></svg><div><b>Operating<br>consequence</b><span>Banking period, drawal, surcharge exposure</span></div></div>
+      <div class="step"><svg viewBox="0 0 34 34"><ellipse cx="13" cy="9" rx="8" ry="3"/><path d="M5 9v5c0 1.7 3.6 3 8 3s8-1.3 8-3V9 M5 14v5c0 1.7 3.6 3 8 3 M21 19c0-1.7 1.6-3 6-3"/><ellipse cx="23" cy="22" rx="8" ry="3"/><path d="M15 22v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg><div><b>&#8377; / kWh impact</b><span>Project economics, viability and options</span></div></div>
+    </div>
+  </div>
+  <div>
+    <div class="sh"><h2>Every result, clearly marked</h2><a href="/app">Client sign-in &rarr;</a></div>
+    <p class="sub">What a client sees for each project: the rule's status, the result and the flag.</p>
+    <div class="res"><table>
+      <thead><tr><th>Area</th><th>Rule status</th><th>Result</th><th>Flag</th></tr></thead>
+      <tbody>
+        <tr><td>Storage requirement</td><td><span class="chip s-grn">Final</span></td><td class="r">Planned battery meets it</td><td><span class="chip s-grn">Clear</span></td></tr>
+        <tr><td>Captive relief</td><td><span class="chip s-grn">Final</span></td><td class="r">Can be reversed if the year's test fails</td><td><span class="chip s-amb">Watch</span></td></tr>
+        <tr><td>National storage rule</td><td><span class="chip s-amb">Draft</span></td><td class="r">Can apply to later commissioning</td><td><span class="chip s-amb">Watch</span></td></tr>
+        <tr><td>Grid redundancy</td><td><span class="chip s-grn">Final</span></td><td class="r">Second source needed for a data centre</td><td><span class="chip s-red">Action</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="res-cap"><span>Illustrative project. Results only; the basis for each is shared with clients under NDA.</span><a href="mailto:research@dsnikam.in">Run it on your portfolio &rarr;</a></div>
+  </div>
+</div>
+
+<hr class="hr">
 
 <div class="two">
   <div>
@@ -339,34 +386,6 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
       </a>
     </div>
     <p class="filings">Filings: comments filed with CEA, CERC and MERC. <a href="/cea-comments-2026">Read the CEA filing &rarr;</a></p>
-  </div>
-</div>
-
-<hr class="hr">
-
-<div class="two" id="assure">
-  <div>
-    <div class="sh"><h2>From regulation to project economics</h2></div>
-    <p class="sub">DSN Assure turns rule changes into what they do to your project, in rupees per kWh.</p>
-    <div class="flow">
-      <div class="step"><svg viewBox="0 0 34 34"><path d="M8 3h13l6 6v22H8z M21 3v6h6 M12 15h11 M12 20h11 M12 25h7"/></svg><div><b>Rule</b><span>Banking, open access, captive, storage</span></div></div>
-      <div class="step"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="5"/><path d="M17 3v4M17 27v4M3 17h4M27 17h4M7.1 7.1l2.8 2.8M24.1 24.1l2.8 2.8M7.1 26.9l2.8-2.8M24.1 9.9l2.8-2.8"/></svg><div><b>Operating<br>consequence</b><span>Banking period, drawal, surcharge exposure</span></div></div>
-      <div class="step"><svg viewBox="0 0 34 34"><ellipse cx="13" cy="9" rx="8" ry="3"/><path d="M5 9v5c0 1.7 3.6 3 8 3s8-1.3 8-3V9 M5 14v5c0 1.7 3.6 3 8 3 M21 19c0-1.7 1.6-3 6-3"/><ellipse cx="23" cy="22" rx="8" ry="3"/><path d="M15 22v5c0 1.7 3.6 3 8 3s8-1.3 8-3v-5"/></svg><div><b>&#8377; / kWh impact</b><span>Project economics, viability and options</span></div></div>
-    </div>
-  </div>
-  <div>
-    <div class="sh"><h2>Every result, clearly marked</h2><a href="/app">Client sign-in &rarr;</a></div>
-    <p class="sub">What a client sees for each project: the rule's status, the result and the flag.</p>
-    <div class="res"><table>
-      <thead><tr><th>Area</th><th>Rule status</th><th>Result</th><th>Flag</th></tr></thead>
-      <tbody>
-        <tr><td>Storage requirement</td><td><span class="chip s-grn">Final</span></td><td class="r">Planned battery meets it</td><td><span class="chip s-grn">Clear</span></td></tr>
-        <tr><td>Captive relief</td><td><span class="chip s-grn">Final</span></td><td class="r">Can be reversed if the year's test fails</td><td><span class="chip s-amb">Watch</span></td></tr>
-        <tr><td>National storage rule</td><td><span class="chip s-amb">Draft</span></td><td class="r">Can apply to later commissioning</td><td><span class="chip s-amb">Watch</span></td></tr>
-        <tr><td>Grid redundancy</td><td><span class="chip s-grn">Final</span></td><td class="r">Second source needed for a data centre</td><td><span class="chip s-red">Action</span></td></tr>
-      </tbody>
-    </table></div>
-    <div class="res-cap"><span>Illustrative project. Results only; the basis for each is shared with clients under NDA.</span><a href="mailto:research@dsnikam.in">Run it on your portfolio &rarr;</a></div>
   </div>
 </div>
 
