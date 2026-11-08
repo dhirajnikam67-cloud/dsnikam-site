@@ -183,7 +183,10 @@ footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color
 "use strict";
 var SUPABASE_URL="https://qmmtlyqxtiovkxezldtg.supabase.co";
 var SUPABASE_KEY="sb_publishable_cWjKONdeCpTiuFdtI0MNpQ_bBT7u5ls";
-var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,
+  /* in-app browsers on Android can stall the default cross-tab lock; run auth calls directly */
+  lock:function(name,timeout,fn){return fn()}}});
+function withTimeout(pr,ms){return Promise.race([pr,new Promise(function(_,rej){setTimeout(function(){rej(new Error("The server did not answer. Check your connection and try again."))},ms)})])}
 var $=function(id){return document.getElementById(id)};
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function show(id){["v-auth","v-pending","v-ws"].forEach(function(v){$(v).classList.toggle("hidden",v!==id)})}
@@ -205,15 +208,18 @@ $("auth-form").addEventListener("submit",async function(e){
   $("auth-btn").disabled=true;
   try{
     if(state.mode==="signup"){
-      var r=await sb.auth.signUp({email:email,password:pw});
-      if(r.error)throw r.error;
-      if(r.data.session){await boot()}else{setMode("signin");msg("auth-msg","Account created. Sign in once DS Nikam has opened your access.","ok")}
+      var res=await withTimeout(fetch(SUPABASE_URL+"/auth/v1/signup",{method:"POST",headers:{"Content-Type":"application/json",apikey:SUPABASE_KEY},body:JSON.stringify({email:email,password:pw})}),20000);
+      var body=await res.json().catch(function(){return{}});
+      if(!res.ok)throw new Error(body.msg||body.error_description||body.message||("Sign-up failed ("+res.status+")"));
+      if(body.access_token){await sb.auth.setSession({access_token:body.access_token,refresh_token:body.refresh_token});await boot()}
+      else{setMode("signin");msg("auth-msg","Account created. Sign in once DS Nikam has opened your access.","ok")}
     }else{
-      var s=await sb.auth.signInWithPassword({email:email,password:pw});
+      var s=await withTimeout(sb.auth.signInWithPassword({email:email,password:pw}),20000);
       if(s.error)throw s.error;
       await boot();
     }
-  }catch(err){msg("auth-msg",/confirm/i.test(err.message)?"Your account is waiting for confirmation by DS Nikam.":err.message)}
+  }catch(err){var m=String(err&&err.message||err);
+    msg("auth-msg",/confirm/i.test(m)?"Your account is waiting for confirmation by DS Nikam.":/invalid login/i.test(m)?"Email or password does not match. New here? Use “Create an account” below.":/already registered|already exists/i.test(m)?"This email already has an account. Use Sign in.":m)}
   finally{$("auth-btn").disabled=false}
 });
 $("signout").addEventListener("click",async function(){await sb.auth.signOut();state.user=null;$("who").classList.add("hidden");show("v-auth")});
