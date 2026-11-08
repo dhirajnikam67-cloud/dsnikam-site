@@ -31,6 +31,7 @@ button,input,select{font:inherit;color:inherit}
 main{max-width:1400px;margin:0 auto;padding:22px 24px 48px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px}
 .hidden{display:none!important}
+@media(min-width:641px){.m-only{display:none}}
 .msg{padding:10px 12px;border-radius:7px;font-size:14px;margin:10px 0 0}
 .msg.err{background:var(--act-bg);color:var(--act)}.msg.ok{background:var(--clear-bg);color:var(--clear)}
 /* auth */
@@ -300,7 +301,7 @@ async function renderPortfolio(){
   try{var res=await check(state.projects.map(function(p){return p.id}));
     res.sort(function(a,b){return b.summary.act-a.summary.act||b.summary.watch-a.summary.watch});
     $("pbody").innerHTML=res.map(function(r){var p=state.projects.find(function(x){return x.id===r.project_id});var s=r.summary;
-      return'<tr><td>'+esc(p.name)+' <small style="color:var(--muted);font-weight:400">'+esc(p.state)+'</small></td><td>'+esc(p.state)+'</td><td class="n" data-l="Action">'+(s.act?'<span class="chip s-act">'+s.act+'</span>':"0")+'</td><td class="n" data-l="Watch"><span class="chip s-watch">'+s.watch+'</span></td><td class="n" data-l="Clear">'+s.clear+'</td><td class="n" data-l="Lender">'+s.readiness+'%</td></tr>'}).join("")||'<tr><td colspan="6">No projects yet.</td></tr>';
+      return'<tr><td>'+esc(p.name)+' <small class="m-only" style="color:var(--muted);font-weight:400">'+esc(p.state)+'</small></td><td>'+esc(p.state)+'</td><td class="n" data-l="Action">'+(s.act?'<span class="chip s-act">'+s.act+'</span>':"0")+'</td><td class="n" data-l="Watch"><span class="chip s-watch">'+s.watch+'</span></td><td class="n" data-l="Clear">'+s.clear+'</td><td class="n" data-l="Lender">'+s.readiness+'%</td></tr>'}).join("")||'<tr><td colspan="6">No projects yet.</td></tr>';
   }catch(e){$("pbody").innerHTML='<tr><td colspan="6">Could not load results.</td></tr>'}
 }
 
