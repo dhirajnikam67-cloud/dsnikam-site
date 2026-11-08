@@ -5,67 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>DSN Assure · Client workspace</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--brand:#0d2730;--brand-ink:#e9f2f1;--ink:#15232a;--paper:#eef1ee;--panel:#fff;--line:#d6ddd8;--muted:#5b6a6f;--accent:#0e6a74;--accent-soft:#e0eeef;
---act:#b0382b;--act-bg:#f7e4e1;--watch:#9a6700;--watch-bg:#faefd5;--clear:#2c7543;--clear-bg:#e2f1e6;
---display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
-*{box-sizing:border-box}html,body{margin:0}
+:root{--brand:#0b1f3a;--gold:#e2ad48;--gold-2:#f3c86a;--ink:#13213a;--paper:#f3f2ee;--panel:#fff;--line:#e0ddd5;--muted:#5d677a;--accent:#1f4f8f;--accent-soft:#e6edf7;
+--act:#a3372a;--act-bg:#f8e6e2;--watch:#8a5b00;--watch-bg:#fbf0d6;--clear:#2a7346;--clear-bg:#e3f2e7;
+--serif:"Source Serif 4",Georgia,serif;--body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html,body{margin:0}html,body{overflow-x:clip}
 body{background:var(--paper);color:var(--ink);font:15px/1.5 var(--body)}
-h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+h1,h2,h3{font-family:var(--serif);margin:0;text-wrap:balance}
 button,input,select{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.bar{background:var(--brand);color:var(--brand-ink)}
-.top{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1400px;margin:0 auto}
+.bar{background:var(--brand);color:#fff}
+.top{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;justify-content:space-between;padding:12px 24px;max-width:1400px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-.mark{width:34px;height:34px;border-radius:7px;background:var(--accent);display:grid;place-items:center;font-family:var(--display);font-weight:700;color:#fff;font-size:14px}
-.brand h1{font-size:20px}.brand span{display:block;font-size:12px;opacity:.75}
+.brand svg{width:40px;height:30px}
+.brand b{display:block;font-weight:600;font-size:19px;letter-spacing:.04em;line-height:1}
+.brand span{display:block;font-size:11px;letter-spacing:.2em;opacity:.8;margin-top:4px}
 .who{display:flex;gap:10px;align-items:center;font-size:13.5px}
-.btn{background:var(--accent);color:#fff;border:0;border-radius:7px;padding:9px 14px;font-weight:600;cursor:pointer}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:7px;padding:9px 14px;font-weight:600;cursor:pointer}
+.btn.gold{background:var(--gold);color:var(--brand)}
 .btn.ghost{background:transparent;border:1px solid currentColor;color:inherit}
+.btn.line{background:#fff;border:1px solid var(--line);color:var(--ink)}
 .btn.small{padding:5px 10px;font-size:13px}
 .btn:disabled{opacity:.6;cursor:default}
 main{max-width:1400px;margin:0 auto;padding:22px 24px 48px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:10px}
 .hidden{display:none!important}
-@media(min-width:641px){.m-only{display:none}}
 .msg{padding:10px 12px;border-radius:7px;font-size:14px;margin:10px 0 0}
 .msg.err{background:var(--act-bg);color:var(--act)}.msg.ok{background:var(--clear-bg);color:var(--clear)}
-/* auth */
 .auth{max-width:420px;margin:48px auto;padding:26px}
-.auth h2{font-size:22px;margin-bottom:6px}
+.auth h2{font-size:24px;margin-bottom:6px}
 .auth p{color:var(--muted);margin:0 0 16px}
 .fld{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;min-width:0}
 .fld label{font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-.fld input,.fld select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.fld input,.fld select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:#faf9f6}
+.fld small{color:var(--muted);font-size:12px}
 .link{background:none;border:0;color:var(--accent);cursor:pointer;padding:0;font-weight:600}
-/* workspace */
-.ws{display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;align-items:start}
+.ws{display:grid;grid-template-columns:290px minmax(0,1fr);gap:20px;align-items:start}
 @media(max-width:900px){.ws{grid-template-columns:1fr}}
 .side{padding:14px}
-.side h3{font-size:15px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.side h3{font-size:16px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
 .plist{list-style:none;margin:0;padding:0}
 .plist li button{width:100%;text-align:left;background:none;border:0;border-left:3px solid transparent;padding:9px 10px;cursor:pointer;border-radius:4px}
 .plist li button:hover{background:var(--paper)}
-.plist li button[aria-current="true"]{border-left-color:var(--accent);background:var(--accent-soft);font-weight:600}
+.plist li button[aria-current="true"]{border-left-color:var(--gold);background:var(--accent-soft);font-weight:600}
 .plist small{display:block;color:var(--muted);font-weight:400;font-size:12px}
-.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:baseline;margin-bottom:12px}
-.head h2{font-size:22px}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:center;margin-bottom:12px}
+.head h2{font-size:23px}
 .asof{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.tools input[type=date]{padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#fff}
+.past{background:var(--watch-bg);color:var(--watch);border-radius:7px;padding:8px 12px;font-size:13.5px;margin:0 0 12px}
 .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
 .tile{padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel);border-left-width:5px}
-.tile b{display:block;font-family:var(--display);font-size:28px;line-height:1.1}.tile span{font-size:13px;color:var(--muted)}
+.tile b{display:block;font-family:var(--serif);font-size:28px;line-height:1.1}.tile span{font-size:13px;color:var(--muted)}
 .tile.act{border-left-color:var(--act)}.tile.act b{color:var(--act)}
 .tile.watch{border-left-color:var(--watch)}.tile.watch b{color:var(--watch)}
 .tile.clear{border-left-color:var(--clear)}.tile.clear b{color:var(--clear)}
-.tile.lend{border-left-color:var(--accent)}
+.tile.lend{border-left-color:var(--accent)}.tile.risk{border-left-color:var(--gold)}
 .meter{height:6px;background:var(--line);border-radius:3px;margin-top:6px;overflow:hidden}.meter i{display:block;height:100%;background:var(--accent)}
 .lenses{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
 .lens header{padding:12px 14px 10px;border-bottom:1px solid var(--line)}
-.lens header h3{font-size:16px}.lens header p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.lens header h3{font-size:17px}.lens header p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
 .items{list-style:none;margin:0;padding:0}
 .item{padding:10px 14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:5px}
 .item:first-child{border-top:0}
@@ -77,45 +83,51 @@ main{max-width:1400px;margin:0 auto;padding:22px 24px 48px}
 .lbl{background:var(--accent-soft);color:var(--accent);font-weight:500}
 .watchbtn{margin-left:auto;font-size:12px;border:1px solid var(--accent);background:transparent;color:var(--accent);padding:2px 9px;border-radius:5px;cursor:pointer}
 .watchbtn[aria-pressed="true"]{background:var(--accent);color:#fff}
+details.ev{margin-top:16px}
+details.ev summary{cursor:pointer;font-weight:600;padding:12px 14px}
+.evl{list-style:none;margin:0;padding:0 14px 12px}
+.evl li{padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}
+.evl .h{font-family:var(--mono);font-size:11.5px;color:var(--muted);word-break:break-all}
 .tbl-wrap{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:14px}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;background:var(--paper)}
-td.n{font-family:var(--mono)}
-.tabs{display:flex;gap:4px;margin-bottom:14px;border-bottom:1px solid var(--line)}
-.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 12px;cursor:pointer;color:var(--muted);font-weight:500}
-.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
-dialog{border:0;border-radius:12px;padding:0;max-width:640px;width:calc(100% - 32px)}
-dialog::backdrop{background:rgba(13,39,48,.45)}
-.dlg{padding:20px}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;background:#faf9f6}
+td.n{font-family:var(--mono);white-space:nowrap}
+tfoot td{font-weight:600}
+.tabs{display:flex;gap:4px;margin-bottom:14px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 12px;cursor:pointer;color:var(--muted);font-weight:500;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+.badge{display:inline-block;min-width:18px;padding:0 5px;border-radius:9px;background:var(--act);color:#fff;font-size:11px;text-align:center;margin-left:4px}
+.alerts{list-style:none;margin:0;padding:0}
+.alerts li{padding:12px 16px;border-top:1px solid var(--line)}
+.alerts li:first-child{border-top:0}
+.alerts li.unread{border-left:3px solid var(--gold);background:#fffdf7}
+.alerts .t{font-weight:600}.alerts .d{font-size:13.5px;color:var(--muted)}
+dialog{border:0;border-radius:12px;padding:0;max-width:680px;width:calc(100% - 24px)}
+dialog.wide{max-width:1100px}
+dialog::backdrop{background:rgba(11,31,58,.5)}
+.dlg{padding:20px;max-height:88vh;overflow:auto}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
 @media(max-width:520px){.grid2{grid-template-columns:1fr}}
 .chk{display:flex;gap:8px;align-items:center;font-size:14px;margin-bottom:6px}
+.sec{font-size:12px;font-weight:600;color:var(--watch);text-transform:uppercase;letter-spacing:.08em;margin:14px 0 8px}
 .empty{padding:28px;text-align:center;color:var(--muted)}
-@media(max-width:640px){
-  .top{padding:12px 16px}main{padding:16px 16px 40px}footer{padding:0 16px 24px}
-  .who{width:100%;justify-content:space-between}
-  #t-portfolio .card{background:transparent;border:0}
-  #t-portfolio table,#t-portfolio tbody,#t-portfolio tr,#t-portfolio td{display:block;width:100%}
-  #t-portfolio thead{display:none}
-  #t-portfolio tr{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;padding:10px 12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-  #t-portfolio td{border:0;padding:2px 0}
-  #t-portfolio td:first-child{grid-column:1/-1;font-weight:600}
-  #t-portfolio td:nth-child(2){display:none}
-  #t-portfolio td[data-l]::before{content:attr(data-l);display:block;font-family:var(--body);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-}
+.cgrid input{width:92px;padding:5px 6px;border:1px solid var(--line);border-radius:5px;font-family:var(--mono);font-size:13px}
+.cgrid td,.cgrid th{padding:6px 6px}
+.urow{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}
+@media(max-width:520px){.urow{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.claw table,.claw tbody,.claw tr,.claw td,.claw tfoot{display:block;width:100%}.claw thead{display:none}.claw tr{border-bottom:1px solid var(--line);padding:10px 12px}.claw td{border:0;padding:2px 0}.claw td.n{white-space:normal}.claw td:first-child{font-weight:600}}
 footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color:var(--muted)}
+@media(max-width:600px){main{padding:16px 14px 40px}.top{padding:10px 14px}.lenses{grid-template-columns:1fr}}
 </style>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 <div class="bar"><div class="top">
-  <a class="brand" href="/"><div class="mark" aria-hidden="true">DSN</div><div><h1>DSN Assure</h1><span>Client workspace</span></div></a>
+  <a class="brand" href="/"><svg viewBox="0 0 46 34" aria-hidden="true"><path d="M2 32 L14 2 L22 2 L10 32Z" fill="#fff"/><path d="M14 32 L26 2 L34 2 L22 32Z" fill="#e2ad48"/><path d="M26 32 L38 2 L44 2 L32 32Z" fill="#e2ad48" opacity=".75"/></svg><div><b>DSN ASSURE</b><span>CLIENT WORKSPACE</span></div></a>
   <div class="who hidden" id="who"><span id="who-email"></span><button class="btn ghost small" id="signout" type="button">Sign out</button></div>
 </div></div>
 
 <main>
-  <!-- AUTH -->
   <section class="card auth hidden" id="v-auth">
     <h2 id="auth-title">Sign in</h2>
     <p id="auth-sub">Your organisation's projects, results and watch.</p>
@@ -128,18 +140,18 @@ footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color
     <p style="margin:16px 0 0;font-size:14px"><span id="auth-switch-lead">New to DSN Assure?</span> <button class="link" type="button" id="auth-switch">Create an account</button></p>
   </section>
 
-  <!-- PENDING -->
   <section class="card auth hidden" id="v-pending">
     <h2>Access is being set up</h2>
     <p>Your account exists. Your organisation's workspace opens once DS Nikam links it to your account. Write to research@dsnikam.in if this takes more than a working day.</p>
   </section>
 
-  <!-- WORKSPACE -->
   <section class="hidden" id="v-ws">
     <div class="head"><h2 id="org-name">Workspace</h2><span class="asof" id="asof"></span></div>
     <div class="tabs" role="tablist">
       <button role="tab" aria-selected="true" data-tab="project" type="button">Project check</button>
+      <button role="tab" aria-selected="false" data-tab="claw" type="button">Clawback register</button>
       <button role="tab" aria-selected="false" data-tab="portfolio" type="button">Portfolio</button>
+      <button role="tab" aria-selected="false" data-tab="alerts" type="button">Alerts<span class="badge hidden" id="abadge"></span></button>
     </div>
     <div id="t-project" class="ws">
       <aside class="card side">
@@ -148,17 +160,19 @@ footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color
       </aside>
       <div id="result"></div>
     </div>
+    <div id="t-claw" class="hidden"></div>
     <div id="t-portfolio" class="hidden">
-      <div class="card tbl-wrap"><table>
-        <thead><tr><th>Project</th><th>State</th><th>Action</th><th>Watch</th><th>Clear</th><th>Lender readiness</th></tr></thead>
+      <div class="card tbl-wrap claw"><table>
+        <thead><tr><th>Project</th><th>State</th><th>Action</th><th>Watch</th><th>Clear</th><th>Lender readiness</th><th>At risk</th></tr></thead>
         <tbody id="pbody"></tbody>
       </table></div>
     </div>
+    <div id="t-alerts" class="hidden"></div>
   </section>
 </main>
 
 <dialog id="dlg"><form class="dlg" id="pform" method="dialog" novalidate>
-  <h3 style="font-size:18px;margin-bottom:12px" id="dlg-title">Add project</h3>
+  <h3 style="font-size:19px;margin-bottom:12px" id="dlg-title">Add project</h3>
   <div class="fld"><label for="f-name">Project name</label><input id="f-name" required></div>
   <div class="grid2">
     <div class="fld"><label for="f-state">State</label><select id="f-state">
@@ -182,12 +196,34 @@ footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color
   <label class="chk"><input type="checkbox" id="f-vgf"> Relies on VGF support</label>
   <label class="chk"><input type="checkbox" id="f-cap"> Relies on captive relief (CSS / AS)</label>
   <label class="chk"><input type="checkbox" id="f-bank"> Uses banking</label>
+  <p class="sec">For the Clawback register (optional)</p>
+  <div class="grid2">
+    <div class="fld"><label for="f-units">Annual captive / OA consumption (MWh)</label><input id="f-units" type="number" min="0" step="1"></div>
+    <div class="fld"><label for="f-css">CSS on your bill (₹/kWh)</label><input id="f-css" type="number" min="0" step="0.01"></div>
+    <div class="fld"><label for="f-ists-cr">ISTS charges waived (₹ crore / year)</label><input id="f-ists-cr" type="number" min="0" step="0.01"></div>
+    <div class="fld"><label for="f-vgf-cr">VGF amount (₹ crore)</label><input id="f-vgf-cr" type="number" min="0" step="0.01"></div>
+  </div>
   <div id="f-msg"></div>
   <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px">
-    <button class="btn ghost small" type="button" id="f-cancel" style="color:var(--ink)">Cancel</button>
+    <button class="btn line small" type="button" id="f-cancel">Cancel</button>
     <button class="btn" type="submit" id="f-save">Save project</button>
   </div>
 </form></dialog>
+
+<dialog id="cdlg" class="wide"><div class="dlg">
+  <h3 style="font-size:19px;margin-bottom:4px">Captive data · FY 2026-27</h3>
+  <p style="margin:0 0 12px;color:var(--muted);font-size:13.5px">Ex-bus generation and each captive user's consumption, in MWh, month by month. Ownership is the weighted average for the year. Users in one corporate group share a group name.</p>
+  <p class="sec">Captive users</p>
+  <div id="c-users"></div>
+  <button class="btn line small" type="button" id="c-adduser">Add user</button>
+  <p class="sec">Monthly figures (MWh)</p>
+  <div class="tbl-wrap"><table class="cgrid" id="c-grid"></table></div>
+  <div id="c-msg"></div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:14px">
+    <button class="btn line small" type="button" id="c-cancel">Cancel</button>
+    <button class="btn" type="button" id="c-save">Save and re-check</button>
+  </div>
+</div></dialog>
 
 <footer>DSN Assure · results only; the basis for each result is shared with clients under NDA. Not legal or investment advice.</footer>
 
@@ -205,7 +241,12 @@ var $=function(id){return document.getElementById(id)};
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function show(id){["v-auth","v-pending","v-ws"].forEach(function(v){$(v).classList.toggle("hidden",v!==id)})}
 function msg(el,text,kind){$(el).innerHTML=text?'<div class="msg '+(kind||"err")+'">'+esc(text)+'</div>':""}
-var state={mode:"signin",user:null,org:null,role:"viewer",projects:[],current:null,watches:{},results:{}};
+function dmy(s){return s?s.split("-").reverse().join("."):"—"}
+function inr(r){if(r==null)return"—";if(r>=1e7)return"₹"+(r/1e7).toFixed(2)+" cr";if(r>=1e5)return"₹"+(r/1e5).toFixed(2)+" lakh";return"₹"+Math.round(r).toLocaleString("en-IN")}
+var MONTHS=["2026-04","2026-05","2026-06","2026-07","2026-08","2026-09","2026-10","2026-11","2026-12","2027-01","2027-02","2027-03"];
+var MLAB=["Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Jan","Feb","Mar"];
+function todayIST(){return new Date(Date.now()+5.5*3600e3).toISOString().slice(0,10)}
+var state={mode:"signin",user:null,org:null,role:"viewer",projects:[],current:null,watches:{},results:{},asOf:null,alerts:[]};
 
 /* AUTH */
 function setMode(m){state.mode=m;var up=m==="signup";
@@ -247,7 +288,7 @@ async function boot(){
   if(m.error||!m.data||!m.data.length){show("v-pending");return}
   state.org={id:m.data[0].client_id,name:m.data[0].client_orgs?m.data[0].client_orgs.name:"Workspace"};state.role=m.data[0].role;
   $("org-name").textContent=state.org.name;$("add-btn").classList.toggle("hidden",state.role==="viewer");
-  show("v-ws");await loadProjects();
+  show("v-ws");await loadProjects();loadAlerts();
 }
 async function loadProjects(){
   var r=await sb.from("client_projects").select("*").eq("client_id",state.org.id).order("created_at");
@@ -259,31 +300,52 @@ async function loadProjects(){
   else{$("result").innerHTML='<div class="card empty">No projects yet. Add the first one.</div>'}
 }
 var TYPES={solar:"Solar",solarbess:"Solar + battery",wind:"Wind",bess:"Battery",rooftop:"Rooftop / C&I",dc:"Data centre"};
+function proj(id){return state.projects.find(function(x){return x.id===id})}
+function isCaptive(p){return p.ownership==="captive"||p.ownership==="group"||p.b_captive}
 function renderList(){
   $("plist").innerHTML=state.projects.map(function(p){return'<li><button type="button" data-pid="'+p.id+'" aria-current="'+(p.id===state.current)+'">'+esc(p.name)+'<small>'+esc(p.state)+' · '+esc(TYPES[p.ptype])+'</small></button></li>'}).join("");
 }
-async function check(ids){
-  var r=await sb.functions.invoke("assure-check",{body:{project_ids:ids}});
-  if(r.error)throw r.error;
-  $("asof").textContent="results as of "+r.data.as_of.split("-").reverse().join(".");
-  r.data.results.forEach(function(x){state.results[x.project_id]=x});
-  return r.data.results;
+async function check(ids,asOf){
+  var body={project_ids:ids};if(asOf)body.as_of=asOf;
+  var r=await sb.functions.invoke("assure-check",{body:body});
+  if(r.error){var m=r.error.message;try{var c=await r.error.context.json();if(c&&c.error)m=c.error}catch(_){}throw new Error(m)}
+  $("asof").textContent="results as of "+dmy(r.data.as_of);
+  if(!asOf)r.data.results.forEach(function(x){state.results[x.project_id]=x});
+  return r.data;
 }
 async function selectProject(id){
   state.current=id;renderList();
   $("result").innerHTML='<div class="card empty">Checking…</div>';
-  try{await check([id]);renderResult(id)}catch(e){$("result").innerHTML='<div class="card empty">Could not load results. '+esc(e.message||"")+'</div>'}
+  try{var d=await check([id],state.asOf);renderResult(id,d.results[0],d.as_of)}catch(e){$("result").innerHTML='<div class="card empty">Could not load results. '+esc(e.message||"")+'</div>'}
 }
 function chip(s){var m={act:["s-act","Action"],watch:["s-watch","Watch"],clear:["s-clear","Clear"]}[s];return'<span class="chip '+m[0]+'">'+m[1]+'</span>'}
 function docChip(x){var m={final:"Final",draft:"Draft",policy:"Policy"};return'<span class="chip doc '+x+'">'+m[x]+'</span>'}
 function lblChip(x){var m={rule:"Rule",input:"Your input",example:"Example"};return'<span class="chip lbl">'+m[x]+'</span>'}
-function renderResult(id){
-  var r=state.results[id],p=state.projects.find(function(x){return x.id===id});if(!r)return;var s=r.summary;
-  var edit=state.role!=="viewer"?'<button class="btn small ghost" style="color:var(--accent)" type="button" id="edit-btn">Edit project</button>':"";
-  $("result").innerHTML='<div class="head"><h2 style="font-size:19px">'+esc(p.name)+'</h2>'+edit+'</div>'+
-   '<div class="summary"><div class="tile act"><b class="mono">'+s.act+'</b><span>need action</span></div><div class="tile watch"><b class="mono">'+s.watch+'</b><span>to watch</span></div><div class="tile clear"><b class="mono">'+s.clear+'</b><span>clear</span></div><div class="tile lend"><b class="mono">'+s.readiness+'%</b><span>lender readiness</span><div class="meter"><i style="width:'+s.readiness+'%"></i></div></div></div>'+
-   '<div class="lenses">'+r.lenses.map(function(l){return'<article class="card lens"><header><h3>'+esc(l.h)+'</h3><p>'+esc(l.p)+'</p></header><ul class="items">'+l.items.map(function(x){var on=!!state.watches[id+"|"+x.k];return'<li class="item"><div class="chips">'+chip(x.s)+docChip(x.doc)+lblChip(x.lbl)+'<button type="button" class="watchbtn" data-k="'+esc(x.k)+'" aria-pressed="'+on+'">'+(on?"Watching":"Watch")+'</button></div><div class="t">'+esc(x.t)+'</div><div class="d">'+esc(x.d)+'</div></li>'}).join("")+'</ul></article>'}).join("")+'</div>';
+function renderResult(id,r,asOf){
+  var p=proj(id);if(!r||!p)return;var s=r.summary;var past=asOf!==todayIST();
+  var canEdit=state.role!=="viewer";
+  var tools='<div class="tools"><label>As of <input type="date" id="asof-in" min="2026-04-01" max="'+todayIST()+'" value="'+asOf+'"></label>'+
+    (canEdit?'<button class="btn line small" type="button" id="edit-btn">Edit project</button>':'')+
+    (canEdit&&isCaptive(p)?'<button class="btn line small" type="button" id="cap-btn">Captive data</button>':'')+
+    '<button class="btn gold small" type="button" id="note-btn">Lender note</button></div>';
+  var html='<div class="head"><h2 style="font-size:20px">'+esc(p.name)+'</h2>'+tools+'</div>'+
+   (past?'<div class="past">Showing results as they stood on '+dmy(asOf)+', using what the record held on that date. <button class="link" type="button" id="asof-reset">Back to today</button></div>':'')+
+   '<div class="summary"><div class="tile act"><b class="mono">'+s.act+'</b><span>need action</span></div><div class="tile watch"><b class="mono">'+s.watch+'</b><span>to watch</span></div><div class="tile clear"><b class="mono">'+s.clear+'</b><span>clear</span></div><div class="tile lend"><b class="mono">'+s.readiness+'%</b><span>lender readiness</span><div class="meter"><i style="width:'+s.readiness+'%"></i></div></div><div class="tile risk"><b class="mono" style="font-size:22px">'+(s.at_risk?inr(s.at_risk):"—")+'</b><span>can be clawed back</span></div></div>'+
+   '<div class="lenses">'+r.lenses.map(function(l){return'<article class="card lens"><header><h3>'+esc(l.h)+'</h3><p>'+esc(l.p)+'</p></header><ul class="items">'+l.items.map(function(x){var on=!!state.watches[id+"|"+x.k];return'<li class="item"><div class="chips">'+chip(x.s)+docChip(x.doc)+lblChip(x.lbl)+(past?'':'<button type="button" class="watchbtn" data-k="'+esc(x.k)+'" aria-pressed="'+on+'">'+(on?"Watching":"Watch")+'</button>')+'</div><div class="t">'+esc(x.t)+'</div><div class="d">'+esc(x.d)+'</div></li>'}).join("")+'</ul></article>'}).join("")+'</div>'+
+   evidenceHtml(r.evidence);
+  $("result").innerHTML=html;
   var eb=$("edit-btn");if(eb)eb.addEventListener("click",function(){openForm(p)});
+  var cb=$("cap-btn");if(cb)cb.addEventListener("click",function(){openCaptive(p)});
+  $("note-btn").addEventListener("click",function(){lenderNote(p,r,asOf)});
+  $("asof-in").addEventListener("change",function(e){var v=e.target.value;state.asOf=(v&&v!==todayIST())?v:null;selectProject(id)});
+  var rs=$("asof-reset");if(rs)rs.addEventListener("click",function(){state.asOf=null;selectProject(id)});
+}
+function evidenceHtml(ev){
+  if(!ev||!ev.length)return"";
+  return'<details class="card ev"><summary>Basis on record ('+ev.length+')</summary><ul class="evl">'+ev.map(function(e){
+    return'<li><div><b>'+esc(e.title)+'</b></div><div>'+esc(e.issuer||"")+(e.status?" · "+esc(e.status):"")+(e.status_as_of?" as at "+dmy(e.status_as_of):"")+(e.changed_after?" · updated since this date":"")+'</div>'+
+      '<div class="h">'+(e.sha256?"SHA-256 "+esc(e.sha256)+" · captured "+dmy(e.captured):"On record since "+dmy(e.captured))+'</div>'+
+      (e.source_url?'<div><a href="'+esc(e.source_url)+'" target="_blank" rel="noopener">Issuing document</a></div>':'')+'</li>'}).join("")+'</ul></details>';
 }
 document.addEventListener("click",async function(e){
   var pb=e.target.closest("[data-pid]");if(pb){selectProject(pb.getAttribute("data-pid"));return}
@@ -291,28 +353,73 @@ document.addEventListener("click",async function(e){
   if(wb){var k=wb.getAttribute("data-k"),key=state.current+"|"+k;
     if(state.watches[key]){await sb.from("client_watches").delete().eq("project_id",state.current).eq("item_key",k);delete state.watches[key]}
     else{var ins=await sb.from("client_watches").insert({project_id:state.current,item_key:k});if(!ins.error)state.watches[key]=true}
-    renderResult(state.current);return}
+    wb.setAttribute("aria-pressed",!!state.watches[key]);wb.textContent=state.watches[key]?"Watching":"Watch";return}
   var tb=e.target.closest("[data-tab]");
   if(tb){var t=tb.getAttribute("data-tab");document.querySelectorAll("[data-tab]").forEach(function(b){b.setAttribute("aria-selected",b===tb)});
-    $("t-project").classList.toggle("hidden",t!=="project");$("t-portfolio").classList.toggle("hidden",t!=="portfolio");
-    if(t==="portfolio")renderPortfolio()}
+    ["project","claw","portfolio","alerts"].forEach(function(n){$("t-"+n).classList.toggle("hidden",t!==n)});
+    if(t==="portfolio")renderPortfolio();if(t==="claw")renderClaw();if(t==="alerts")renderAlerts()}
 });
+async function allResults(){var d=await check(state.projects.map(function(p){return p.id}),null);return d.results}
 async function renderPortfolio(){
-  $("pbody").innerHTML='<tr><td colspan="6">Checking…</td></tr>';
-  try{var res=await check(state.projects.map(function(p){return p.id}));
+  $("pbody").innerHTML='<tr><td colspan="7">Checking…</td></tr>';
+  try{var res=await allResults();
     res.sort(function(a,b){return b.summary.act-a.summary.act||b.summary.watch-a.summary.watch});
-    $("pbody").innerHTML=res.map(function(r){var p=state.projects.find(function(x){return x.id===r.project_id});var s=r.summary;
-      return'<tr><td>'+esc(p.name)+' <small class="m-only" style="color:var(--muted);font-weight:400">'+esc(p.state)+'</small></td><td>'+esc(p.state)+'</td><td class="n" data-l="Action">'+(s.act?'<span class="chip s-act">'+s.act+'</span>':"0")+'</td><td class="n" data-l="Watch"><span class="chip s-watch">'+s.watch+'</span></td><td class="n" data-l="Clear">'+s.clear+'</td><td class="n" data-l="Lender">'+s.readiness+'%</td></tr>'}).join("")||'<tr><td colspan="6">No projects yet.</td></tr>';
-  }catch(e){$("pbody").innerHTML='<tr><td colspan="6">Could not load results.</td></tr>'}
+    $("pbody").innerHTML=res.map(function(r){var p=proj(r.project_id);var s=r.summary;
+      return'<tr><td>'+esc(p.name)+'</td><td>'+esc(p.state)+'</td><td class="n">'+(s.act?'<span class="chip s-act">'+s.act+'</span>':"0")+'</td><td class="n"><span class="chip s-watch">'+s.watch+'</span></td><td class="n">'+s.clear+'</td><td class="n">'+s.readiness+'%</td><td class="n">'+(s.at_risk?inr(s.at_risk):"—")+'</td></tr>'}).join("")||'<tr><td colspan="7">No projects yet.</td></tr>';
+  }catch(e){$("pbody").innerHTML='<tr><td colspan="7">Could not load results.</td></tr>'}
+}
+async function renderClaw(){
+  var el=$("t-claw");el.innerHTML='<div class="card empty">Checking…</div>';
+  try{var res=await allResults();var rows=[],total=0;
+    res.forEach(function(r){var p=proj(r.project_id);(r.clawback||[]).forEach(function(c){rows.push({p:p,c:c});if(c.counted!==false)total+=c.rupees||0})});
+    if(!rows.length){el.innerHTML='<div class="card empty">No reversible benefit recorded on any project. Tick what a project relies on in Edit project.</div>';return}
+    rows.sort(function(a,b){return(b.c.rupees||0)-(a.c.rupees||0)});
+    el.innerHTML='<div class="summary"><div class="tile risk"><b class="mono">'+inr(total)+'</b><span>can be clawed back across the portfolio</span></div><div class="tile act"><b class="mono">'+rows.filter(function(x){return x.c.status==="act"}).length+'</b><span>at risk now</span></div><div class="tile watch"><b class="mono">'+rows.filter(function(x){return x.c.status==="watch"}).length+'</b><span>to watch</span></div></div>'+
+      '<div class="card tbl-wrap claw"><table><thead><tr><th>Project</th><th>Benefit taken now</th><th>Can come back</th><th>When it is tested</th><th>Status</th></tr></thead><tbody>'+
+      rows.map(function(x){return'<tr><td>'+esc(x.p.name)+'</td><td><b>'+esc(x.c.benefit)+'</b><br><small style="color:var(--muted)">'+esc(x.c.basis)+'</small></td><td class="n">'+(x.c.rupees!=null?inr(x.c.rupees):"—")+'<br><small style="color:var(--muted);font-family:var(--body);white-space:normal">'+esc(x.c.rupees_note)+'</small></td><td>'+esc(x.c.tested)+'</td><td>'+chip(x.c.status)+'</td></tr>'}).join("")+
+      '</tbody><tfoot><tr><td colspan="2">Total</td><td class="n">'+inr(total)+'</td><td colspan="2"></td></tr></tfoot></table></div>';
+  }catch(e){el.innerHTML='<div class="card empty">Could not load the register.</div>'}
+}
+async function loadAlerts(){
+  var r=await sb.from("client_alerts").select("*").order("created_at",{ascending:false}).limit(100);
+  state.alerts=r.data||[];var n=state.alerts.filter(function(a){return!a.read_at}).length;
+  $("abadge").textContent=n;$("abadge").classList.toggle("hidden",!n);
+}
+async function renderAlerts(){
+  await loadAlerts();var el=$("t-alerts");
+  if(!state.alerts.length){el.innerHTML='<div class="card empty">No alerts yet. Press Watch on any result; when it changes, or when something new is recorded for your states, it appears here and by email.</div>';return}
+  el.innerHTML='<ul class="card alerts">'+state.alerts.map(function(a){return'<li class="'+(a.read_at?"":"unread")+'"><div class="asof">'+dmy(String(a.created_at).slice(0,10))+'</div><div class="t">'+esc(a.title)+'</div><div class="d">'+esc(a.body||"")+'</div></li>'}).join("")+'</ul>';
+  var unread=state.alerts.filter(function(a){return!a.read_at}).map(function(a){return a.id});
+  if(unread.length){await sb.rpc("mark_alerts_read",{ids:unread});$("abadge").classList.add("hidden")}
+}
+
+/* LENDER NOTE */
+function lenderNote(p,r,asOf){
+  var s=r.summary,w=window.open("","_blank");if(!w){alert("Allow pop-ups to open the note.");return}
+  var rows=r.lenses.map(function(l){return'<h3>'+esc(l.h)+'</h3><table>'+l.items.map(function(x){return'<tr><td class="s '+x.s+'">'+({act:"Action",watch:"Watch",clear:"Clear"})[x.s]+'</td><td class="s">'+({final:"Final",draft:"Draft",policy:"Policy"})[x.doc]+'</td><td><b>'+esc(x.t)+'</b><br>'+esc(x.d)+'</td></tr>'}).join("")+'</table>'}).join("");
+  var claw=(r.clawback||[]).length?'<h3>Clawback register</h3><table>'+r.clawback.map(function(c){return'<tr><td><b>'+esc(c.benefit)+'</b><br>'+esc(c.basis)+'</td><td class="n">'+(c.rupees!=null?inr(c.rupees):"—")+'</td><td>'+esc(c.tested)+'</td></tr>'}).join("")+'</table>':"";
+  w.document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><title>Lender readiness note · '+esc(p.name)+'</title><style>'+
+    'body{font:13px/1.45 "IBM Plex Sans",Arial,sans-serif;color:#13213a;max-width:780px;margin:24px auto;padding:0 20px}h1{font:700 22px Georgia,serif;margin:0}h2{font:600 14px Arial;margin:4px 0 14px;color:#5d677a}h3{font:700 15px Georgia,serif;margin:16px 0 6px;border-bottom:2px solid #e2ad48;padding-bottom:3px}'+
+    'table{width:100%;border-collapse:collapse}td{border-bottom:1px solid #e0ddd5;padding:6px 6px;vertical-align:top}td.s{white-space:nowrap;font-size:11px;font-weight:600;width:56px}td.act{color:#a3372a}td.watch{color:#8a5b00}td.clear{color:#2a7346}td.n{white-space:nowrap;text-align:right}'+
+    '.top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0b1f3a;padding-bottom:10px;margin-bottom:12px}.k{display:flex;gap:14px;margin:10px 0}.k div{border:1px solid #e0ddd5;border-radius:6px;padding:6px 10px}.k b{display:block;font-size:18px}'+
+    '.foot{margin-top:18px;font-size:11px;color:#5d677a}button{margin:10px 0;padding:8px 14px;background:#0b1f3a;color:#fff;border:0;border-radius:6px;cursor:pointer}@media print{button{display:none}body{margin:0}}</style></head><body>'+
+    '<button onclick="window.print()">Save as PDF / Print</button>'+
+    '<div class="top"><div><h1>Lender readiness note</h1><h2>'+esc(p.name)+' · '+esc(p.state)+' · '+esc(TYPES[p.ptype])+'</h2></div><div style="text-align:right"><b>DSN ASSURE</b><br>by D. S. Nikam<br>As of '+dmy(asOf)+'</div></div>'+
+    '<div class="k"><div><b>'+s.readiness+'%</b>rests on final rules, no open action</div><div><b>'+s.act+'</b>need action</div><div><b>'+s.watch+'</b>to watch</div><div><b>'+(s.at_risk?inr(s.at_risk):"—")+'</b>can be clawed back</div></div>'+
+    rows+claw+
+    '<p class="foot">Prepared for '+esc(state.org.name)+' from the DSN Assure workspace. Status and dates as recorded on '+dmy(asOf)+'. The basis for each line is held on record and shared under NDA. Not legal or investment advice.</p></body></html>');
+  w.document.close();
 }
 
 /* PROJECT FORM */
 var editing=null;
+function numOrNull(v){return v===""||v==null?null:Number(v)}
 function openForm(p){editing=p||null;$("dlg-title").textContent=p?"Edit project":"Add project";msg("f-msg","");
   var v=p||{name:"",state:"MH",ptype:"solar",re_mw:0,batt_mwh:0,conn:"insts",ownership:"captive"};
   $("f-name").value=v.name;$("f-state").value=v.state;$("f-type").value=v.ptype;$("f-mw").value=v.re_mw;$("f-mwh").value=v.batt_mwh;
   $("f-conn").value=v.conn;$("f-own").value=v.ownership;$("f-app").value=v.d_application||"";$("f-inp").value=v.d_inprinciple||"";
   $("f-cg").value=v.d_connectivity||"";$("f-cod").value=v.d_cod||"";$("f-ists").checked=!!v.b_ists;$("f-vgf").checked=!!v.b_vgf;$("f-cap").checked=!!v.b_captive;$("f-bank").checked=!!v.b_banking;
+  $("f-units").value=v.units_mwh==null?"":v.units_mwh;$("f-css").value=v.css_rate==null?"":v.css_rate;$("f-ists-cr").value=v.ists_waiver_cr==null?"":v.ists_waiver_cr;$("f-vgf-cr").value=v.vgf_cr==null?"":v.vgf_cr;
   $("dlg").showModal();}
 $("add-btn").addEventListener("click",function(){openForm(null)});
 $("f-cancel").addEventListener("click",function(){$("dlg").close()});
@@ -320,13 +427,51 @@ $("pform").addEventListener("submit",async function(e){
   e.preventDefault();var name=$("f-name").value.trim();if(!name){msg("f-msg","Give the project a name.");return}
   var row={client_id:state.org.id,name:name,state:$("f-state").value,ptype:$("f-type").value,re_mw:Number($("f-mw").value)||0,batt_mwh:Number($("f-mwh").value)||0,
     conn:$("f-conn").value,ownership:$("f-own").value,d_application:$("f-app").value||null,d_inprinciple:$("f-inp").value||null,d_connectivity:$("f-cg").value||null,d_cod:$("f-cod").value||null,
-    b_ists:$("f-ists").checked,b_vgf:$("f-vgf").checked,b_captive:$("f-cap").checked,b_banking:$("f-bank").checked};
+    b_ists:$("f-ists").checked,b_vgf:$("f-vgf").checked,b_captive:$("f-cap").checked,b_banking:$("f-bank").checked,
+    units_mwh:numOrNull($("f-units").value),css_rate:numOrNull($("f-css").value),ists_waiver_cr:numOrNull($("f-ists-cr").value),vgf_cr:numOrNull($("f-vgf-cr").value)};
   $("f-save").disabled=true;
   var r=editing?await sb.from("client_projects").update(Object.assign(row,{updated_at:new Date().toISOString()})).eq("id",editing.id).select().single()
                :await sb.from("client_projects").insert(row).select().single();
   $("f-save").disabled=false;
   if(r.error){msg("f-msg","Could not save: "+r.error.message);return}
   $("dlg").close();state.current=r.data.id;await loadProjects();
+});
+
+/* CAPTIVE DATA */
+var cap={project:null,users:[],gen:{}};
+async function openCaptive(p){
+  cap.project=p;msg("c-msg","");
+  var r=await sb.from("client_captive").select("gen,users").eq("project_id",p.id).maybeSingle();
+  cap.gen=(r.data&&r.data.gen)||{};cap.users=(r.data&&r.data.users)||[];
+  if(!cap.users.length)cap.users=[{name:"",group:"",own:"",cons:{}}];
+  drawCaptive();$("cdlg").showModal();
+}
+function drawCaptive(){
+  $("c-users").innerHTML=cap.users.map(function(u,i){return'<div class="urow"><div class="fld" style="margin:0"><label>User name</label><input data-u="'+i+'" data-f="name" value="'+esc(u.name)+'"></div><div class="fld" style="margin:0"><label>Group (optional)</label><input data-u="'+i+'" data-f="group" value="'+esc(u.group||"")+'"></div><div class="fld" style="margin:0"><label>Ownership %</label><input data-u="'+i+'" data-f="own" inputmode="decimal" value="'+esc(u.own)+'"></div><button class="btn line small" type="button" data-del="'+i+'">Remove</button></div>'}).join("");
+  var head='<thead><tr><th>Month</th><th>Generation</th>'+cap.users.map(function(u,i){return'<th>'+esc(u.name||("User "+(i+1)))+'</th>'}).join("")+'</tr></thead>';
+  var body='<tbody>'+MONTHS.map(function(m,mi){return'<tr><td>'+MLAB[mi]+' '+m.slice(0,4)+'</td><td><input inputmode="decimal" data-g="'+m+'" value="'+esc(cap.gen[m]||"")+'"></td>'+cap.users.map(function(u,i){return'<td><input inputmode="decimal" data-c="'+i+'" data-m="'+m+'" value="'+esc((u.cons||{})[m]||"")+'"></td>'}).join("")+'</tr>'}).join("")+'</tbody>';
+  $("c-grid").innerHTML=head+body;
+}
+$("cdlg").addEventListener("input",function(e){var t=e.target;
+  if(t.dataset.u!==undefined){cap.users[+t.dataset.u][t.dataset.f]=t.value.trim();if(t.dataset.f==="name"){var th=$("c-grid").querySelectorAll("thead th")[+t.dataset.u+2];if(th)th.textContent=t.value||("User "+(+t.dataset.u+1))}}
+  else if(t.dataset.g){if(t.value.trim())cap.gen[t.dataset.g]=t.value.trim();else delete cap.gen[t.dataset.g]}
+  else if(t.dataset.c!==undefined){var u=cap.users[+t.dataset.c];u.cons=u.cons||{};if(t.value.trim())u.cons[t.dataset.m]=t.value.trim();else delete u.cons[t.dataset.m]}
+});
+$("cdlg").addEventListener("click",function(e){var d=e.target.closest("[data-del]");if(d){cap.users.splice(+d.dataset.del,1);if(!cap.users.length)cap.users.push({name:"",group:"",own:"",cons:{}});drawCaptive()}});
+$("c-adduser").addEventListener("click",function(){cap.users.push({name:"",group:"",own:"",cons:{}});drawCaptive()});
+$("c-cancel").addEventListener("click",function(){$("cdlg").close()});
+$("c-save").addEventListener("click",async function(){
+  var num=/^\d+(\.\d+)?$/;var bad=null;
+  var users=cap.users.filter(function(u){return u.name});
+  if(!users.length)bad="Add at least one captive user with a name.";
+  users.forEach(function(u){if(!num.test(u.own||""))bad="Ownership for "+u.name+" must be a number (for example 14 or 14.5).";Object.keys(u.cons||{}).forEach(function(m){if(!num.test(u.cons[m]))bad="Check "+u.name+"'s figure for "+m+"."})});
+  Object.keys(cap.gen).forEach(function(m){if(!num.test(cap.gen[m]))bad="Check the generation figure for "+m+"."});
+  if(bad){msg("c-msg",bad);return}
+  $("c-save").disabled=true;
+  var r=await sb.from("client_captive").upsert({project_id:cap.project.id,gen:cap.gen,users:users,updated_at:new Date().toISOString()});
+  $("c-save").disabled=false;
+  if(r.error){msg("c-msg","Could not save: "+r.error.message);return}
+  $("cdlg").close();selectProject(cap.project.id);
 });
 
 setMode("signin");
