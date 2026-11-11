@@ -117,6 +117,11 @@ dialog::backdrop{background:rgba(11,31,58,.5)}
 .urow{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}
 @media(max-width:520px){.urow{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.claw table,.claw tbody,.claw tr,.claw td,.claw tfoot{display:block;width:100%}.claw thead{display:none}.claw tr{border-bottom:1px solid var(--line);padding:10px 12px}.claw td{border:0;padding:2px 0}.claw td.n{white-space:normal}.claw td:first-child{font-weight:600}}
+.wi{margin-bottom:16px;border-top:3px solid var(--gold)}.wi header{padding:12px 14px 6px}.wi header h3{font-size:17px}.wi header p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.wig{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px 20px;padding:8px 14px 14px}
+.wig label{font-size:13px;font-weight:500;display:flex;flex-direction:column;gap:4px}.wig label.chk{flex-direction:row;align-items:center}
+.wig span{display:flex;align-items:center;gap:10px}.wig input[type=range]{flex:1;accent-color:var(--brand)}.wig output{font-family:var(--mono);font-size:12.5px;min-width:74px;text-align:right}
+.arr{font-style:normal;color:var(--muted)}.winote{margin:0 14px 10px;font-size:12.5px;color:var(--muted)}
 footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color:var(--muted)}
 @media(max-width:600px){main{padding:16px 14px 40px}.top{padding:10px 14px}.lenses{grid-template-columns:1fr}}
 </style>
@@ -327,16 +332,18 @@ function renderResult(id,r,asOf){
   var tools='<div class="tools"><label>As of <input type="date" id="asof-in" min="2026-04-01" max="'+todayIST()+'" value="'+asOf+'"></label>'+
     (canEdit?'<button class="btn line small" type="button" id="edit-btn">Edit project</button>':'')+
     (canEdit&&isCaptive(p)?'<button class="btn line small" type="button" id="cap-btn">Captive data</button>':'')+
-    '<button class="btn gold small" type="button" id="note-btn">Lender note</button></div>';
+    (past?'':'<button class="btn line small" type="button" id="wi-btn">What if</button>')+'<button class="btn gold small" type="button" id="note-btn">Lender note</button></div>';
   var html='<div class="head"><h2 style="font-size:20px">'+esc(p.name)+'</h2>'+tools+'</div>'+
    (past?'<div class="past">Showing results as they stood on '+dmy(asOf)+', using what the record held on that date. <button class="link" type="button" id="asof-reset">Back to today</button></div>':'')+
    '<div class="summary"><div class="tile act"><b class="mono">'+s.act+'</b><span>need action</span></div><div class="tile watch"><b class="mono">'+s.watch+'</b><span>to watch</span></div><div class="tile clear"><b class="mono">'+s.clear+'</b><span>clear</span></div><div class="tile lend"><b class="mono">'+s.readiness+'%</b><span>lender readiness</span><div class="meter"><i style="width:'+s.readiness+'%"></i></div></div><div class="tile risk"><b class="mono" style="font-size:22px">'+(s.at_risk?inr(s.at_risk):"—")+'</b><span>can be clawed back</span></div></div>'+
+   '<div id="wi" class="card wi hidden"></div>'+
    '<div class="lenses">'+r.lenses.map(function(l){return'<article class="card lens"><header><h3>'+esc(l.h)+'</h3><p>'+esc(l.p)+'</p></header><ul class="items">'+l.items.map(function(x){var on=!!state.watches[id+"|"+x.k];return'<li class="item"><div class="chips">'+chip(x.s)+docChip(x.doc)+lblChip(x.lbl)+(past?'':'<button type="button" class="watchbtn" data-k="'+esc(x.k)+'" aria-pressed="'+on+'">'+(on?"Watching":"Watch")+'</button>')+'</div><div class="t">'+esc(x.t)+'</div><div class="d">'+esc(x.d)+'</div></li>'}).join("")+'</ul></article>'}).join("")+'</div>'+
    evidenceHtml(r.evidence);
   $("result").innerHTML=html;
   var eb=$("edit-btn");if(eb)eb.addEventListener("click",function(){openForm(p)});
   var cb=$("cap-btn");if(cb)cb.addEventListener("click",function(){openCaptive(p)});
   $("note-btn").addEventListener("click",function(){lenderNote(p,r,asOf)});
+  var wb=$("wi-btn");if(wb)wb.addEventListener("click",function(){openWhatIf(p,r)});
   $("asof-in").addEventListener("change",function(e){var v=e.target.value;state.asOf=(v&&v!==todayIST())?v:null;selectProject(id)});
   var rs=$("asof-reset");if(rs)rs.addEventListener("click",function(){state.asOf=null;selectProject(id)});
 }
@@ -391,6 +398,43 @@ async function renderAlerts(){
   el.innerHTML='<ul class="card alerts">'+state.alerts.map(function(a){return'<li class="'+(a.read_at?"":"unread")+'"><div class="asof">'+dmy(String(a.created_at).slice(0,10))+'</div><div class="t">'+esc(a.title)+'</div><div class="d">'+esc(a.body||"")+'</div></li>'}).join("")+'</ul>';
   var unread=state.alerts.filter(function(a){return!a.read_at}).map(function(a){return a.id});
   if(unread.length){await sb.rpc("mark_alerts_read",{ids:unread});$("abadge").classList.add("hidden")}
+}
+
+/* WHAT IF */
+function openWhatIf(p,base){
+  var el=$("wi");if(!el.classList.contains("hidden")){el.classList.add("hidden");return}
+  var cap=isCaptive(p);
+  el.innerHTML='<header><h3>What if</h3><p>Change an assumption and see what moves. Nothing here is saved.</p></header><div class="wig">'+
+    '<label>Surcharges (CSS and additional surcharge)<span><input type="range" id="wi-charge" min="-30" max="60" step="5" value="0"><output id="wi-charge-o">0%</output></span></label>'+
+    '<label>COD slips by<span><input type="range" id="wi-cod" min="0" max="24" step="3" value="0"><output id="wi-cod-o">0 months</output></span></label>'+
+    (cap?'<label>Captive consumption, rest of the year<span><input type="range" id="wi-cons" min="-30" max="30" step="2" value="0"><output id="wi-cons-o">0%</output></span></label>'+
+         '<label>Generation, rest of the year<span><input type="range" id="wi-gen" min="-30" max="30" step="5" value="0"><output id="wi-gen-o">0%</output></span></label>':'')+
+    '<label class="chk" style="margin:0"><input type="checkbox" id="wi-drafts"> Drafts are notified as they stand</label></div>'+
+    '<div style="padding:0 14px 14px"><button class="btn small" type="button" id="wi-run">Run</button></div><div id="wi-out"></div>';
+  el.classList.remove("hidden");
+  [["charge","%"],["cod"," months"],["cons","%"],["gen","%"]].forEach(function(x){var i=$("wi-"+x[0]);if(!i)return;i.addEventListener("input",function(){var v=+i.value;$("wi-"+x[0]+"-o").textContent=(v>0&&x[1]==="%"?"+":"")+v+x[1]})});
+  $("wi-run").addEventListener("click",async function(){
+    var sc={charge_pct:+$("wi-charge").value,cod_slip_months:+$("wi-cod").value,drafts_final:$("wi-drafts").checked};
+    if($("wi-cons")){sc.cap_cons_pct=+$("wi-cons").value;sc.cap_gen_pct=+$("wi-gen").value}
+    $("wi-run").disabled=true;$("wi-out").innerHTML='<div class="empty">Running…</div>';
+    try{
+      var r=await sb.functions.invoke("assure-check",{body:{project_ids:[p.id],scenario:sc}});
+      if(r.error)throw r.error;
+      var x=r.data.results[0];renderWhatIf(base,x.scenario,x.changes);
+    }catch(e){$("wi-out").innerHTML='<div class="empty">Could not run the scenario.</div>'}
+    $("wi-run").disabled=false;
+  });
+}
+function renderWhatIf(base,sc,changes){
+  var b=base.summary,s=sc.summary;
+  function cmp(lbl,x,y,fmt,cls){var up=y>x,same=y===x;return'<div class="tile '+cls+'"><span>'+lbl+'</span><b class="mono" style="font-size:20px">'+fmt(x)+' <i class="arr">→</i> '+fmt(y)+'</b>'+(same?'<span>no change</span>':'')+'</div>'}
+  var n=function(v){return v},pc=function(v){return v+"%"},rs=function(v){return v?inr(v):"—"};
+  var note=sc.applied.months_projected?'<p class="winote">Year-end view: the '+sc.applied.months_projected+' months not yet loaded run at the average of the loaded months, with your changes applied.</p>':'';
+  $("wi-out").innerHTML='<div class="summary" style="padding:0 14px;margin-bottom:10px">'+cmp("Need action",b.act,s.act,n,"act")+cmp("To watch",b.watch,s.watch,n,"watch")+cmp("Lender readiness",b.readiness,s.readiness,pc,"lend")+cmp("Can be clawed back",b.at_risk,s.at_risk,rs,"risk")+'</div>'+note+
+    (changes.length?'<ul class="items">'+changes.map(function(c){
+      var from=c.from?chip(c.from.s):'<span class="chip doc">New</span>',to=c.to?chip(c.to.s):'<span class="chip doc">Drops out</span>';
+      return'<li class="item"><div class="chips">'+from+'<i class="arr">→</i>'+to+'<span class="chip lbl">'+esc(c.h)+'</span></div><div class="t">'+esc((c.to||c.from).t)+'</div>'+(c.from&&c.to&&c.from.t!==c.to.t?'<div class="d">Was: '+esc(c.from.t)+'</div>':'')+'</li>'}).join("")+'</ul>'
+      :'<div class="empty">Nothing moves under this scenario.</div>');
 }
 
 /* LENDER NOTE */
