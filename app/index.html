@@ -404,17 +404,23 @@ async function renderAlerts(){
 function openWhatIf(p,base){
   var el=$("wi");if(!el.classList.contains("hidden")){el.classList.add("hidden");return}
   var cap=isCaptive(p);
+  var drafts=[];base.lenses.forEach(function(l){l.items.forEach(function(i){if(i.k.indexOf("limbo-")===0)drafts.push(i.t)})});
   el.innerHTML='<header><h3>What if</h3><p>Change an assumption and see what moves. Nothing here is saved.</p></header><div class="wig">'+
     '<label>Surcharges (CSS and additional surcharge)<span><input type="range" id="wi-charge" min="-30" max="60" step="5" value="0"><output id="wi-charge-o">0%</output></span></label>'+
     '<label>COD slips by<span><input type="range" id="wi-cod" min="0" max="24" step="3" value="0"><output id="wi-cod-o">0 months</output></span></label>'+
     (cap?'<label>Captive consumption, rest of the year<span><input type="range" id="wi-cons" min="-30" max="30" step="2" value="0"><output id="wi-cons-o">0%</output></span></label>'+
          '<label>Generation, rest of the year<span><input type="range" id="wi-gen" min="-30" max="30" step="5" value="0"><output id="wi-gen-o">0%</output></span></label>':'')+
-    '<label class="chk" style="margin:0"><input type="checkbox" id="wi-drafts"> Drafts are notified as they stand</label></div>'+
+    '<label>Drafts are notified late by<span><input type="range" id="wi-delay" min="0" max="24" step="3" value="0"><output id="wi-delay-o">0 months</output></span></label>'+
+    '<label>Battery cost (₹ crore per MWh)<span><input type="number" id="wi-cost" min="0" step="0.05" placeholder="your figure" style="flex:1;padding:6px 8px;border:1px solid var(--line);border-radius:6px"></span></label>'+
+    '<label class="chk" style="margin:0"><input type="checkbox" id="wi-drafts"> Drafts are notified as they stand</label>'+
+    '<label style="grid-column:1/-1">A draft you want to price yourself<span style="flex-wrap:wrap"><select id="wi-ct" style="flex:2;min-width:200px;padding:6px 8px;border:1px solid var(--line);border-radius:6px"><option value="">None</option>'+drafts.map(function(d){return'<option>'+esc(d)+'</option>'}).join("")+'</select><input type="number" id="wi-cd" step="0.01" placeholder="₹/kWh change once in force" style="flex:1;min-width:170px;padding:6px 8px;border:1px solid var(--line);border-radius:6px"></span></label></div>'+
     '<div style="padding:0 14px 14px"><button class="btn small" type="button" id="wi-run">Run</button></div><div id="wi-out"></div>';
   el.classList.remove("hidden");
-  [["charge","%"],["cod"," months"],["cons","%"],["gen","%"]].forEach(function(x){var i=$("wi-"+x[0]);if(!i)return;i.addEventListener("input",function(){var v=+i.value;$("wi-"+x[0]+"-o").textContent=(v>0&&x[1]==="%"?"+":"")+v+x[1]})});
+  [["charge","%"],["cod"," months"],["delay"," months"],["cons","%"],["gen","%"]].forEach(function(x){var i=$("wi-"+x[0]);if(!i)return;i.addEventListener("input",function(){var v=+i.value;$("wi-"+x[0]+"-o").textContent=(v>0&&x[1]==="%"?"+":"")+v+x[1]})});
   $("wi-run").addEventListener("click",async function(){
     var sc={charge_pct:+$("wi-charge").value,cod_slip_months:+$("wi-cod").value,drafts_final:$("wi-drafts").checked};
+    sc.draft_delay_months=+$("wi-delay").value;if($("wi-cost").value!=="")sc.batt_cost_cr=+$("wi-cost").value;
+    if($("wi-ct").value&&$("wi-cd").value!=="")sc.custom={title:$("wi-ct").value,delta:+$("wi-cd").value};
     if($("wi-cons")){sc.cap_cons_pct=+$("wi-cons").value;sc.cap_gen_pct=+$("wi-gen").value}
     $("wi-run").disabled=true;$("wi-out").innerHTML='<div class="empty">Running…</div>';
     try{
@@ -431,10 +437,18 @@ function renderWhatIf(base,sc,changes){
   var n=function(v){return v},pc=function(v){return v+"%"},rs=function(v){return v?inr(v):"—"};
   var note=sc.applied.months_projected?'<p class="winote">Year-end view: the '+sc.applied.months_projected+' months not yet loaded run at the average of the loaded months, with your changes applied.</p>':'';
   $("wi-out").innerHTML='<div class="summary" style="padding:0 14px;margin-bottom:10px">'+cmp("Need action",b.act,s.act,n,"act")+cmp("To watch",b.watch,s.watch,n,"watch")+cmp("Lender readiness",b.readiness,s.readiness,pc,"lend")+cmp("Can be clawed back",b.at_risk,s.at_risk,rs,"risk")+'</div>'+note+
-    (changes.length?'<ul class="items">'+changes.map(function(c){
+    timingHtml(sc.timing)+
+    (changes.length?'<p class="sec" style="margin:14px 14px 0">What moves</p><ul class="items">'+changes.map(function(c){
       var from=c.from?chip(c.from.s):'<span class="chip doc">New</span>',to=c.to?chip(c.to.s):'<span class="chip doc">Drops out</span>';
       return'<li class="item"><div class="chips">'+from+'<i class="arr">→</i>'+to+'<span class="chip lbl">'+esc(c.h)+'</span></div><div class="t">'+esc((c.to||c.from).t)+'</div>'+(c.from&&c.to&&c.from.t!==c.to.t?'<div class="d">Was: '+esc(c.from.t)+'</div>':'')+'</li>'}).join("")+'</ul>'
       :'<div class="empty">Nothing moves under this scenario.</div>');
+}
+
+function timingHtml(t){
+  if(!t||!t.length)return"";
+  return'<p class="sec" style="margin:6px 14px 0">Draft timing</p><ul class="items">'+t.map(function(x){
+    var money=x.saved!=null?(x.saved>=0?'<b style="color:var(--clear)">'+inr(x.saved)+' kept by the delay</b>':'<b style="color:var(--act)">'+inr(-x.saved)+' lost to the delay</b>'):(x.cost!=null?inr(x.cost)+(x.lbl==="input"?" a year":" at your battery cost"):"");
+    return'<li class="item"><div class="chips">'+chip(x.s)+'<span class="chip doc draft">Draft</span>'+lblChip(x.lbl)+'</div><div class="t">'+esc(x.title)+'</div><div class="d">'+esc(x.requirement)+(money?" · "+money:"")+'</div><div class="d">'+esc(x.result)+'</div></li>'}).join("")+'</ul>';
 }
 
 /* LENDER NOTE */
