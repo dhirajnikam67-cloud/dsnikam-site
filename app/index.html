@@ -190,6 +190,7 @@ footer{max-width:1400px;margin:0 auto;padding:0 24px 28px;font-size:12.5px;color
       <option value="bess">Standalone battery</option><option value="rooftop">Rooftop / C&amp;I</option><option value="dc">Data centre</option></select></div>
     <div class="fld"><label for="f-mw">RE capacity (MW)</label><input id="f-mw" type="number" min="0" step="0.1" value="0"></div>
     <div class="fld"><label for="f-mwh">Battery (MWh)</label><input id="f-mwh" type="number" min="0" step="1" value="0"></div>
+    <div class="fld"><label for="f-bmw">Battery (MW)</label><input id="f-bmw" type="number" min="0" step="0.1" placeholder="for solar + battery"></div>
     <div class="fld"><label for="f-conn">Connection</label><select id="f-conn"><option value="ists">ISTS</option><option value="insts" selected>State (InSTS)</option><option value="dist">Distribution</option></select></div>
     <div class="fld"><label for="f-own">Ownership</label><select id="f-own"><option value="captive">Captive</option><option value="group">Group captive</option><option value="third">Third-party</option><option value="ppa">Utility PPA</option></select></div>
     <div class="fld"><label for="f-app">Application date</label><input id="f-app" type="date"></div>
@@ -474,7 +475,7 @@ var editing=null;
 function numOrNull(v){return v===""||v==null?null:Number(v)}
 function openForm(p){editing=p||null;$("dlg-title").textContent=p?"Edit project":"Add project";msg("f-msg","");
   var v=p||{name:"",state:"MH",ptype:"solar",re_mw:0,batt_mwh:0,conn:"insts",ownership:"captive"};
-  $("f-name").value=v.name;$("f-state").value=v.state;$("f-type").value=v.ptype;$("f-mw").value=v.re_mw;$("f-mwh").value=v.batt_mwh;
+  $("f-name").value=v.name;$("f-state").value=v.state;$("f-type").value=v.ptype;$("f-mw").value=v.re_mw;$("f-mwh").value=v.batt_mwh;$("f-bmw").value=v.batt_mw==null?"":v.batt_mw;
   $("f-conn").value=v.conn;$("f-own").value=v.ownership;$("f-app").value=v.d_application||"";$("f-inp").value=v.d_inprinciple||"";
   $("f-cg").value=v.d_connectivity||"";$("f-cod").value=v.d_cod||"";$("f-ists").checked=!!v.b_ists;$("f-vgf").checked=!!v.b_vgf;$("f-cap").checked=!!v.b_captive;$("f-bank").checked=!!v.b_banking;
   $("f-units").value=v.units_mwh==null?"":v.units_mwh;$("f-css").value=v.css_rate==null?"":v.css_rate;$("f-ists-cr").value=v.ists_waiver_cr==null?"":v.ists_waiver_cr;$("f-vgf-cr").value=v.vgf_cr==null?"":v.vgf_cr;
@@ -483,7 +484,7 @@ $("add-btn").addEventListener("click",function(){openForm(null)});
 $("f-cancel").addEventListener("click",function(){$("dlg").close()});
 $("pform").addEventListener("submit",async function(e){
   e.preventDefault();var name=$("f-name").value.trim();if(!name){msg("f-msg","Give the project a name.");return}
-  var row={client_id:state.org.id,name:name,state:$("f-state").value,ptype:$("f-type").value,re_mw:Number($("f-mw").value)||0,batt_mwh:Number($("f-mwh").value)||0,
+  var row={client_id:state.org.id,name:name,state:$("f-state").value,ptype:$("f-type").value,re_mw:Number($("f-mw").value)||0,batt_mwh:Number($("f-mwh").value)||0,batt_mw:$("f-bmw").value===""?null:Number($("f-bmw").value),
     conn:$("f-conn").value,ownership:$("f-own").value,d_application:$("f-app").value||null,d_inprinciple:$("f-inp").value||null,d_connectivity:$("f-cg").value||null,d_cod:$("f-cod").value||null,
     b_ists:$("f-ists").checked,b_vgf:$("f-vgf").checked,b_captive:$("f-cap").checked,b_banking:$("f-bank").checked,
     units_mwh:numOrNull($("f-units").value),css_rate:numOrNull($("f-css").value),ists_waiver_cr:numOrNull($("f-ists-cr").value),vgf_cr:numOrNull($("f-vgf-cr").value)};
