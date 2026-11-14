@@ -233,6 +233,20 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
   .res th:nth-child(4),.res td:nth-child(4){display:none}
   footer .fl{margin-left:0}
 }
+.live{background:var(--navy);color:#fff;padding:26px 0 30px}
+.live .sh h2{color:#fff}.live .asof{color:#c9d3e3;font-size:13px}
+.lgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+.lt{display:flex;flex-direction:column;gap:4px;background:var(--navy-2);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:16px;color:#fff;text-decoration:none}
+.lt b{font:700 30px var(--serif);color:var(--gold-2)}.lt.act b{color:#f2a08f}
+.lt span{font-size:14.5px}.lt small{color:#c9d3e3;font-size:12.5px}.lt em{margin-top:auto;padding-top:8px;font-style:normal;font-size:13px;color:var(--gold-2)}
+.plans{padding:34px 0;background:var(--paper);border-top:1px solid var(--line)}
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:10px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.pc.feat{border:2px solid var(--gold)}.pc h3{margin:0;font:700 19px var(--serif);color:var(--navy)}.pc p{margin:0;color:var(--muted);font-size:14.5px;flex:1}
+.pc .btn{align-self:flex-start}
+[hidden]{display:none!important}
+@media (max-width:980px){.lgrid,.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.lgrid,.pgrid{grid-template-columns:1fr}}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:image" content="https://dsnikam.in/og/home.png">
@@ -275,8 +289,8 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
       <div class="rule"></div>
       <p class="lead">DSN Assure checks every central and state power rule against your own projects, and tells you what applies, from which date, and what it costs, <strong>before the money moves.</strong></p>
       <div class="ctas">
-        <a class="btn btn-gold" href="mailto:research@dsnikam.in?subject=DSN%20Assure">Run it on your portfolio <span aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn-line" href="/tracker">Explore the Rules Tracker</a>
+        <a class="btn btn-gold" href="mailto:research@dsnikam.in?subject=DSN%20Assure%20report%20request">Get the report <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-line" href="/app">Sign in</a>
       </div>
     </div>
     <svg class="net" viewBox="0 0 300 330" aria-hidden="true">
@@ -310,6 +324,16 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
   <div class="pf"><svg viewBox="0 0 36 36"><path d="M18 9 C14 6 9 6 4 7 V29 C9 28 14 28 18 31 C22 28 27 28 32 29 V7 C27 6 22 6 18 9Z M18 9 V31"/></svg><div><b>Status and date on every entry</b><span>Read from the primary government and regulatory text</span></div></div>
   <div class="pf"><svg viewBox="0 0 36 36"><path d="M18 5 L32 12 L18 19 L4 12Z M4 18 L18 25 L32 18 M4 24 L18 31 L32 24"/></svg><div><b>Draft and final kept apart</b><span>No mixing of proposals and notified rules</span></div></div>
 </div></div>
+<section class="live" id="live" hidden><div class="in">
+<div class="sh"><h2>Live from the national project database</h2><span class="asof" id="live-asof"></span></div>
+<div class="lgrid">
+<a class="lt" href="/app"><b id="l-subs">&nbsp;</b><span>ISTS renewable substations mapped</span><small id="l-subs2"></small><em>Sign in to see which &rarr;</em></a>
+<a class="lt act" href="/app"><b id="l-comply">&nbsp;</b><span>projects that must comply or withdraw</span><small id="l-comply2"></small><em>Sign in to see which &rarr;</em></a>
+<a class="lt" href="/app"><b id="l-proj">&nbsp;</b><span>projects checked against the newest GNA rules</span><small>on the day they were issued</small><em>Sign in to see which &rarr;</em></a>
+<a class="lt" href="/app"><b id="l-orders">&nbsp;</b><span>CERC change-in-law orders read from the order text</span><small>matched to each project's bid date</small><em>Sign in to see which &rarr;</em></a>
+</div>
+</div></section>
+
 
 <div class="does"><div class="in">
   <p class="dk">What DSN Assure does for you</p>
@@ -398,6 +422,17 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
     <p class="filings">Filings: comments filed with CEA, CERC and MERC. <a href="/cea-comments-2026">Read the CEA filing &rarr;</a></p>
   </div>
 </div>
+<section class="plans" id="plans"><div class="in">
+<div class="sh"><h2>Plans</h2><a href="/app">Client sign-in &rarr;</a></div>
+<p class="sub">For developers, lenders, investors and large power users.</p>
+<div class="pgrid">
+<div class="pc"><h3>Project Report</h3><p>One project, every rule that reaches it: what to protect, what it costs, and what to decide, with the evidence behind each.</p><a class="btn btn-gold" href="mailto:research@dsnikam.in?subject=Pricing%3A%20Project%20Report">Request pricing</a></div>
+<div class="pc"><h3>Portfolio Watch</h3><p>Your projects watched every day, with an alert and its effect when a rule or a CTUIL list changes.</p><a class="btn btn-gold" href="mailto:research@dsnikam.in?subject=Pricing%3A%20Portfolio%20Watch">Request pricing</a></div>
+<div class="pc feat"><h3>Full Access</h3><p>Every project in the database, the Grid Seat Radar, the Rule Impact Ledger, the Change-in-Law Ledger and the event feed, also inside your own AI assistant.</p><a class="btn btn-gold" href="mailto:research@dsnikam.in?subject=Pricing%3A%20Full%20Access">Request pricing</a></div>
+<div class="pc"><h3>Change-in-Law Claim Pack</h3><p>For one claim: the orders that decide it, your exposure invoice by invoice, and the papers the buyer will ask for.</p><a class="btn btn-gold" href="mailto:research@dsnikam.in?subject=Pricing%3A%20Change-in-Law%20Claim%20Pack">Request pricing</a></div>
+</div>
+</div></section>
+
 
 <section class="caps">
   <div class="sh"><h2>DSN Assure capabilities</h2></div>
@@ -452,6 +487,21 @@ footer .fc svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:1.6}
 (function(){var b=document.getElementById("burger"),n=document.getElementById("nav");
 b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)});
 n.addEventListener("click",function(e){if(e.target.closest("a"))n.classList.remove("open")});})();
+</script>
+<script>
+(function(){
+  var f=function(v){return v>=1000?(v/1000).toFixed(1)+" GW":Math.round(v)+" MW"};
+  fetch("https://qmmtlyqxtiovkxezldtg.supabase.co/functions/v1/insights-teaser").then(function(r){return r.ok?r.json():Promise.reject()}).then(function(j){
+    document.getElementById("l-subs").textContent=j.substations;
+    document.getElementById("l-subs2").textContent=f(j.solar_room_mw)+" of room left in solar hours";
+    document.getElementById("l-comply").textContent=j.comply_projects;
+    document.getElementById("l-comply2").textContent=f(j.comply_mw)+" of connectivity";
+    document.getElementById("l-proj").textContent=j.projects_checked;
+    document.getElementById("l-orders").textContent=j.orders_read;
+    var d=j.as_of||""; document.getElementById("live-asof").textContent=d?"Source: CTUIL and CERC public records, as of "+d.slice(8,10)+"."+d.slice(5,7)+"."+d.slice(0,4):"";
+    document.getElementById("live").hidden=false;
+  }).catch(function(){});
+})();
 </script>
 </body>
 </html>
