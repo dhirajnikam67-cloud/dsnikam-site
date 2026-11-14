@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Change-in-Law Ledger · DSN Assure</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,57 +81,15 @@ h2{font:700 21px var(--serif);margin:0 0 4px}
 <script src="/insights/data.js"></script>
 <script>
 let PAID = false;
-const D = {
-"untested": [
-{
-"name": "CERC GNA Regulations, Fourth Amendment",
-"date": "2026-11-11",
-"what": "One-time GNA charge timing, guarantee return, storage energy rule, full withdrawal"
-},
-{
-"name": "CTUIL advisory on minimum storage duration for BESS",
-"date": "2026-10-20",
-"what": "2 or 4 hours of storage, with co-located RE for charging"
-},
-{
-"name": "CERC suo motu order 16/SM/2026 on DSM Regulations",
-"date": "2026-10-03",
-"what": "Deviation settlement treatment"
-},
-{
-"name": "CERC suo motu order 11/SM/2026 on LoA holders without PPA",
-"date": "2026-07-10",
-"what": "Options for awarded capacity without a PPA"
-},
-{
-"name": "Electricity (Amendment) Rules, 2026",
-"date": "2026-03-13",
-"what": "Captive generating plant test substituted"
-}
-],
-"examples": [
-{
-"label": "Bid in late 2018",
-"bid": "2018-11-20"
-},
-{
-"label": "Bid in early 2021",
-"bid": "2021-02-09"
-},
-{
-"label": "Bid in mid-2022",
-"bid": "2022-07-04"
-}
-],
-"events": [],
-"precedents": []
-};
+const D = {"untested":[],"examples":[],"events":[],"precedents":[]};
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const dd = s => s ? s.slice(8,10)+"."+s.slice(5,7)+"."+s.slice(0,4) : "";
 const cls = o => o.startsWith("allowed") ? "allowed" : (o === "not at this stage" || o === "settled") ? "notyet" : "no";
 const lbl = o => o.startsWith("allowed") ? "Allowed" : o === "not at this stage" ? "Not yet, cost unproven" : o === "settled" ? "Settled" : "Not compensated";
-document.getElementById("ex").innerHTML = D.examples.map(e => `<button class="chip" data-b="${e.bid}">${esc(e.label)}</button>`).join("");
-document.querySelectorAll("[data-b]").forEach(b => b.onclick = () => { document.getElementById("bid").value = b.dataset.b; draw(); });
+function chips(){
+  document.getElementById("ex").innerHTML = D.examples.map(e => `<button class="chip" data-b="${e.bid}">${esc(e.label)}</button>`).join("");
+  document.querySelectorAll("[data-b]").forEach(b => b.onclick = () => { document.getElementById("bid").value = b.dataset.b; draw(); });
+}
 document.getElementById("bid").oninput = draw;
 function draw(){
   const bid = document.getElementById("bid").value;
@@ -150,7 +109,7 @@ function draw(){
   document.getElementById("before").innerHTML = before.length ? before.map(e => `<div class="ev"><div class="h"><span class="t">${esc(e.name)}</span><span class="d">${dd(e.date)}</span></div><div class="d">${esc(e.inst)}</div></div>`).join("") : `<div class="empty">None of the tested changes came before this date.</div>`;
 }
 DSN.load("cil").then(j => {
-  PAID = !!j.paid; D.events = j.events || []; D.precedents = j.precedents || [];
+  PAID = !!j.paid; D.events = j.events || []; D.precedents = j.precedents || []; D.untested = j.untested || []; D.examples = j.examples || []; if (typeof chips === "function") chips();
   if (PAID) {
     document.getElementById("lock").hidden = true; document.getElementById("asks").hidden = false;
     const uniq = a => [...new Set(a.filter(Boolean))];
