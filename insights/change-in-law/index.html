@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change-in-Law Ledger · DSN Assure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f3a;--navy-3:#1b3760;--gold:#e2ad48;--gold-soft:#fbf1dc;--ink:#13213a;--muted:#5d677a;--line:#e4e2dc;--paper:#f6f5f1;
+--ok:#2a7346;--ok-bg:#e3f2e7;--warn:#8a5b00;--warn-bg:#fbf0d6;--no:#a3372a;--no-bg:#f8e6e2;--grey:#eef0f3;
+--serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html,body{margin:0;overflow-x:clip}
+body{font:15px/1.55 var(--sans);color:var(--ink);background:var(--paper)}
+.in{max-width:1000px;margin:0 auto;padding:0 20px}
+.top{background:var(--navy);color:#fff}
+.bar{display:flex;align-items:center;gap:10px;padding:14px 0;font:700 18px var(--serif)}
+.bar i{display:inline-block;width:26px;height:26px;border-radius:6px;background:var(--gold);color:var(--navy);font:700 15px/26px var(--serif);text-align:center;font-style:normal}
+.hero{background:var(--navy);color:#fff;padding:16px 0 64px}
+.eyebrow{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+h1{font:700 32px/1.15 var(--serif);margin:8px 0 10px;max-width:760px}
+.sub{color:#c9d3e3;margin:0;max-width:700px}
+.panel{max-width:1000px;margin:-40px auto 0;padding:0 20px}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.inp{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.inp label{font-size:13px;color:var(--muted);display:block;margin-bottom:4px}
+.inp input{font:16px var(--sans);padding:9px 12px;border:1px solid var(--line);border-radius:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{font:500 13px var(--sans);padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 0}
+.sum div{background:var(--paper);border-radius:12px;padding:12px}
+.sum b{display:block;font:700 24px var(--serif)}
+.sum span{font-size:13px;color:var(--muted)}
+section{max-width:1000px;margin:22px auto 0;padding:0 20px}
+h2{font:700 21px var(--serif);margin:0 0 4px}
+.lead{color:var(--muted);margin:0 0 12px;font-size:14px}
+.ev{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.ev .h{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.ev .t{font-weight:600}
+.ev .d{font-size:13px;color:var(--muted)}
+.prec{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.p{display:flex;gap:10px;align-items:baseline;font-size:14px;flex-wrap:wrap}
+.badge{font:600 11.5px var(--sans);padding:2px 8px;border-radius:999px;white-space:nowrap}
+.allowed{background:var(--ok-bg);color:var(--ok)}.notyet{background:var(--warn-bg);color:var(--warn)}.no{background:var(--no-bg);color:var(--no)}.grey{background:var(--grey);color:var(--muted)}
+.priced .ev{opacity:.75}
+.check{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px 16px}
+.check li{margin:8px 0}
+.lock{margin:12px 0 0;background:var(--gold-soft);border-radius:12px;padding:12px 14px;display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14px}
+.lock button{font:600 13px var(--sans);background:var(--navy);color:#fff;border:0;border-radius:8px;padding:8px 12px;cursor:pointer;white-space:nowrap}
+.foot{max-width:1000px;margin:26px auto 50px;padding:0 20px;color:var(--muted);font-size:13px}
+.empty{color:var(--muted);font-size:14px;padding:6px 0}
+@media (max-width:640px){h1{font-size:25px}.sum{grid-template-columns:1fr}}
+.nt{display:block;margin-top:4px;color:#8a5a00;font-size:12.5px}
+.lock .btn{text-decoration:none;font:600 13px var(--sans);background:var(--navy);color:#fff;border-radius:8px;padding:8px 12px;white-space:nowrap}
+.tc{font-size:13.5px;color:#2b3850}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="in bar"><i>D</i> DSN Assure</div></header>
+<div class="hero"><div class="in">
+  <div class="eyebrow">Change-in-Law Ledger</div>
+  <h1>Every rule that changed after your bid, and how the Commission has treated it.</h1>
+  <p class="sub">Enter the last date of bid submission. The ledger sorts each change into what is claimable, what was already priced in, and what is new and not yet tested.</p>
+</div></div>
+<div class="panel"><div class="box">
+  <div class="inp"><div><label for="bid">Last date of bid submission</label><input id="bid" type="date" value="2018-11-20"></div></div>
+  <div class="chips" id="ex"></div>
+  <div class="sum" id="sum"></div>
+</div></div>
+<section><h2>Changed after your bid, already tested</h2><p class="lead">Outcomes in earlier CERC orders on the same change.</p><div id="tested"></div>
+  <div class="lock" id="lock"><span>Orders, paragraphs and conditions for each change, and your exposure invoice by invoice</span><a class="btn" href="/app">Get the claim pack</a></div></section>
+<section><h2>New since your bid, not yet tested</h2><p class="lead">Changes in force after your bid that no order has yet treated as Change in Law.</p><div id="untested"></div></section>
+<section class="priced"><h2>Before your bid</h2><p class="lead">Already in force when the bid went in, so priced into the tariff.</p><div id="before"></div></section>
+<section id="asks" hidden><h2>What the orders ask for</h2><div class="check"><ul id="asklist"></ul></div></section>
+<footer class="foot" id="src">Source: CERC orders</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/insights/data.js"></script>
+<script>
+let PAID = false;
+const D = {
+"untested": [
+{
+"name": "CERC GNA Regulations, Fourth Amendment",
+"date": "2026-11-11",
+"what": "One-time GNA charge timing, guarantee return, storage energy rule, full withdrawal"
+},
+{
+"name": "CTUIL advisory on minimum storage duration for BESS",
+"date": "2026-10-20",
+"what": "2 or 4 hours of storage, with co-located RE for charging"
+},
+{
+"name": "CERC suo motu order 16/SM/2026 on DSM Regulations",
+"date": "2026-10-03",
+"what": "Deviation settlement treatment"
+},
+{
+"name": "CERC suo motu order 11/SM/2026 on LoA holders without PPA",
+"date": "2026-07-10",
+"what": "Options for awarded capacity without a PPA"
+},
+{
+"name": "Electricity (Amendment) Rules, 2026",
+"date": "2026-03-13",
+"what": "Captive generating plant test substituted"
+}
+],
+"examples": [
+{
+"label": "Bid in late 2018",
+"bid": "2018-11-20"
+},
+{
+"label": "Bid in early 2021",
+"bid": "2021-02-09"
+},
+{
+"label": "Bid in mid-2022",
+"bid": "2022-07-04"
+}
+],
+"events": [],
+"precedents": []
+};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dd = s => s ? s.slice(8,10)+"."+s.slice(5,7)+"."+s.slice(0,4) : "";
+const cls = o => o.startsWith("allowed") ? "allowed" : (o === "not at this stage" || o === "settled") ? "notyet" : "no";
+const lbl = o => o.startsWith("allowed") ? "Allowed" : o === "not at this stage" ? "Not yet, cost unproven" : o === "settled" ? "Settled" : "Not compensated";
+document.getElementById("ex").innerHTML = D.examples.map(e => `<button class="chip" data-b="${e.bid}">${esc(e.label)}</button>`).join("");
+document.querySelectorAll("[data-b]").forEach(b => b.onclick = () => { document.getElementById("bid").value = b.dataset.b; draw(); });
+document.getElementById("bid").oninput = draw;
+function draw(){
+  const bid = document.getElementById("bid").value;
+  document.querySelectorAll("[data-b]").forEach(b => b.classList.toggle("on", b.dataset.b === bid));
+  if (!bid) return;
+  const after = D.events.filter(e => e.date > bid && e.tested > 0), before = D.events.filter(e => e.date <= bid);
+  const unt = D.untested.filter(u => u.date > bid);
+  const allowed = after.filter(e => e.allowed > 0).length;
+  document.getElementById("sum").innerHTML = `<div><b>${after.length}</b><span>tested changes after your bid</span></div><div><b>${allowed}</b><span>of them allowed in earlier orders</span></div><div><b>${unt.length}</b><span>new changes not yet tested</span></div>`;
+  document.getElementById("tested").innerHTML = after.length ? after.map(e => {
+    const ps = D.precedents.filter(p => p.ev === e.key);
+    const tc = `<div class="tc">Tested in ${e.tested} order${e.tested===1?"":"s"}; allowed in ${e.allowed}.</div>`;
+    return `<div class="ev"><div class="h"><span class="t">${esc(e.name)}</span><span class="d">${dd(e.date)}</span></div><div class="d">${esc(e.inst)}</div>
+      ${PAID ? "" : tc}<div class="prec">${ps.map(p => `<div class="p"><span class="badge ${cls(p.out)}">${lbl(p.out)}</span><span>${esc(p.pet)}, order of ${dd(p.od)} · ${esc(p.who)} ${p.bid ? " · bid " + dd(p.bid) : ""} · paras ${esc(p.paras)}<br><span>${esc(p.finding)}</span>${p.text_issues ? `<br><span class="nt">${esc(p.text_issues)}</span>` : ""}${p.separate_opinion ? `<br><span class="nt">Separate opinion: ${esc(p.separate_opinion)}</span>` : ""}</span></div>`).join("")}</div></div>`;
+  }).join("") : `<div class="empty">No tested change falls after this date.</div>`;
+  document.getElementById("untested").innerHTML = unt.length ? unt.map(u => `<div class="ev"><div class="h"><span class="t">${esc(u.name)}</span><span class="d">${dd(u.date)}</span></div><div class="d">${esc(u.what)}</div><div class="prec"><div class="p"><span class="badge grey">Not yet tested</span></div></div></div>`).join("") : `<div class="empty">None.</div>`;
+  document.getElementById("before").innerHTML = before.length ? before.map(e => `<div class="ev"><div class="h"><span class="t">${esc(e.name)}</span><span class="d">${dd(e.date)}</span></div><div class="d">${esc(e.inst)}</div></div>`).join("") : `<div class="empty">None of the tested changes came before this date.</div>`;
+}
+DSN.load("cil").then(j => {
+  PAID = !!j.paid; D.events = j.events || []; D.precedents = j.precedents || [];
+  if (PAID) {
+    document.getElementById("lock").hidden = true; document.getElementById("asks").hidden = false;
+    const uniq = a => [...new Set(a.filter(Boolean))];
+    document.getElementById("asklist").innerHTML = uniq(D.precedents.map(p => p.conditions)).slice(0, 6).concat(uniq(D.precedents.map(p => p.mechanism)).slice(0, 3)).map(t => `<li>${esc(t)}</li>`).join("");
+  }
+  document.getElementById("src").textContent = "Source: CERC orders (" + j.orders + "), as of " + dd(j.as_of) + ".";
+  draw();
+}).catch(() => { document.getElementById("tested").innerHTML = '<div class="empty">Data is being refreshed. Please try again shortly.</div>'; });
+</script>
+</body>
+</html>

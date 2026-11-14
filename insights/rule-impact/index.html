@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rule Impact Ledger · DSN Assure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f3a;--gold:#e2ad48;--gold-soft:#fbf1dc;--ink:#13213a;--muted:#5d677a;--line:#e4e2dc;--paper:#f6f5f1;--act:#a3372a;--watch:#8a5b00;--serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html,body{margin:0;overflow-x:clip}body{font:15px/1.55 var(--sans);color:var(--ink);background:var(--paper)}
+.in{max-width:980px;margin:0 auto;padding:0 20px}.top{background:var(--navy);color:#fff}
+.bar{display:flex;align-items:center;gap:10px;padding:14px 0;font:700 18px var(--serif)}
+.bar i{display:inline-block;width:26px;height:26px;border-radius:6px;background:var(--gold);color:var(--navy);font:700 15px/26px var(--serif);text-align:center;font-style:normal}
+.hero{background:var(--navy);color:#fff;padding:16px 0 60px}.eyebrow{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+h1{font:700 30px/1.18 var(--serif);margin:8px 0 8px}.sub{color:#c9d3e3;margin:0}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.meta span{font-size:12.5px;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:3px 10px;color:#dfe6f1}
+.grid{max-width:980px;margin:-36px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card .n{font:700 34px/1 var(--serif)}.card .n small{font:600 15px var(--sans);color:var(--muted);margin-left:6px}
+.card.act .n{color:var(--act)}.card.watch .n{color:var(--watch)}
+.card h3{margin:8px 0 4px;font:600 16px var(--sans)}.card p{margin:0;color:#2b3850;font-size:14px}
+.lock{max-width:980px;margin:18px auto 0;padding:0 20px}
+.lk{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden}
+.lk h2{font:700 19px var(--serif);margin:0 0 10px}
+.rows{filter:blur(5px);user-select:none}.rows div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:8px 0;font-size:14px}
+.over{position:absolute;inset:auto 0 0 0;background:linear-gradient(180deg,rgba(255,255,255,0),#fff 45%);padding:40px 18px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.over a{text-decoration:none;font:600 13px var(--sans);background:var(--navy);color:#fff;border-radius:8px;padding:9px 12px;white-space:nowrap}
+.g{border-bottom:1px solid var(--line);padding:10px 0}.g h3{margin:0 0 4px;font:600 15px var(--sans);display:flex;justify-content:space-between}.g .pr{font-size:13.5px;color:#2b3850;padding:3px 0}.g .pr b{font-weight:600}.g .pr span{color:var(--muted)}
+.over button{font:600 13px var(--sans);background:var(--navy);color:#fff;border:0;border-radius:8px;padding:9px 12px;white-space:nowrap}
+.foot{max-width:980px;margin:22px auto 50px;padding:0 20px;color:var(--muted);font-size:13px}
+@media (max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:24px}}
+[hidden]{display:none!important}
+</style></head><body>
+<header class="top"><div class="in bar"><i>D</i> DSN Assure</div></header>
+<div class="hero"><div class="in">
+<div class="eyebrow">Rule Impact Ledger</div>
+<h1>CERC's Fourth Amendment to the GNA Regulations, across every ISTS project</h1>
+<p class="sub">What changed on 11.11.2026, and which projects it reaches, the day it was issued.</p>
+<div class="meta"><span>Final · issued 11.11.2026</span><span>In force from Gazette publication</span><span id="checked"></span></div>
+</div></div>
+<div class="grid" id="cards"></div>
+<div class="lock"><div class="lk" id="lk"></div></div>
+<footer class="foot" id="src">Source: CTUIL public records</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/insights/data.js"></script>
+<script>
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const n = v => Number(v || 0).toLocaleString("en-IN");
+const gw = v => v >= 1000 ? "≈" + (v/1000).toFixed(1) + " GW" : n(v) + " MW";
+const card = (cls, num, small, h, p) => `<div class="card ${cls}"><div class="n">${num}<small>${small}</small></div><h3>${h}</h3><p>${p}</p></div>`;
+DSN.load("impact").then(j => {
+  document.getElementById("checked").textContent = n(j.checked) + " projects checked";
+  document.getElementById("cards").innerHTML = [
+    card("watch", n(j.gna_new.projects), "projects · ₹" + n(j.gna_new.crore) + " crore", "One-time GNA charge, new timing", "Projects whose GNA has not yet started."),
+    card("watch", n(j.gna_old.projects), "projects · ₹" + n(j.gna_old.crore) + " crore", "Charge on earlier-regime grants", "Liability contested before CERC."),
+    card("act", n(j.comply_or_withdraw.projects), "projects · " + gw(j.comply_or_withdraw.mw), "Comply or withdraw", "Not commissioned and on CTUIL's revocation watch list."),
+    card("act", n(j.storage.short), "of " + n(j.storage.projects) + " storage projects", "Storage below twice its MW", n(j.storage.projects) + " projects with " + n(j.storage.mw) + " MW of storage; " + n(j.storage.short) + " short in CTUIL's own record."),
+    card("", n(j.revocation.projects), "projects · " + n(j.revocation.groups) + " owner groups", "Revocation procedure to be rewritten", "A revised CTUIL procedure is due for CERC approval."),
+    card("", "All", "ISTS generators", "Guarantee return schedule replaced", "One return after one year from COD.")
+  ].join("");
+  const lk = document.getElementById("lk");
+  if (j.paid) {
+    lk.innerHTML = `<h2>Which projects, and what each must do by when</h2>` + (j.groups || []).map(g => `<div class="g"><h3><span>${esc(g.group)}</span><span>${gw(g.mw)}</span></h3>` +
+      g.projects.map(p => `<div class="pr"><b>${esc(p.developer)}</b> · ${esc(p.substation)}, ${esc(p.state)}<br><span>${[
+        p.not_commissioned ? "not commissioned, on watch list" : (p.due ? "on watch list" : ""),
+        p.due ? "due " + DSN.dd(p.due) : "",
+        p.open_mw ? n(p.open_mw) + " MW open" : "",
+        p.gna_charge_crore ? "GNA charge ₹" + p.gna_charge_crore + " crore" + (p.earlier_regime ? " (earlier regime, contested)" : "") : "",
+        p.storage === "act" ? "storage short of twice its MW" : (p.storage ? "storage rule applies" : "")
+      ].filter(Boolean).join(" · ")}</span></div>`).join("") + `</div>`).join("");
+  } else {
+    lk.innerHTML = `<h2>Which projects, and what each must do by when</h2><div class="rows">` +
+      (j.groups || []).map(g => `<div><span>${esc(g.group)} · ${g.n} project${g.n === 1 ? "" : "s"}</span><span>${n(g.mw)} MW</span></div>`).join("") +
+      `</div><div class="over"><span>Project list, dates and rupees for each owner group</span><a href="/app">Get the ledger</a></div>`;
+  }
+  document.getElementById("src").textContent = "Source: CTUIL public records, as of " + DSN.dd(DSN.latest(j.as_of)) + ".";
+}).catch(() => { document.getElementById("cards").innerHTML = '<div class="card"><p>Data is being refreshed. Please try again shortly.</p></div>'; });
+</script>
+</body></html>

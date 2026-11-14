@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Seat Radar · DSN Assure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f3a;--navy-3:#1b3760;--gold:#e2ad48;--gold-soft:#fbf1dc;--ink:#13213a;--muted:#5d677a;--line:#e4e2dc;--paper:#f6f5f1;
+--act:#a3372a;--act-bg:#f8e6e2;--sun:#c98a12;--moon:#2f4f86;--ok:#2a7346;
+--serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html,body{margin:0;overflow-x:clip}
+body{font:15px/1.5 var(--sans);color:var(--ink);background:var(--paper)}
+.top{background:var(--navy);color:#fff}
+.in{max-width:1180px;margin:0 auto;padding:0 20px}
+.bar{display:flex;align-items:center;gap:10px;padding:14px 0;font:700 18px var(--serif)}
+.bar i{display:inline-block;width:26px;height:26px;border-radius:6px;background:var(--gold);color:var(--navy);font:700 15px/26px var(--serif);text-align:center;font-style:normal}
+.hero{background:var(--navy);color:#fff;padding:18px 0 70px}
+.eyebrow{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+h1{font:700 34px/1.12 var(--serif);margin:8px 0 10px;max-width:760px}
+.sub{color:#c9d3e3;margin:0;max-width:680px}
+.kpis{max-width:1180px;margin:-46px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.kpi b{display:block;font:700 26px var(--serif)}
+.kpi span{font-size:13px;color:var(--muted)}
+.kpi.w b{color:var(--act)}.kpi.s b{color:var(--sun)}.kpi.n b{color:var(--moon)}
+.controls{max-width:1180px;margin:20px auto 6px;padding:0 20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.controls input{flex:1 1 220px;font:15px var(--sans);padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.chip{font:500 13px var(--sans);padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.sorts{max-width:1180px;margin:0 auto 10px;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap}
+.grid{max-width:1180px;margin:0 auto 30px;padding:0 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.card h3{margin:0;font:700 18px var(--serif)}
+.card .loc{font-size:13px;color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:baseline;font-size:14px}
+.row b{font-weight:600}
+.meter{height:6px;border-radius:4px;background:#efeee9;overflow:hidden}
+.meter span{display:block;height:100%}
+.watch{background:var(--act-bg);border-radius:10px;padding:10px 12px;font-size:14px}
+.watch b{color:var(--act)}
+.calm{background:#eef5f0;border-radius:10px;padding:10px 12px;font-size:14px;color:var(--ok)}
+.lock{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px dashed var(--line);padding-top:10px;font-size:13px;color:var(--muted)}
+.plist{border-top:1px dashed var(--line);padding-top:8px;display:grid;gap:6px;font-size:13px}.plist div{display:flex;flex-direction:column}.plist span{color:var(--muted)}
+.lock .btn{text-decoration:none;font:600 12.5px var(--sans);background:var(--navy);color:#fff;border-radius:8px;padding:7px 10px;white-space:nowrap}
+.lock button{font:600 12.5px var(--sans);background:var(--navy);color:#fff;border:0;border-radius:8px;padding:7px 10px;cursor:pointer;white-space:nowrap}
+.foot{max-width:1180px;margin:0 auto 50px;padding:0 20px;color:var(--muted);font-size:13px}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px}
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}h1{font-size:28px}}
+@media (max-width:620px){.grid{grid-template-columns:1fr}h1{font-size:25px}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="in bar"><i>D</i> DSN Assure</div></header>
+<section class="hero"><div class="in">
+  <div class="eyebrow">Grid Seat Radar</div>
+  <h1>Where ISTS connectivity is full, where room is left, and where seats may open next.</h1>
+  <p class="sub">Every ISTS renewable substation in CTUIL's records, with its solar-hour and non-solar-hour room and the connectivity now on CTUIL's revocation watch list.</p>
+</div></section>
+<div class="kpis">
+  <div class="kpi"><b id="k-subs"></b><span>ISTS renewable substations</span></div>
+  <div class="kpi s"><b id="k-s"></b><span>room left in solar hours</span></div>
+  <div class="kpi n"><b id="k-n"></b><span>room left in non-solar hours</span></div>
+  <div class="kpi w"><b id="k-watch"></b><span>connectivity without declared COD on the revocation watch list</span></div>
+</div>
+<div class="controls">
+  <input id="q" type="search" placeholder="Search a substation or state, e.g. Kallam, Karnataka">
+  <span id="regions"></span>
+</div>
+<div class="sorts" id="sorts"></div>
+<main class="grid" id="grid"></main>
+<footer class="foot">
+  <p id="src">Source: CTUIL public records</p>
+  <p>Room left is CTUIL's margin after granted and agreed connectivity, subject to system studies. Seats on the watch list return only if the connectivity is in fact revoked.</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/insights/data.js"></script>
+<script>
+let DATA = [], PAID = false;
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt = v => v == null ? "–" : (v >= 1000 ? (v/1000).toFixed(1) + " GW" : Math.round(v) + " MW");
+const dd = s => s ? s.slice(8,10)+"."+s.slice(5,7)+"."+s.slice(0,4) : "";
+const TODAY = new Date().toISOString().slice(0,10);
+let maxN = 1;
+let region = "All", sort = "watch";
+const SORTS = {watch:["Seats may open", (a,b)=>(b.mu||0)-(a.mu||0)||(b.nsm||0)-(a.nsm||0)], ns:["Most non-solar room",(a,b)=>(b.nsm||0)-(a.nsm||0)], s:["Most solar room",(a,b)=>(b.sm||0)-(a.sm||0)], full:["Full in solar hours",(a,b)=>((a.sm||0)-(b.sm||0))||((b.p||0)-(a.p||0))]};
+function card(d){
+  const due = d.fd ? (d.fd < TODAY ? `first date ${dd(d.fd)} has passed` : `first due ${dd(d.fd)}`) : "";
+  const watch = d.mu ? `<div class="watch"><b>${fmt(d.mu)}</b> on the revocation watch list · ${d.e} application${d.e>1?"s":""} · ${due}</div>`
+                     : `<div class="calm">No connectivity here on the current watch list</div>`;
+  return `<article class="card">
+    <div><h3>${esc(d.n)}</h3><div class="loc">${esc(d.st)} · ${d.r} · ${d.p} project${d.p===1?"":"s"} in our database</div></div>
+    <div class="row"><span>Room in solar hours</span><b style="color:var(--sun)">${fmt(d.sm)}</b></div>
+    <div class="meter"><span style="width:${Math.min(100,(d.sm||0)/maxN*100*4)}%;background:var(--sun)"></span></div>
+    <div class="row"><span>Room in non-solar hours</span><b style="color:var(--moon)">${fmt(d.nsm)}</b></div>
+    <div class="meter"><span style="width:${Math.min(100,(d.nsm||0)/maxN*100)}%;background:var(--moon)"></span></div>
+    <div class="row"><span>Non-solar access applied for, under process</span><b>${fmt(d.up)}</b></div>
+    ${watch}
+    ${PAID && d.watch ? `<div class="plist">${d.watch.map(w => `<div><b>${esc(w.developer || "Application " + (w.applications||[]).join(", "))}</b><span>${fmt(w.open_mw)} open of ${fmt(w.connectivity_mw)} · ${esc(w.connectivity || "")} · ${esc(w.generation || "")} · due ${dd(w.due)}</span></div>`).join("")}</div>`
+      : d.mu ? `<div class="lock"><span>Which projects, their status and dates, and when to act</span><a class="btn" href="/app">Get the report</a></div>` : ""}
+  </article>`;
+}
+function draw(){
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  let rows = DATA.filter(d => (region==="All"||d.r===region) && (!q || (d.n+" "+d.st).toLowerCase().includes(q)));
+  rows.sort(SORTS[sort][1]);
+  document.getElementById("grid").innerHTML = rows.length ? rows.map(card).join("") : `<div class="empty">No substation matches.</div>`;
+}
+function start(j){
+  DATA = j.rows || []; PAID = !!j.paid; maxN = Math.max(1, ...DATA.map(d => d.nsm || 0));
+  document.getElementById("src").textContent = "Source: CTUIL public records, as of " + DSN.dd(DSN.latest(j.as_of)) + ".";
+document.getElementById("k-subs").textContent = DATA.length;
+  document.getElementById("k-s").textContent = fmt(DATA.reduce((s,d)=>s+(d.sm||0),0));
+  document.getElementById("k-n").textContent = fmt(DATA.reduce((s,d)=>s+(d.nsm||0),0));
+  document.getElementById("k-watch").textContent = fmt(DATA.reduce((s,d)=>s+(d.mu||0),0));
+  document.getElementById("regions").innerHTML = ["All","NR","WR","SR"].map(r=>`<button class="chip${r===region?" on":""}" data-r="${r}">${r==="All"?"All regions":r}</button>`).join(" ");
+  document.getElementById("sorts").innerHTML = Object.entries(SORTS).map(([k,[l]])=>`<button class="chip${k===sort?" on":""}" data-s="${k}">${l}</button>`).join("");
+  document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{region=b.dataset.r;document.querySelectorAll("[data-r]").forEach(x=>x.classList.toggle("on",x===b));draw();});
+  document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{sort=b.dataset.s;document.querySelectorAll("[data-s]").forEach(x=>x.classList.toggle("on",x===b));draw();});
+  document.getElementById("q").oninput = draw;
+  draw();
+}
+DSN.load("radar").then(start).catch(() => { document.getElementById("grid").innerHTML = '<div class="empty">Data is being refreshed. Please try again shortly.</div>'; });
+</script>
+</body>
+</html>

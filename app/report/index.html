@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project report · DSN Assure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f3a;--navy-3:#1b3760;--gold:#e2ad48;--gold-soft:#fbf1dc;--ink:#13213a;--muted:#5d677a;--line:#e4e2dc;--paper:#f6f5f1;
+--act:#a3372a;--act-bg:#f8e6e2;--watch:#8a5b00;--watch-bg:#fbf0d6;--ok:#2a7346;--ok-bg:#e3f2e7;--info:#1b3760;--info-bg:#e9eef6;
+--serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}html,body{margin:0;overflow-x:clip}
+body{font:15px/1.55 var(--sans);color:var(--ink);background:var(--paper)}
+a{color:inherit}
+.top{background:var(--navy);color:#fff}
+.top .in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font:700 18px var(--serif)}
+.brand i{display:inline-block;width:26px;height:26px;border-radius:6px;background:var(--gold);color:var(--navy);font:700 15px/26px var(--serif);text-align:center;font-style:normal}
+.pick{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.pick button{font:500 13px var(--sans);padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);cursor:pointer}
+.pick button.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.hero{background:var(--navy);color:#fff;padding:26px 24px 64px}
+.hero .in{max-width:1180px;margin:0 auto}
+.eyebrow{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font:700 32px/1.15 var(--serif);margin:6px 0 6px}
+.hero .sub{color:#c9d3e3;margin:0}
+.facts{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:20px}
+.fact{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:10px 12px}
+.fact span{display:block;font-size:12px;color:#aebbd0}
+.fact b{font:600 16px var(--sans)}
+.summary{max-width:1180px;margin:-40px auto 0;padding:0 24px}
+.sumcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 20px;display:flex;gap:28px;flex-wrap:wrap;align-items:center}
+.sumcard .n{font:700 26px var(--serif)}.sumcard .l{font-size:13px;color:var(--muted)}
+.sumcard .act .n{color:var(--act)}.sumcard .watch .n{color:var(--watch)}.sumcard .ok .n{color:var(--ok)}
+.sumcard .basis{margin-left:auto;font-size:13px;color:var(--muted);text-align:right}
+main{max-width:1180px;margin:20px auto 40px;padding:0 24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+.col{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.col>h2{margin:0;padding:14px 18px;background:var(--navy-3);color:#fff;font:700 18px var(--serif)}
+.tool{padding:14px 18px;border-top:1px solid var(--line)}
+.tool:first-of-type{border-top:0}
+.tool h3{margin:0 0 8px;font:600 13px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.item{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin:10px 0}
+.item.act{border-color:var(--act)}.item.watch{border-color:var(--gold)}.item.ok{border-color:var(--ok)}.item.info{border-color:var(--navy-3)}
+.item .t{font-weight:600;display:flex;gap:8px;align-items:baseline}
+.badge{font:600 11px var(--sans);padding:1px 7px;border-radius:999px;white-space:nowrap}
+.badge.act{background:var(--act-bg);color:var(--act)}.badge.watch{background:var(--watch-bg);color:var(--watch)}.badge.ok{background:var(--ok-bg);color:var(--ok)}.badge.info{background:var(--info-bg);color:var(--info)}
+.item p{margin:4px 0 6px;color:#2b3850;font-size:14px}
+details{font-size:12.5px;color:var(--muted)}
+summary{cursor:pointer;color:var(--navy-3);font-weight:500}
+.ev{margin:6px 0 0;padding:0;list-style:none}
+.ev li{margin:4px 0}
+.ev code{font:12px var(--mono);background:#f2f1ec;padding:1px 5px;border-radius:4px}
+.wyd{margin-top:10px;background:var(--gold-soft);border-radius:10px;padding:10px 12px;font-size:13.5px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.wyd b{color:var(--navy)}
+.wyd button{font:600 12.5px var(--sans);background:var(--navy);color:#fff;border:0;border-radius:8px;padding:7px 10px;cursor:pointer;white-space:nowrap}
+.ledger{max-width:1180px;margin:0 auto 40px;padding:0 24px}
+.ledger .box{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:auto}
+.ledger h2{font:700 18px var(--serif);margin:0;padding:14px 18px;border-bottom:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:600;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+td.mono{font-family:var(--mono)}
+.foot{max-width:1180px;margin:0 auto 50px;padding:0 24px;color:var(--muted);font-size:13px}
+.foot ul{padding-left:18px}
+.foot code{font:12px var(--mono)}
+@media (max-width:980px){main{grid-template-columns:1fr}.facts{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h1{font-size:26px}}
+@media (max-width:560px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.top .in{flex-wrap:wrap}.pick{margin-left:0}.sumcard .basis{margin-left:0;text-align:left}}
+.gate{display:inline-block;margin-top:6px;text-decoration:none;font:600 13px var(--sans);background:var(--navy);color:#fff;border-radius:8px;padding:8px 12px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <div class="brand"><i>D</i> DSN Assure</div>
+  <div class="pick" id="pick"></div>
+</div></header>
+<section class="hero"><div class="in">
+  <div class="eyebrow">Project report</div>
+  <h1 id="name"></h1>
+  <p class="sub" id="sub"></p>
+  <div class="facts" id="facts"></div>
+</div></section>
+<div class="summary"><div class="sumcard" id="sum"></div></div>
+<main id="main"></main>
+<section class="ledger"><div class="box"><h2>Applications in this project</h2><table id="ledger"></table></div></section>
+<footer class="foot" id="foot"></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+let DATA = [], SRC = {};
+const KEYS = [["E",/to be made effective/i],["A",/Annex-B/i],["R",/revocation/i],["G",/Fourth Amendment/i],["V",/one-time GNA/i],["M",/MWh/i],["D",/minimum storage duration/i]];
+function srcMap(list){ const m = {}; (list||[]).forEach(x => { const k = KEYS.find(([,re]) => re.test(x.name)); if (k) m[k[0]] = {name:x.name, url:x.url, as_of:(x.as_of||"").split("-").reverse().join("."), sha:x.sha256}; }); return m; }
+const LBL = {act:"Act",watch:"Watch",ok:"Clear",info:"Noted"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const d = s => s ? s.slice(8,10)+"."+s.slice(5,7)+"."+s.slice(0,4) : "–";
+const title = s => s.toLowerCase().replace(/\b(\w)/g, m => m.toUpperCase()).replace(/\bPrivate Limited\b/,"Pvt Ltd").replace(/\bLimited\b/,"Ltd");
+const shortName = p => (p.group || title(p.applicant).split(" ")[0]) + " · " + p.substation;
+function render(i){
+  const r = DATA[i], p = r.project;
+  document.querySelectorAll("#pick button").forEach((b,j)=>b.classList.toggle("on", j===i));
+  document.getElementById("name").textContent = title(p.applicant) + " · " + p.substation;
+  const types = (p.types_seen||[]).join(" / ");
+  document.getElementById("sub").textContent = `${p.state} · ${p.region} · ${types || p.type} · ${p.status}`;
+  const sum = k => { const v = r.applications.map(a=>a[k]).filter(x=>x!=null); return v.length? Math.round(v.reduce((a,b)=>a+Number(b),0)*10)/10 : null; };
+  const sol = p.solar_mw ?? sum("solar_mw"), win = p.wind_mw ?? sum("wind_mw");
+  const f = [["Connectivity", p.connectivity_mw+" MW"],["GNA", p.gna_mw+" MW"],["Solar", sol? sol+" MW":"–"],["Wind", win? win+" MW":"–"],["Storage", p.ess_mw? p.ess_mw+" MW":"–"],["Applications", r.applications.length]];
+  document.getElementById("facts").innerHTML = f.map(([k,v])=>`<div class="fact"><span>${k}</span><b>${esc(v)}</b></div>`).join("");
+  const all = r.sections.flatMap(s=>s.tools.flatMap(t=>t.items));
+  const n = k => all.filter(x=>x.s===k).length;
+  document.getElementById("sum").innerHTML = `<div class="act"><div class="n">${n("act")}</div><div class="l">to act on</div></div><div class="watch"><div class="n">${n("watch")}</div><div class="l">to watch</div></div><div class="ok"><div class="n">${n("ok")}</div><div class="l">clear</div></div><div class="basis">Built from public records<br>as of ${r.meta.as_of.map(d).join(", ")}</div>`;
+  document.getElementById("main").innerHTML = r.sections.map(s=>`<section class="col"><h2>${esc(s.title)}</h2>${s.tools.map(t=>`<div class="tool"><h3>${esc(t.tool)}</h3>${t.items.map(it=>`<div class="item ${it.s}"><div class="t"><span>${esc(it.title)}</span><span class="badge ${it.s}">${LBL[it.s]}</span></div><p>${esc(it.text)}</p><details><summary>Evidence</summary><ul class="ev">${it.ev.filter(e=>SRC[e.split(/:(.+)/)[0]]).map(e=>{const [k,ref]=e.split(/:(.+)/);const S=SRC[k];return `<li><a href="${S.url}" target="_blank" rel="noopener">${esc(S.name)}</a>, as of ${S.as_of}${ref?` · ${esc(ref)}`:""}${S.sha?`<br>sha256 <code>${S.sha.slice(0,16)}…</code>`:""}</li>`}).join("")}</ul></details></div>`).join("")}${t.wyd?`<div class="wyd"><span><b>With your data:</b> ${esc(t.wyd)}</span><button type="button">Add data</button></div>`:""}</div>`).join("")}</section>`).join("");
+  const L = r.applications;
+  document.getElementById("ledger").innerHTML = `<tr><th>Application</th><th>Status</th><th>Type</th><th>Solar</th><th>Wind</th><th>Storage</th><th>Connectivity</th><th>Expected start</th><th>Revocation list</th></tr>` + L.map(a=>`<tr><td class="mono">${a.app_id}</td><td>${esc(a.status||"–")}${a.remarks?`<br><small>${esc(a.remarks)}</small>`:""}</td><td>${esc(a.type||"–")}</td><td>${a.solar_mw??"–"}</td><td>${a.wind_mw??"–"}</td><td>${a.ess_mw??"–"}</td><td>${a.connectivity_mw??"–"} MW</td><td>${d(a.expected_effective)}</td><td>${a.revocation?`Entry ${a.revocation.entry}: ${esc(a.revocation.connectivity)}, ${esc(a.revocation.generation.toLowerCase())}; due ${d(a.revocation.due)}`:"Not listed"}</td></tr>`).join("");
+  const used = Object.keys(SRC);
+  document.getElementById("foot").innerHTML = `<b>Sources</b><ul>${used.map(k=>{const S=SRC[k];return `<li><a href="${S.url}" target="_blank" rel="noopener">${esc(S.name)}</a>, as of ${S.as_of}${S.sha?` · sha256 <code>${S.sha}</code>`:""}</li>`}).join("")}</ul><p>Report generated ${d(r.meta.generated.slice(0,10))}.</p>`;
+}
+const URL_ = "https://qmmtlyqxtiovkxezldtg.supabase.co", KEY = "sb_publishable_cWjKONdeCpTiuFdtI0MNpQ_bBT7u5ls";
+const sb = window.supabase.createClient(URL_, KEY, { auth: { persistSession: true, autoRefreshToken: true } });
+function gate(msg, href, label){ document.getElementById("main").innerHTML = `<section class="col"><div class="tool"><h3>${esc(msg)}</h3><p><a class="gate" href="${href}">${esc(label)}</a></p></div></section>`; }
+(async () => {
+  const id = new URLSearchParams(location.search).get("id") || "";
+  const s = await sb.auth.getSession();
+  if (!s.data.session) return gate("Sign in to open this report.", "/app", "Sign in");
+  if (!/^[a-f0-9]{32}$/.test(id)) return gate("Open a report from your projects.", "/app", "Your projects");
+  const r = await fetch(URL_ + "/functions/v1/project-report?id=" + id, { headers: { Authorization: "Bearer " + s.data.session.access_token } });
+  if (r.status === 402) return gate("This report is not yet on your plan.", "/app", "Get the report");
+  if (!r.ok) return gate("The report could not be loaded. Please try again shortly.", location.href, "Try again");
+  const j = await r.json(); DATA = [j]; SRC = srcMap(j.sources);
+  document.getElementById("pick").innerHTML = "";
+  render(0);
+})();
+</script>
+</body>
+</html>
