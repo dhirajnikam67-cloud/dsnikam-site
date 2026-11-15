@@ -32,7 +32,7 @@ body{margin:0;padding:0 20px;background:var(--pj-paper);color:var(--pj-ink);font
 .pj-cta{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(255,255,255,.94) 40%)}
 .pj-cta b{font:700 20px var(--pj-serif)}
 .pj-cta span{color:var(--pj-muted);font-size:14px;max-width:300px;margin-bottom:4px}
-.pj-btn{display:block;width:100%;max-width:260px;font-weight:600;font-size:14px;padding:11px 16px;border-radius:9px;text-decoration:none;background:var(--pj-navy);color:#fff!important}
+.pj-btn{box-sizing:border-box;display:block;width:100%;max-width:260px;font-weight:600;font-size:14px;padding:11px 16px;border-radius:9px;text-decoration:none;background:var(--pj-navy);color:#fff!important}
 .pj-btn.gold{background:var(--pj-gold);color:var(--pj-navy)!important}
 .pj-link{font-size:13px}
 .pj-near{margin-top:26px}

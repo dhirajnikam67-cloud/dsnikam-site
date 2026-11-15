@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live power tenders in India: solar, wind, storage, firm RE | DSN Assure</title>
+<meta name="description" content="Every open power tender in one place: capacity, bid due date, and how many amendments, pre-bid meetings and clarifications each one has had. Updated every morning.">
+<link rel="canonical" href="https://dsnikam.in/tenders">
+<meta property="og:title" content="Live power tenders in India | DSN Assure">
+<meta property="og:description" content="Every open power tender in one place: capacity, bid due date, and how many amendments, pre-bid meetings and clarifications each one has had.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dsnikam.in/tenders">
+<meta property="og:image" content="https://dsnikam.in/og/home.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/projects/projects.css">
+<style>
+.td-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.td-chip{font:500 13px var(--pj-sans);padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);cursor:pointer}
+.td-chip.on,.td-chip:hover{border-color:var(--pj-gold);background:rgba(226,173,72,.16)}
+.td-list{display:grid;gap:12px}
+.td{background:#fff;border:1px solid var(--pj-line);border-radius:14px;display:grid;grid-template-columns:minmax(0,1fr) 250px;overflow:hidden}
+.td-main{padding:16px 18px}
+.td-top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-bottom:6px;font-size:12.5px;color:var(--pj-muted)}
+.td-cat{font-weight:600;padding:2px 9px;border-radius:999px;background:#eef1f6;color:var(--pj-navy3)}
+.td h3{font:600 16.5px/1.35 var(--pj-sans);margin:0 0 10px}
+.td-facts{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--pj-muted);margin-bottom:10px}
+.td-facts b{display:block;font:600 16px var(--pj-sans);color:var(--pj-ink)}
+.td-due b.soon{color:var(--pj-act)}
+.td-counts{display:flex;flex-wrap:wrap;gap:6px}
+.td-counts span{font-size:12.5px;padding:3px 10px;border-radius:999px;border:1px solid var(--pj-line)}
+.td-counts span.w{background:var(--pj-watchbg);border-color:transparent;color:var(--pj-watch);font-weight:600}
+.td-lock{position:relative;background:var(--pj-goldsoft);display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;border-left:1px solid var(--pj-line)}
+.td-lock p{margin:0;font-size:13px;color:var(--pj-muted)}
+.td-lock b{font:700 15px var(--pj-serif);color:var(--pj-ink)}
+.td-lock .pj-btn{box-sizing:border-box;max-width:none;text-align:center;padding:9px 12px;font-size:13.5px}
+.td-empty{color:var(--pj-muted);padding:30px 0}
+@media (max-width:860px){.td{grid-template-columns:1fr}.td-lock{border-left:0;border-top:1px solid var(--pj-line)}}
+</style>
+</head><body><header class="sx sx-top"><div class="sx-in">
+  <a class="sx-logo" href="/" aria-label="DSN Assure home"><svg viewBox="0 0 46 34" aria-hidden="true"><path d="M2 32 L14 2 L22 2 L10 32Z" fill="#fff"/><path d="M14 32 L26 2 L34 2 L22 32Z" fill="#e2ad48"/><path d="M26 32 L38 2 L44 2 L32 32Z" fill="#e2ad48" opacity=".75"/></svg><span class="sx-wm"><b>DSN ASSURE</b><small>BY D. S. NIKAM</small></span></a>
+  <span class="sx-tag">Independent Power Rules<br>Assurance for India</span>
+  <button class="sx-burger" type="button" aria-label="Menu" aria-expanded="false" id="sx-burger">&#9776;</button>
+  <nav class="sx-nav" id="sx-nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a class="on" href="/tenders">Tenders</a>
+    <a href="/tracker">Rules Tracker</a>
+    <a href="/#plans">Plans</a>
+    <a href="/app">Client sign-in</a>
+  </nav>
+  <a class="sx-mail" href="mailto:research@dsnikam.in"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>research@dsnikam.in</a>
+</div></header>
+
+<section class="pj-hero"><div class="pj-in">
+  <h1>Live power tenders, read every morning.</h1>
+  <p>Every open tender with its bid date, and how often it has changed since it was issued.</p>
+  <div class="pj-stats" id="ts"></div>
+  <div class="td-filters" id="tf"></div>
+</div></section>
+
+<main class="pj">
+  <div class="td-list" id="tl"><p class="td-empty">Loading tenders…</p></div>
+  <p class="pj-src" id="tsrc"></p>
+</main>
+
+<div class="sx sx-foot"><div class="sx-in">
+  <a class="sx-logo" href="/" aria-label="DSN Assure home"><svg viewBox="0 0 46 34" aria-hidden="true"><path d="M2 32 L14 2 L22 2 L10 32Z" fill="#fff"/><path d="M14 32 L26 2 L34 2 L22 32Z" fill="#e2ad48"/><path d="M26 32 L38 2 L44 2 L32 32Z" fill="#e2ad48" opacity=".75"/></svg><span class="sx-wm"><b>DSN ASSURE</b><small>BY D. S. NIKAM</small></span></a>
+  <div class="sx-fc"><a href="mailto:research@dsnikam.in"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>research@dsnikam.in</a></div>
+  <nav class="sx-fl"><a href="/projects">Projects</a><a href="/tenders">Tenders</a><a href="/tracker">Rules Tracker</a><a href="/app">Client sign-in</a></nav>
+</div></div>
+<script>(function(){var b=document.getElementById("sx-burger"),n=document.getElementById("sx-nav");if(!b)return;b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)});})();</script>
+<script>
+(function () {
+  var API = "https://qmmtlyqxtiovkxezldtg.supabase.co/functions/v1/tenders";
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var fmt = function (s) { if (!s) return "—"; var p = s.split("-"); return p[2] + "." + p[1] + "." + p[0]; };
+  var n = function (v, u) { if (v == null) return null; v = Number(v); return (v >= 1000 ? v.toLocaleString("en-IN", { maximumFractionDigits: 0 }) : v.toLocaleString("en-IN", { maximumFractionDigits: 2 })) + " " + u; };
+  var today = new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10);
+  var days = function (d) { return Math.round((Date.parse(d) - Date.parse(today)) / 864e5); };
+  var ALL = [], CUR = "All";
+
+  function card(t) {
+    var c = t.counts, dl = days(t.bid_due);
+    var size = [n(t.capacity_mw, "MW"), n(t.energy_mwh, "MWh")].filter(Boolean).join(" / ") || "—";
+    var chips = [];
+    if (c.amendments) chips.push('<span class="w">' + c.amendments + " amendment" + (c.amendments > 1 ? "s" : "") + "</span>");
+    if (c.date_changes) chips.push('<span class="w">Bid date changed</span>');
+    if (c.pre_bid) chips.push("<span>" + c.pre_bid + " pre-bid notice" + (c.pre_bid > 1 ? "s" : "") + "</span>");
+    if (c.clarifications) chips.push("<span>" + c.clarifications + " clarification" + (c.clarifications > 1 ? "s" : "") + "</span>");
+    chips.push("<span>" + c.documents + " document" + (c.documents === 1 ? "" : "s") + "</span>");
+    var subj = encodeURIComponent("Tender reading: " + (t.ref_no || t.tender_id));
+    return '<article class="td"><div class="td-main">' +
+      '<div class="td-top"><span class="td-cat">' + esc(t.category) + "</span><span>" + esc(t.issuer) + "</span><span>" + esc(t.ref_no || t.tender_id) + "</span></div>" +
+      "<h3>" + esc(t.title) + "</h3>" +
+      '<div class="td-facts"><div>Size<b>' + size + '</b></div><div class="td-due">Bids due<b class="' + (dl <= 7 ? "soon" : "") + '">' + fmt(t.bid_due) + "</b></div><div>Days left<b>" + (dl <= 0 ? "Today" : dl) + "</b></div><div>Issued<b>" + fmt(t.published) + "</b></div></div>" +
+      '<div class="td-counts">' + chips.join("") + "</div></div>" +
+      '<aside class="td-lock"><b>Tender reading</b><p>What each amendment changed, read against the contract and the rules, before you price the bid.</p>' +
+      '<a class="pj-btn gold" href="mailto:research@dsnikam.in?subject=' + subj + '">Get the reading</a><a class="pj-btn" href="/#plans">Plans and pricing</a></aside></article>';
+  }
+  function draw() {
+    var list = ALL.filter(function (t) { return CUR === "All" || t.category === CUR; });
+    document.getElementById("tl").innerHTML = list.length ? list.map(card).join("") : '<p class="td-empty">No open tender in this group today.</p>';
+    [].forEach.call(document.querySelectorAll(".td-chip"), function (b) { b.classList.toggle("on", b.textContent.indexOf(CUR) === 0); });
+  }
+  fetch(API).then(function (r) { return r.json(); }).then(function (d) {
+    ALL = d.tenders || [];
+    var gw = ALL.reduce(function (a, t) { return a + (Number(t.capacity_mw) || 0); }, 0) / 1000;
+    var gwh = ALL.reduce(function (a, t) { return a + (Number(t.energy_mwh) || 0); }, 0) / 1000;
+    var changed = ALL.filter(function (t) { return t.counts.amendments || t.counts.date_changes; }).length;
+    document.getElementById("ts").innerHTML = "<div><b>" + ALL.length + "</b>open tenders</div><div><b>" + gw.toFixed(1) + " GW</b>capacity</div><div><b>" + gwh.toFixed(1) + " GWh</b>storage energy</div><div><b>" + changed + "</b>amended since issue</div>";
+    var cats = ["All"].concat(Array.from(new Set(ALL.map(function (t) { return t.category; }))).sort());
+    document.getElementById("tf").innerHTML = cats.map(function (c) { var k = c === "All" ? ALL.length : ALL.filter(function (t) { return t.category === c; }).length; return '<button class="td-chip" type="button">' + esc(c) + " " + k + "</button>"; }).join("");
+    [].forEach.call(document.querySelectorAll(".td-chip"), function (b, i) { b.onclick = function () { CUR = cats[i]; draw(); }; });
+    document.getElementById("tsrc").textContent = "Source: SECI tender pages, read " + fmt(d.as_of) + ".";
+    draw();
+  }).catch(function () { document.getElementById("tl").innerHTML = '<p class="td-empty">Tenders could not be loaded just now.</p>'; });
+})();
+</script>
+</body></html>
