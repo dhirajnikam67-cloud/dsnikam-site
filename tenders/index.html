@@ -109,7 +109,8 @@
     var cats = ["All"].concat(Array.from(new Set(ALL.map(function (t) { return t.category; }))).sort());
     document.getElementById("tf").innerHTML = cats.map(function (c) { var k = c === "All" ? ALL.length : ALL.filter(function (t) { return t.category === c; }).length; return '<button class="td-chip" type="button">' + esc(c) + " " + k + "</button>"; }).join("");
     [].forEach.call(document.querySelectorAll(".td-chip"), function (b, i) { b.onclick = function () { CUR = cats[i]; draw(); }; });
-    document.getElementById("tsrc").textContent = "Source: SECI tender pages, read " + fmt(d.as_of) + ".";
+    var iss = Array.from(new Set(ALL.map(function (t) { return t.issuer; }))).sort();
+    document.getElementById("tsrc").textContent = "Source: tender pages of " + iss.join(", ") + ", read " + fmt(d.as_of) + ".";
     draw();
   }).catch(function () { document.getElementById("tl").innerHTML = '<p class="td-empty">Tenders could not be loaded just now.</p>'; });
 })();
