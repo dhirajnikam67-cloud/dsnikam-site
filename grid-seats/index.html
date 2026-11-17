@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Seat Forecast: where ISTS connectivity may open next | DSN Assure</title>
+<meta name="description" content="Substations across India where grid connectivity may come free in the coming weeks, ahead of the next margin list. Updated as CTUIL publishes.">
+<link rel="canonical" href="https://dsnikam.in/grid-seats">
+<meta property="og:title" content="Grid Seat Forecast | DSN Assure">
+<meta property="og:description" content="Where ISTS connectivity may open next, substation by substation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dsnikam.in/grid-seats">
+<meta property="og:image" content="https://dsnikam.in/og/home.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/projects/projects.css">
+<style>
+.gs-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.gs-chip{font:500 13px var(--pj-sans);padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);cursor:pointer}
+.gs-chip.on,.gs-chip:hover{border-color:var(--pj-gold);background:rgba(226,173,72,.16)}
+.gs-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
+.gs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.gs{background:#fff;border:1px solid var(--pj-line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.gs-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--pj-muted)}
+.gs-lvl{font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px}
+.gs-lvl.High{background:var(--pj-actbg,#fde8e4);color:var(--pj-act)}
+.gs-lvl.Medium{background:var(--pj-watchbg);color:var(--pj-watch)}
+.gs h3{font:600 16px/1.3 var(--pj-sans);margin:0}
+.gs-hid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gs-hid div{font-size:12px;color:var(--pj-muted)}
+.gs-hid b{display:block;font:600 15px var(--pj-sans);color:var(--pj-ink);filter:blur(5px);user-select:none}
+.gs-side{position:sticky;top:16px;background:var(--pj-goldsoft);border:1px solid var(--pj-line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.gs-side b.t{font:700 18px/1.3 var(--pj-serif);color:var(--pj-ink)}
+.gs-side p{margin:0;font-size:13.5px;color:var(--pj-muted)}
+.gs-side ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--pj-ink);line-height:1.7}
+.gs-side .pj-btn{box-sizing:border-box;max-width:none;text-align:center}
+.gs .pj-btn{box-sizing:border-box;max-width:none;width:100%;text-align:center;margin-top:auto}
+.gs-empty{color:var(--pj-muted);padding:30px 0}
+@media (max-width:900px){.gs-wrap{grid-template-columns:1fr}.gs-side{position:static;order:-1}}
+</style>
+</head><body><header class="sx sx-top"><div class="sx-in">
+  <a class="sx-logo" href="/" aria-label="DSN Assure home"><svg viewBox="0 0 46 34" aria-hidden="true"><path d="M2 32 L14 2 L22 2 L10 32Z" fill="#fff"/><path d="M14 32 L26 2 L34 2 L22 32Z" fill="#e2ad48"/><path d="M26 32 L38 2 L44 2 L32 32Z" fill="#e2ad48" opacity=".75"/></svg><span class="sx-wm"><b>DSN ASSURE</b><small>BY D. S. NIKAM</small></span></a>
+  <span class="sx-tag">Independent Power Rules<br>Assurance for India</span>
+  <button class="sx-burger" type="button" aria-label="Menu" aria-expanded="false" id="sx-burger">&#9776;</button>
+  <nav class="sx-nav" id="sx-nav">
+    <a href="/">Home</a>
+    <a href="/projects">Projects</a>
+    <a class="on" href="/grid-seats">Grid Seats</a>
+    <a href="/tenders">Tenders</a>
+    <a href="/tracker">Rules Tracker</a>
+    <a href="/#plans">Plans</a>
+    <a href="/app">Client sign-in</a>
+  </nav>
+  <a class="sx-mail" href="mailto:research@dsnikam.in"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>research@dsnikam.in</a>
+</div></header>
+
+<section class="pj-hero"><div class="pj-in">
+  <h1>Where grid seats may open next.</h1>
+  <p>Substations across India where connectivity could come free in the coming weeks, before it shows up in the next margin list.</p>
+  <div class="pj-stats" id="gst"></div>
+  <div class="gs-filters" id="gsf"></div>
+</div></section>
+
+<main class="pj">
+  <div class="gs-wrap">
+    <div class="gs-grid" id="gsl"><p class="gs-empty">Loading substations…</p></div>
+    <aside class="gs-side">
+      <b class="t">Grid Seat Forecast</b>
+      <p>For each substation on the watch list:</p>
+      <ul>
+        <li>How many MW may open</li>
+        <li>The window when it may open</li>
+        <li>Solar-hour and non-solar-hour split</li>
+        <li>Who is already in the queue ahead of you</li>
+        <li>An alert the day CTUIL confirms it</li>
+      </ul>
+      <a class="pj-btn gold" href="mailto:research@dsnikam.in?subject=Grid%20Seat%20Forecast">Get the forecast</a>
+      <a class="pj-btn" href="/#plans">Plans and pricing</a>
+      <a class="pj-btn" href="/app">Already a client? Sign in</a>
+    </aside>
+  </div>
+  <p class="pj-src" id="gsrc"></p>
+</main>
+
+<div class="sx sx-foot"><div class="sx-in">
+  <a class="sx-logo" href="/" aria-label="DSN Assure home"><svg viewBox="0 0 46 34" aria-hidden="true"><path d="M2 32 L14 2 L22 2 L10 32Z" fill="#fff"/><path d="M14 32 L26 2 L34 2 L22 32Z" fill="#e2ad48"/><path d="M26 32 L38 2 L44 2 L32 32Z" fill="#e2ad48" opacity=".75"/></svg><span class="sx-wm"><b>DSN ASSURE</b><small>BY D. S. NIKAM</small></span></a>
+  <div class="sx-fc"><a href="mailto:research@dsnikam.in"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>research@dsnikam.in</a></div>
+  <nav class="sx-fl"><a href="/projects">Projects</a><a href="/grid-seats">Grid Seats</a><a href="/tenders">Tenders</a><a href="/tracker">Rules Tracker</a><a href="/app">Client sign-in</a></nav>
+</div></div>
+<script>(function(){var b=document.getElementById("sx-burger"),n=document.getElementById("sx-nav");if(!b)return;b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o)});})();</script>
+<script>
+(function () {
+  var API = "https://qmmtlyqxtiovkxezldtg.supabase.co/functions/v1/seats";
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var fmt = function (s) { if (!s) return "—"; var p = s.split("-"); return p[2] + "." + p[1] + "." + p[0]; };
+  var ALL = [], CUR = "All";
+  function card(s) {
+    var subj = encodeURIComponent("Grid Seat Forecast: " + s.substation);
+    return '<article class="gs"><div class="gs-top"><span>' + esc(s.state) + '</span><span class="gs-lvl ' + esc(s.signal) + '">' + (s.signal === "High" ? "High watch" : "Watch") + "</span></div>" +
+      "<h3>" + esc(s.substation) + "</h3>" +
+      '<div class="gs-hid"><div>May open<b>000 MW</b></div><div>Window<b>00.00.0000</b></div></div>' +
+      '<a class="pj-btn" href="mailto:research@dsnikam.in?subject=' + subj + '">Get this substation</a></article>';
+  }
+  function draw() {
+    var list = ALL.filter(function (s) { return CUR === "All" || s.state === CUR; });
+    document.getElementById("gsl").innerHTML = list.length ? list.map(card).join("") : '<p class="gs-empty">No substation on the watch list here today.</p>';
+    [].forEach.call(document.querySelectorAll(".gs-chip"), function (b) { b.classList.toggle("on", b.textContent.indexOf(CUR) === 0); });
+  }
+  fetch(API).then(function (r) { return r.json(); }).then(function (d) {
+    ALL = d.seats || [];
+    var t = d.totals || {};
+    document.getElementById("gst").innerHTML = "<div><b>" + t.substations + "</b>substations on watch</div><div><b>" + t.states + "</b>states</div><div><b>" + Number(t.gw_under_watch).toFixed(1) + " GW</b>connectivity under watch</div><div><b>" + t.high + "</b>on high watch</div>";
+    var states = ["All"].concat(Array.from(new Set(ALL.map(function (s) { return s.state; }))).sort());
+    document.getElementById("gsf").innerHTML = states.map(function (c) { var k = c === "All" ? ALL.length : ALL.filter(function (s) { return s.state === c; }).length; return '<button class="gs-chip" type="button">' + esc(c) + " " + k + "</button>"; }).join("");
+    [].forEach.call(document.querySelectorAll(".gs-chip"), function (b, i) { b.onclick = function () { CUR = states[i]; draw(); }; });
+    document.getElementById("gsrc").textContent = "Source: CTUIL public records, as of " + fmt(d.as_of) + ".";
+    draw();
+  }).catch(function () { document.getElementById("gsl").innerHTML = '<p class="gs-empty">The watch list could not be loaded just now.</p>'; });
+})();
+</script>
+</body></html>
