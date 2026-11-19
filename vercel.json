@@ -18,6 +18,11 @@
   ],
   "redirects": [
     {
+      "source": "/((?!maintenance|favicon\\.svg).*)",
+      "destination": "/maintenance",
+      "permanent": false
+    },
+    {
       "source": "/karnataka-banking-2026/Karnataka-Storage-Decision-Brief-v1.:minor(0|1|2|3).pdf",
       "destination": "/karnataka-banking-2026/Karnataka-Storage-Decision-Brief-v1.5.pdf",
       "permanent": true
