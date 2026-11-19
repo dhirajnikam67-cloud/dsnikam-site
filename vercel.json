@@ -31,6 +31,11 @@
       "source": "/grid-connectivity-report-4",
       "destination": "/",
       "permanent": false
+    },
+    {
+      "source": "/grid-seats",
+      "destination": "/",
+      "permanent": false
     }
   ]
 }
