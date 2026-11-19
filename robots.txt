@@ -3,5 +3,7 @@ Allow: /
 Disallow: /app
 Disallow: /insights
 Disallow: /submit
+Disallow: /projects
+Disallow: /tenders
 
 Sitemap: https://dsnikam.in/sitemap.xml
