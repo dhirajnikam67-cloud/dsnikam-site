@@ -50,8 +50,7 @@ const card = (cls, num, small, h, p) => `<div class="card ${cls}"><div class="n"
 DSN.load("impact").then(j => {
   document.getElementById("checked").textContent = n(j.checked) + " projects checked";
   document.getElementById("cards").innerHTML = [
-    card("watch", n(j.gna_new.projects), "projects · ₹" + n(j.gna_new.crore) + " crore", "One-time GNA charge, new timing", "Projects whose GNA has not yet started."),
-    card("watch", n(j.gna_old.projects), "projects · ₹" + n(j.gna_old.crore) + " crore", "Charge on earlier-regime grants", "Liability contested before CERC."),
+    card("watch", n(j.gna_new.projects), "projects · ₹" + n(j.gna_new.crore) + " crore", "One-time GNA charge still to fall due", "Projects whose GNA has not yet started."),
     card("act", n(j.comply_or_withdraw.projects), "projects · " + gw(j.comply_or_withdraw.mw), "Comply or withdraw", "Not commissioned and on CTUIL's revocation watch list."),
     card("act", n(j.storage.short), "of " + n(j.storage.projects) + " storage projects", "Storage below twice its MW", n(j.storage.projects) + " projects with " + n(j.storage.mw) + " MW of storage; " + n(j.storage.short) + " short in CTUIL's own record."),
     card("", n(j.revocation.projects), "projects · " + n(j.revocation.groups) + " owner groups", "Revocation procedure to be rewritten", "A revised CTUIL procedure is due for CERC approval."),
@@ -64,7 +63,7 @@ DSN.load("impact").then(j => {
         p.not_commissioned ? "not commissioned, on watch list" : (p.due ? "on watch list" : ""),
         p.due ? "due " + DSN.dd(p.due) : "",
         p.open_mw ? n(p.open_mw) + " MW open" : "",
-        p.gna_charge_crore ? "GNA charge ₹" + p.gna_charge_crore + " crore" + (p.earlier_regime ? " (earlier regime, contested)" : "") : "",
+        p.gna_charge_crore ? "GNA charge ₹" + p.gna_charge_crore + " crore" : "",
         p.storage === "act" ? "storage short of twice its MW" : (p.storage ? "storage rule applies" : "")
       ].filter(Boolean).join(" · ")}</span></div>`).join("") + `</div>`).join("");
   } else {

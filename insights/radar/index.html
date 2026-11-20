@@ -98,7 +98,7 @@ function card(d){
     <div class="meter"><span style="width:${Math.min(100,(d.sm||0)/maxN*100*4)}%;background:var(--sun)"></span></div>
     <div class="row"><span>Room in non-solar hours</span><b style="color:var(--moon)">${fmt(d.nsm)}</b></div>
     <div class="meter"><span style="width:${Math.min(100,(d.nsm||0)/maxN*100)}%;background:var(--moon)"></span></div>
-    <div class="row"><span>Non-solar access applied for, under process</span><b>${fmt(d.up)}</b></div>
+    ${PAID && d.up ? `<div class="row"><span>Applications under process, as CTUIL prints them</span><b></b></div><div class="plist">${[["Solar component", d.up.solar_component], ["Non-solar component", d.up.nonsolar_component], ["Right of first refusal", d.up.first_refusal], ["Non-solar hour access", d.up.nonsolar_hour_access], ["Total", d.up.total]].filter(x => x[1] != null).map(x => `<div><b>${x[0]}</b><span>${fmt(x[1])}</span></div>`).join("")}</div>` : ""}
     ${watch}
     ${PAID && d.watch ? `<div class="plist">${d.watch.map(w => `<div><b>${esc(w.developer || "Application " + (w.applications||[]).join(", "))}</b><span>${fmt(w.open_mw)} open of ${fmt(w.connectivity_mw)} · ${esc(w.connectivity || "")} · ${esc(w.generation || "")} · due ${dd(w.due)}</span></div>`).join("")}</div>`
       : d.mu ? `<div class="lock"><span>Which projects, their status and dates, and when to act</span><a class="btn" href="/app">Get the report</a></div>` : ""}
